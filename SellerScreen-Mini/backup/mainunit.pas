@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Buttons, ExtCtrls,
-  StdCtrls, Grids, ButtonPanel, ComCtrls, Menus;
+  StdCtrls, ButtonPanel, ComCtrls, Menus, LCLIntf;
 
 type
 
@@ -17,15 +17,14 @@ type
     FlowPanel10: TFlowPanel;
     Label8: TLabel;
     MenuItem10: TMenuItem;
-    MenuItem11: TMenuItem;
-    MenuItem12: TMenuItem;
-    MenuItem13: TMenuItem;
-    MenuItem14: TMenuItem;
-    MenuItem15: TMenuItem;
-    MenuItem16: TMenuItem;
-    MenuItem5: TMenuItem;
-    MenuItem6: TMenuItem;
-    MenuItem7: TMenuItem;
+    OpenStorageMI: TMenuItem;
+    ShowStaticsMI: TMenuItem;
+    OpenSettingsMI: TMenuItem;
+    AboutMI: TMenuItem;
+    GitHubMI: TMenuItem;
+    DocsMI: TMenuItem;
+    ReloadMI: TMenuItem;
+    SaveMI: TMenuItem;
     MenuItem8: TMenuItem;
     MenuItem9: TMenuItem;
     PayBtn: TButton;
@@ -87,7 +86,13 @@ type
     CancelPurchaseBtn: TButton;
     ScrollBox1: TScrollBox;
     StatusBar1: TStatusBar;
-    procedure MenuItem8Click(Sender: TObject);
+    procedure AboutMIClick(Sender: TObject);
+    procedure GitHubMIClick(Sender: TObject);
+    procedure DocsMIClick(Sender: TObject);
+    procedure MenuItem7Click(Sender: TObject);
+    procedure OpenStorageMIClick(Sender: TObject);
+    procedure SaveMIClick(Sender: TObject);
+    procedure ReloadMIClick(Sender: TObject);
   private
 
   public
@@ -99,13 +104,46 @@ var
 
 implementation
 
+uses
+  AboutUnit, StorageUnit;
+
 {$R *.lfm}
 
 { TMainForm }
 
-procedure TMainForm.MenuItem8Click(Sender: TObject);
+procedure TMainForm.GitHubMIClick(Sender: TObject);
+begin
+  OpenURL('https://github.com/tomo2403/SellerScreen-Mini');
+end;
+
+procedure TMainForm.DocsMIClick(Sender: TObject);
 begin
 
+end;
+
+procedure TMainForm.MenuItem7Click(Sender: TObject);
+begin
+
+end;
+
+procedure TMainForm.OpenStorageMIClick(Sender: TObject);
+begin
+  StorageForm.Show;
+end;
+
+procedure TMainForm.SaveMIClick(Sender: TObject);
+begin
+
+end;
+
+procedure TMainForm.ReloadMIClick(Sender: TObject);
+begin
+
+end;
+
+procedure TMainForm.AboutMIClick(Sender: TObject);
+begin
+  AboutForm.Show;
 end;
 
 end.

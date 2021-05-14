@@ -31,7 +31,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="2">
+    <Units Count="4">
       <Unit0>
         <Filename Value="SellerScreen_Mini.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -44,6 +44,21 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainUnit"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="aboutunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="AboutForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="AboutUnit"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="storageunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="StorageForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="StorageUnit"/>
+      </Unit3>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -65,7 +80,7 @@
     </Linking>
   </CompilerOptions>
   <Debugging>
-    <Exceptions Count="3">
+    <Exceptions Count="4">
       <Item1>
         <Name Value="EAbort"/>
       </Item1>
@@ -75,6 +90,9 @@
       <Item3>
         <Name Value="EFOpenError"/>
       </Item3>
+      <Item4>
+        <Name Value="EConvertError"/>
+      </Item4>
     </Exceptions>
   </Debugging>
 </CONFIG>

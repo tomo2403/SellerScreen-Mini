@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 499
+  Left = 2009
   Height = 621
-  Top = 146
+  Top = 173
   Width = 1087
   Caption = 'SellerScreen-Mini'
   ClientHeight = 601
@@ -10214,6 +10214,14 @@ object MainForm: TMainForm
       item
         Text = ' Bereit'
         Width = 100
+      end    
+      item
+        Text = '00000 Produkte im Lager'
+        Width = 200
+      end    
+      item
+        Text = '0 Produkte aktiv'
+        Width = 150
       end>
     SimplePanel = False
   end
@@ -10338,25 +10346,25 @@ object MainForm: TMainForm
     Top = 24
     object MenuItem1: TMenuItem
       Caption = 'Datei'
-      object MenuItem5: TMenuItem
+      object ReloadMI: TMenuItem
         Caption = 'Neu laden'
+        OnClick = ReloadMIClick
       end
-      object MenuItem6: TMenuItem
+      object SaveMI: TMenuItem
         Caption = 'Speichern'
-      end
-      object MenuItem7: TMenuItem
-        Caption = 'Exportieren'
+        OnClick = SaveMIClick
       end
     end
     object MenuItem2: TMenuItem
       Caption = 'Ansicht'
-      object MenuItem11: TMenuItem
+      object OpenStorageMI: TMenuItem
         Caption = 'Lager öffnen'
+        OnClick = OpenStorageMIClick
       end
-      object MenuItem12: TMenuItem
+      object ShowStaticsMI: TMenuItem
         Caption = 'Statistiken anzeigen'
       end
-      object MenuItem13: TMenuItem
+      object OpenSettingsMI: TMenuItem
         Caption = 'Einstellungen'
       end
     end
@@ -10364,7 +10372,6 @@ object MainForm: TMainForm
       Caption = 'Demo'
       object MenuItem8: TMenuItem
         Caption = 'Lager füllen'
-        OnClick = MenuItem8Click
       end
       object MenuItem9: TMenuItem
         Caption = 'Käufe simulieren'
@@ -10375,14 +10382,17 @@ object MainForm: TMainForm
     end
     object MenuItem4: TMenuItem
       Caption = 'Hilfe'
-      object MenuItem14: TMenuItem
+      object AboutMI: TMenuItem
         Caption = 'Über'
+        OnClick = AboutMIClick
       end
-      object MenuItem15: TMenuItem
+      object GitHubMI: TMenuItem
         Caption = 'GitHub'
+        OnClick = GitHubMIClick
       end
-      object MenuItem16: TMenuItem
+      object DocsMI: TMenuItem
         Caption = 'Dokumentation'
+        OnClick = DocsMIClick
       end
     end
   end
