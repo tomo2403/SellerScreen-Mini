@@ -1,11 +1,11 @@
 object MainForm: TMainForm
-  Left = 2009
-  Height = 621
-  Top = 173
-  Width = 1087
+  Left = 2008
+  Height = 557
+  Top = 57
+  Width = 1091
   Caption = 'SellerScreen-Mini'
-  ClientHeight = 601
-  ClientWidth = 1087
+  ClientHeight = 537
+  ClientWidth = 1091
   Font.CharSet = ANSI_CHARSET
   Font.Color = clBlack
   Font.Height = -16
@@ -9473,742 +9473,14 @@ object MainForm: TMainForm
     426082
   }
   Menu = MainMenu1
+  OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '2.0.12.0'
-  object Shoppinglist: TGroupBox
-    Left = 744
-    Height = 476
-    Top = 88
-    Width = 319
-    Anchors = [akTop, akRight, akBottom]
-    Caption = 'Warenkorb: 0,00€'
-    ClientHeight = 450
-    ClientWidth = 315
-    Font.CharSet = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Height = -16
-    Font.Name = 'Segoe UI'
-    Font.Pitch = fpVariable
-    Font.Quality = fqDraft
-    ParentFont = False
-    TabOrder = 0
-    object ListBox1: TListBox
-      Left = 5
-      Height = 391
-      Top = 5
-      Width = 305
-      Align = alTop
-      Anchors = [akTop, akLeft, akRight, akBottom]
-      BorderSpacing.Around = 5
-      ItemHeight = 0
-      TabOrder = 0
-    end
-    object ButtonPanel1: TButtonPanel
-      Left = 6
-      Height = 39
-      Top = 405
-      Width = 303
-      OKButton.Name = 'OKButton'
-      OKButton.Caption = '&Verkaufen'
-      HelpButton.Name = 'HelpButton'
-      HelpButton.DefaultCaption = True
-      CloseButton.Name = 'CloseButton'
-      CloseButton.DefaultCaption = True
-      CancelButton.Name = 'CancelButton'
-      CancelButton.Caption = '&Leeren'
-      TabOrder = 1
-      ShowButtons = [pbOK, pbCancel]
-    end
-  end
-  object GroupBox3: TGroupBox
-    Left = 24
-    Height = 477
-    Top = 87
-    Width = 696
-    Anchors = [akTop, akLeft, akRight, akBottom]
-    Caption = 'Lager Inhalt'
-    ClientHeight = 451
-    ClientWidth = 692
-    TabOrder = 1
-    object ScrollBox1: TScrollBox
-      Left = 5
-      Height = 441
-      Top = 5
-      Width = 682
-      HorzScrollBar.Page = 461
-      VertScrollBar.Page = 441
-      Align = alClient
-      AutoSize = True
-      BorderSpacing.Around = 5
-      BorderStyle = bsNone
-      ClientHeight = 441
-      ClientWidth = 665
-      TabOrder = 0
-      object FlowPanel1: TFlowPanel
-        Left = 0
-        Height = 581
-        Top = 0
-        Width = 665
-        Align = alTop
-        AutoSize = True
-        BevelOuter = bvNone
-        BorderSpacing.CellAlignVertical = ccaLeftTop
-        ControlList = <        
-          item
-            Control = FlowPanel2
-            WrapAfter = waAuto
-            Index = 0
-          end        
-          item
-            Control = FlowPanel3
-            WrapAfter = waAuto
-            Index = 1
-          end        
-          item
-            Control = FlowPanel4
-            WrapAfter = waAuto
-            Index = 2
-          end        
-          item
-            Control = FlowPanel5
-            WrapAfter = waAuto
-            Index = 3
-          end        
-          item
-            Control = FlowPanel6
-            WrapAfter = waAuto
-            Index = 4
-          end        
-          item
-            Control = FlowPanel7
-            WrapAfter = waAuto
-            Index = 5
-          end        
-          item
-            Control = FlowPanel8
-            WrapAfter = waAuto
-            Index = 6
-          end>
-        FlowLayout = tlTop
-        FlowStyle = fsLeftRightTopBottom
-        TabOrder = 0
-        object FlowPanel2: TFlowPanel
-          Left = 0
-          Height = 83
-          Top = 0
-          Width = 461
-          Anchors = []
-          AutoSize = True
-          ControlList = <          
-            item
-              Control = Label1
-              WrapAfter = waAuto
-              Index = 0
-            end          
-            item
-              Control = Button5
-              WrapAfter = waAuto
-              Index = 1
-            end          
-            item
-              Control = Button6
-              WrapAfter = waAuto
-              Index = 2
-            end          
-            item
-              Control = Button7
-              WrapAfter = waAuto
-              Index = 3
-            end          
-            item
-              Control = Button8
-              WrapAfter = waAuto
-              Index = 4
-            end>
-          FlowLayout = tlTop
-          FlowStyle = fsBottomTopLeftRight
-          TabOrder = 0
-          object Label1: TLabel
-            Left = 11
-            Height = 63
-            Top = 9
-            Width = 94
-            Anchors = []
-            BorderSpacing.Around = 10
-            Caption = 'Produktname'#13#10'Verfügbar: 0'#13#10'Preis: 0,00€'
-            ParentColor = False
-          end
-          object Button5: TButton
-            Left = 130
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+1'
-            TabOrder = 0
-          end
-          object Button6: TButton
-            Left = 203
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-1'
-            TabOrder = 1
-          end
-          object Button7: TButton
-            Left = 276
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+Alles'
-            TabOrder = 2
-          end
-          object Button8: TButton
-            Left = 375
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-Alles'
-            TabOrder = 3
-          end
-        end
-        object FlowPanel3: TFlowPanel
-          Left = 0
-          Height = 83
-          Top = 83
-          Width = 461
-          Anchors = []
-          AutoSize = True
-          ControlList = <          
-            item
-              Control = Label2
-              WrapAfter = waAuto
-              Index = 0
-            end          
-            item
-              Control = Button9
-              WrapAfter = waAuto
-              Index = 1
-            end          
-            item
-              Control = Button10
-              WrapAfter = waAuto
-              Index = 2
-            end          
-            item
-              Control = Button11
-              WrapAfter = waAuto
-              Index = 3
-            end          
-            item
-              Control = Button12
-              WrapAfter = waAuto
-              Index = 4
-            end>
-          FlowLayout = tlTop
-          FlowStyle = fsBottomTopLeftRight
-          TabOrder = 1
-          object Label2: TLabel
-            Left = 11
-            Height = 63
-            Top = 9
-            Width = 94
-            Anchors = []
-            BorderSpacing.Around = 10
-            Caption = 'Produktname'#13#10'Verfügbar: 0'#13#10'Preis: 0,00€'
-            ParentColor = False
-          end
-          object Button9: TButton
-            Left = 130
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+1'
-            TabOrder = 0
-          end
-          object Button10: TButton
-            Left = 203
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-1'
-            TabOrder = 1
-          end
-          object Button11: TButton
-            Left = 276
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+Alles'
-            TabOrder = 2
-          end
-          object Button12: TButton
-            Left = 375
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-Alles'
-            TabOrder = 3
-          end
-        end
-        object FlowPanel4: TFlowPanel
-          Left = 0
-          Height = 83
-          Top = 166
-          Width = 461
-          Anchors = []
-          AutoSize = True
-          ControlList = <          
-            item
-              Control = Label3
-              WrapAfter = waAuto
-              Index = 0
-            end          
-            item
-              Control = Button13
-              WrapAfter = waAuto
-              Index = 1
-            end          
-            item
-              Control = Button14
-              WrapAfter = waAuto
-              Index = 2
-            end          
-            item
-              Control = Button15
-              WrapAfter = waAuto
-              Index = 3
-            end          
-            item
-              Control = Button16
-              WrapAfter = waAuto
-              Index = 4
-            end>
-          FlowLayout = tlTop
-          FlowStyle = fsBottomTopLeftRight
-          TabOrder = 2
-          object Label3: TLabel
-            Left = 11
-            Height = 63
-            Top = 9
-            Width = 94
-            Anchors = []
-            BorderSpacing.Around = 10
-            Caption = 'Produktname'#13#10'Verfügbar: 0'#13#10'Preis: 0,00€'
-            ParentColor = False
-          end
-          object Button13: TButton
-            Left = 130
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+1'
-            TabOrder = 0
-          end
-          object Button14: TButton
-            Left = 203
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-1'
-            TabOrder = 1
-          end
-          object Button15: TButton
-            Left = 276
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+Alles'
-            TabOrder = 2
-          end
-          object Button16: TButton
-            Left = 375
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-Alles'
-            TabOrder = 3
-          end
-        end
-        object FlowPanel5: TFlowPanel
-          Left = 0
-          Height = 83
-          Top = 249
-          Width = 461
-          Anchors = []
-          AutoSize = True
-          ControlList = <          
-            item
-              Control = Label4
-              WrapAfter = waAuto
-              Index = 0
-            end          
-            item
-              Control = Button17
-              WrapAfter = waAuto
-              Index = 1
-            end          
-            item
-              Control = Button18
-              WrapAfter = waAuto
-              Index = 2
-            end          
-            item
-              Control = Button19
-              WrapAfter = waAuto
-              Index = 3
-            end          
-            item
-              Control = Button20
-              WrapAfter = waAuto
-              Index = 4
-            end>
-          FlowLayout = tlTop
-          FlowStyle = fsBottomTopLeftRight
-          TabOrder = 3
-          object Label4: TLabel
-            Left = 11
-            Height = 63
-            Top = 9
-            Width = 94
-            Anchors = []
-            BorderSpacing.Around = 10
-            Caption = 'Produktname'#13#10'Verfügbar: 0'#13#10'Preis: 0,00€'
-            ParentColor = False
-          end
-          object Button17: TButton
-            Left = 130
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+1'
-            TabOrder = 0
-          end
-          object Button18: TButton
-            Left = 203
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-1'
-            TabOrder = 1
-          end
-          object Button19: TButton
-            Left = 276
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+Alles'
-            TabOrder = 2
-          end
-          object Button20: TButton
-            Left = 375
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-Alles'
-            TabOrder = 3
-          end
-        end
-        object FlowPanel6: TFlowPanel
-          Left = 0
-          Height = 83
-          Top = 332
-          Width = 461
-          Anchors = []
-          AutoSize = True
-          ControlList = <          
-            item
-              Control = Label5
-              WrapAfter = waAuto
-              Index = 0
-            end          
-            item
-              Control = Button21
-              WrapAfter = waAuto
-              Index = 1
-            end          
-            item
-              Control = Button22
-              WrapAfter = waAuto
-              Index = 2
-            end          
-            item
-              Control = Button23
-              WrapAfter = waAuto
-              Index = 3
-            end          
-            item
-              Control = Button24
-              WrapAfter = waAuto
-              Index = 4
-            end>
-          FlowLayout = tlTop
-          FlowStyle = fsBottomTopLeftRight
-          TabOrder = 4
-          object Label5: TLabel
-            Left = 11
-            Height = 63
-            Top = 9
-            Width = 94
-            Anchors = []
-            BorderSpacing.Around = 10
-            Caption = 'Produktname'#13#10'Verfügbar: 0'#13#10'Preis: 0,00€'
-            ParentColor = False
-          end
-          object Button21: TButton
-            Left = 130
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+1'
-            TabOrder = 0
-          end
-          object Button22: TButton
-            Left = 203
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-1'
-            TabOrder = 1
-          end
-          object Button23: TButton
-            Left = 276
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+Alles'
-            TabOrder = 2
-          end
-          object Button24: TButton
-            Left = 375
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-Alles'
-            TabOrder = 3
-          end
-        end
-        object FlowPanel7: TFlowPanel
-          Left = 0
-          Height = 83
-          Top = 415
-          Width = 461
-          Anchors = []
-          AutoSize = True
-          ControlList = <          
-            item
-              Control = Label6
-              WrapAfter = waAuto
-              Index = 0
-            end          
-            item
-              Control = Button25
-              WrapAfter = waAuto
-              Index = 1
-            end          
-            item
-              Control = Button26
-              WrapAfter = waAuto
-              Index = 2
-            end          
-            item
-              Control = Button27
-              WrapAfter = waAuto
-              Index = 3
-            end          
-            item
-              Control = Button28
-              WrapAfter = waAuto
-              Index = 4
-            end>
-          FlowLayout = tlTop
-          FlowStyle = fsBottomTopLeftRight
-          TabOrder = 5
-          object Label6: TLabel
-            Left = 11
-            Height = 63
-            Top = 9
-            Width = 94
-            Anchors = []
-            BorderSpacing.Around = 10
-            Caption = 'Produktname'#13#10'Verfügbar: 0'#13#10'Preis: 0,00€'
-            ParentColor = False
-          end
-          object Button25: TButton
-            Left = 130
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+1'
-            TabOrder = 0
-          end
-          object Button26: TButton
-            Left = 203
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-1'
-            TabOrder = 1
-          end
-          object Button27: TButton
-            Left = 276
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+Alles'
-            TabOrder = 2
-          end
-          object Button28: TButton
-            Left = 375
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-Alles'
-            TabOrder = 3
-          end
-        end
-        object FlowPanel8: TFlowPanel
-          Left = 0
-          Height = 83
-          Top = 498
-          Width = 461
-          Anchors = []
-          AutoSize = True
-          ControlList = <          
-            item
-              Control = Label7
-              WrapAfter = waAuto
-              Index = 0
-            end          
-            item
-              Control = Button29
-              WrapAfter = waAuto
-              Index = 1
-            end          
-            item
-              Control = Button30
-              WrapAfter = waAuto
-              Index = 2
-            end          
-            item
-              Control = Button31
-              WrapAfter = waAuto
-              Index = 3
-            end          
-            item
-              Control = Button32
-              WrapAfter = waAuto
-              Index = 4
-            end>
-          FlowLayout = tlTop
-          FlowStyle = fsBottomTopLeftRight
-          TabOrder = 6
-          object Label7: TLabel
-            Left = 11
-            Height = 63
-            Top = 9
-            Width = 94
-            Anchors = []
-            BorderSpacing.Around = 10
-            Caption = 'Produktname'#13#10'Verfügbar: 0'#13#10'Preis: 0,00€'
-            ParentColor = False
-          end
-          object Button29: TButton
-            Left = 130
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+1'
-            TabOrder = 0
-          end
-          object Button30: TButton
-            Left = 203
-            Height = 45
-            Top = 22
-            Width = 43
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-1'
-            TabOrder = 1
-          end
-          object Button31: TButton
-            Left = 276
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '+Alles'
-            TabOrder = 2
-          end
-          object Button32: TButton
-            Left = 375
-            Height = 45
-            Top = 22
-            Width = 69
-            Align = alClient
-            BorderSpacing.Around = 15
-            Caption = '-Alles'
-            TabOrder = 3
-          end
-        end
-      end
-    end
-  end
-  object StatusBar1: TStatusBar
+  object StatusBar: TStatusBar
     Left = 1
     Height = 23
-    Top = 578
-    Width = 1086
+    Top = 514
+    Width = 1090
     BorderSpacing.Left = 1
     Panels = <    
       item
@@ -10216,16 +9488,12 @@ object MainForm: TMainForm
         Width = 100
       end    
       item
-        Text = '00000 Produkte im Lager'
-        Width = 200
-      end    
-      item
         Text = '0 Produkte aktiv'
         Width = 150
       end>
     SimplePanel = False
   end
-  object FlowPanel9: TFlowPanel
+  object SellPanel: TFlowPanel
     Left = 24
     Height = 50
     Top = 16
@@ -10251,7 +9519,7 @@ object MainForm: TMainForm
       end>
     FlowLayout = tlTop
     FlowStyle = fsBottomTopLeftRight
-    TabOrder = 3
+    TabOrder = 1
     object NewCustomerBtn: TButton
       Left = 5
       Height = 40
@@ -10260,6 +9528,7 @@ object MainForm: TMainForm
       Anchors = []
       BorderSpacing.Around = 5
       Caption = 'Neuer Kunde'
+      OnClick = NewCustomerBtnClick
       TabOrder = 0
     end
     object CancelPurchaseBtn: TButton
@@ -10283,11 +9552,11 @@ object MainForm: TMainForm
       TabOrder = 2
     end
   end
-  object FlowPanel10: TFlowPanel
-    Left = 528
+  object PayPanel: TFlowPanel
+    Left = 24
     Height = 51
-    Top = 16
-    Width = 416
+    Top = 15
+    Width = 579
     AutoSize = True
     BevelOuter = bvNone
     BorderSpacing.Around = 5
@@ -10303,13 +9572,19 @@ object MainForm: TMainForm
         Index = 1
       end    
       item
-        Control = Label8
+        Control = CustomerLbl
         WrapAfter = waAuto
         Index = 2
+      end    
+      item
+        Control = MainPriceLbl
+        WrapAfter = waAuto
+        Index = 3
       end>
     FlowLayout = tlTop
     FlowStyle = fsBottomTopLeftRight
-    TabOrder = 4
+    TabOrder = 2
+    Visible = False
     object PayBtn: TButton
       Left = 5
       Height = 40
@@ -10327,10 +9602,11 @@ object MainForm: TMainForm
       Width = 144
       Anchors = []
       BorderSpacing.Around = 5
-      Caption = 'Stornieren'
+      Caption = 'Abbrechen'
+      OnClick = CancelBtnClick
       TabOrder = 1
     end
-    object Label8: TLabel
+    object CustomerLbl: TLabel
       Left = 323
       Height = 21
       Top = 15
@@ -10340,6 +9616,65 @@ object MainForm: TMainForm
       Caption = 'Kunde: 000'
       ParentColor = False
     end
+    object MainPriceLbl: TLabel
+      Left = 431
+      Height = 21
+      Top = 15
+      Width = 133
+      Anchors = []
+      BorderSpacing.Around = 15
+      Caption = 'Gesamtpreis: 0,00€'
+      ParentColor = False
+    end
+  end
+  object SG: TStringGrid
+    Left = 24
+    Height = 418
+    Top = 80
+    Width = 1044
+    Align = alCustom
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ColCount = 9
+    Columns = <    
+      item
+        Title.Caption = 'Bezeichnung'
+        Width = 200
+      end    
+      item
+        Title.Caption = 'Preis'
+        Width = 100
+      end    
+      item
+        Title.Caption = 'Verfügbar'
+        Width = 100
+      end    
+      item
+        Title.Caption = 'Verkaufen'
+        Width = 80
+      end    
+      item
+        ButtonStyle = cbsButtonColumn
+        Title.Caption = '+1'
+        Width = 40
+      end    
+      item
+        ButtonStyle = cbsButtonColumn
+        Title.Caption = '-1'
+        Width = 40
+      end    
+      item
+        ButtonStyle = cbsButtonColumn
+        Title.Caption = 'SV/Rest'
+      end    
+      item
+        ButtonStyle = cbsButtonColumn
+        Title.Caption = 'Leeren'
+      end>
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goColMoving, goSmoothScroll, goFixedRowNumbering, goFixedColSizing]
+    Options2 = [goScrollToLastCol, goScrollToLastRow]
+    RowCount = 1
+    TabOrder = 3
+    OnButtonClick = SGButtonClick
   end
   object MainMenu1: TMainMenu
     Left = 1032

@@ -5,27 +5,42 @@ unit StorageUnit;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, StdCtrls, Grids;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, StdCtrls, Grids,
+  MaskEdit, ExtCtrls, Spin, Buttons, LCLType;
 
 type
 
   { TStorageForm }
 
   TStorageForm = class(TForm)
+    PrEditNameLbl: TBoundLabel;
+    PrEditSaveBtn: TBitBtn;
+    PrEditCancelBtn: TBitBtn;
+    CloseBtn: TBitBtn;
+    PrEditStatusBox: TComboBox;
+    PrEditPriceBox: TFloatSpinEdit;
+    PrEditBox: TGroupBox;
+    PrEditStatusLbl: TLabel;
+    PrEditPriceLbl: TLabel;
+    PrEditAvailableLbl: TLabel;
+    PrEditNameBox: TLabeledEdit;
     MainMenu: TMainMenu;
-    OpenDialog1: TOpenDialog;
     ProductMI: TMenuItem;
     AddProductMI: TMenuItem;
     DemoMI: TMenuItem;
     GenStorageMI: TMenuItem;
     RemoveProdctBtn: TMenuItem;
-    ActProductBtn: TMenuItem;
-    DeactProductBtn: TMenuItem;
     SG: TStringGrid;
+    PrEditAvailableBox: TSpinEdit;
+    procedure AddProductMIClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormResize(Sender: TObject);
     procedure GenStorageMIClick(Sender: TObject);
-    procedure SGEditingDone(Sender: TObject);
-    procedure SGKeyPress(Sender: TObject; var Key: char);
+    procedure PrEditCancelBtnClick(Sender: TObject);
+    procedure PrEditSaveBtnClick(Sender: TObject);
+    procedure RemoveProdctBtnClick(Sender: TObject);
+    procedure SGSelection(Sender: TObject; aCol, aRow: Integer);
+    procedure GetSelectedProduct();
   private
 
   public
@@ -34,7 +49,6 @@ type
 
 var
   StorageForm: TStorageForm;
-  Check : string;
 
 implementation
 
@@ -42,7 +56,7 @@ implementation
 
 { TStorageForm }
 
-function GetCurrency(Num: String):string;
+function GetCurrency(Num: String): string;
 var
   i : Integer;
   Str : String = '';
@@ -56,7 +70,22 @@ begin
       Str := Str + Num[i];
       crry := StrToFloat(Str);
       Result := FloatToStrF(crry, ffCurrency, 10, 2);
-      Check := Result;
+    end;
+  end;
+end;
+
+function CurrToFloat(curr: String) : double;
+var
+  i : Integer;
+  Str : String = '';
+begin
+  Result := 0;
+  for i := 1 to length(curr) do
+  begin
+    if (curr[i] in ['0'..'9', ',']) then
+    begin
+      Str := Str + curr[i];
+      Result := StrToFloat(Str);
     end;
   end;
 end;
@@ -78,54 +107,92 @@ begin
 
 end;
 
-procedure TStorageForm.SGEditingDone(Sender: TObject);
+procedure TStorageForm.GetSelectedProduct();
 begin
   try
-    if (SG.Col = 3) then
-    begin
-      if AnsiPos(Check, SG.Cells[SG.Col, SG.Row]) <> 0 then exit;
-      if (Trim(SG.Cells[SG.Col, SG.Row]) = '') then exit
-      else
-      begin
-        SG.Cells[SG.Col, SG.Row] := GetCurrency(SG.Cells[SG.Col, SG.Row]) + ExtractCurrencySymbol(SG.Cells[SG.Col, SG.Row]);
-        Exit;
-      end;
+    PrEditNameBox.Text := SG.Cells[1, SG.Row];
+  except
+    PrEditNameBox.Text := 'n/a';
+  end;
+  try
+    case SG.Cells[2, SG.Row] of
+      'Aktiv': PrEditStatusBox.ItemIndex := 0
+      else PrEditStatusBox.ItemIndex := 1;
     end;
   except
-    ShowMessage('Eingabe ist nicht korrekt formatiert. Überprüfen Sie sie!')
-    SG.Cells[SG.Col, SG.Row] := '0';
+    PrEditStatusBox.ItemIndex := 1;
   end;
-
   try
-    SG.SaveToFile('storage.xml')
+    PrEditPriceBox.Value := CurrToFloat(SG.Cells[3, SG.Row]);
   except
-    ShowMessage('Lager konnte nicht gespeichert werden!')
+    PrEditPriceBox.Value := 0;
   end;
-end;
-
-procedure TStorageForm.SGKeyPress(Sender: TObject; var Key: char);
-var
-  KeyCode: Integer;
-begin
-  if (SG.Col = 3 or 4) then
-  begin
-    KeyCode := Ord(Key);
-    if not (KeyCode = 44) or ((KeyCode >= 48) and (KeyCode <= 57)) then Key := #0;
+  try
+    PrEditAvailableBox.Value := StrToFloat(SG.Cells[4, SG.Row]);
+  except
+    PrEditAvailableBox.Value := 0;
   end;
 end;
 
 procedure TStorageForm.FormCreate(Sender: TObject);
 begin
-  SG.SaveOptions := [soContent];
-   //Load the XML
-   SG.LoadFromFile('storage.xml');
-   //Refresh the Grid
-   SG.Refresh;
+  try
+    SG.SaveOptions := [soDesign, soContent];
+    SG.LoadFromFile('storage.xml');
+    SG.Refresh;
+    GetSelectedProduct();
+    except
+     Application.MessageBox('Lager konnte nicht geladen werden!', 'Lager', mb_IconError + mb_Ok)
+    end;
+end;
+
+procedure TStorageForm.AddProductMIClick(Sender: TObject);
+begin
+  SG.RowCount:= SG.RowCount + 1;
+end;
+
+procedure TStorageForm.FormResize(Sender: TObject);
+begin
+  if StorageForm.Height < 460 then StorageForm.Height := 460;
+  if StorageForm.Width < 960 then StorageForm.Width := 960;
 end;
 
 procedure TStorageForm.GenStorageMIClick(Sender: TObject);
 begin
-  SG.SaveToFile('storage.xml')
+  SG.SaveToFile('storage.xml');
+end;
+
+procedure TStorageForm.PrEditCancelBtnClick(Sender: TObject);
+begin
+  GetSelectedProduct();
+end;
+
+procedure TStorageForm.PrEditSaveBtnClick(Sender: TObject);
+begin
+  SG.Cells[1, SG.Row] := PrEditNameBox.Text;
+  SG.Cells[2, SG.Row] := PrEditStatusBox.Text;
+  SG.Cells[3, SG.Row] := GetCurrency(FloatToStr(PrEditPriceBox.Value));
+  SG.Cells[4, SG.Row] := FloatToStr(PrEditAvailableBox.Value);
+
+  SG.SaveToFile('storage.xml');
+end;
+
+procedure TStorageForm.RemoveProdctBtnClick(Sender: TObject);
+var
+  Reply, BoxStyle: Integer;
+begin
+  BoxStyle := MB_ICONWARNING + MB_YESNO;
+  Reply := Application.MessageBox(('Möchten Sie ' + SG.Cells[1, SG.Row] + ' wirdklich löschen?').ToString, 'Lager', BoxStyle);
+  if Reply = IDYES then
+  begin
+    SG.DeleteRow(SG.Row);
+    SG.SaveToFile('storage.xml');
+  end;
+end;
+
+procedure TStorageForm.SGSelection(Sender: TObject; aCol, aRow: Integer);
+begin
+  GetSelectedProduct();
 end;
 
 end.
