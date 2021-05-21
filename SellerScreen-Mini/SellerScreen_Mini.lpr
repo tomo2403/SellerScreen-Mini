@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, MainUnit, AboutUnit, StorageUnit
+  Forms, tachartlazaruspkg, MainUnit, AboutUnit, StorageUnit, StaticsUnit
   { you can add units after this };
 
 {$R *.res}
@@ -20,6 +20,7 @@ begin
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TAboutForm, AboutForm);
   Application.CreateForm(TStorageForm, StorageForm);
+  Application.CreateForm(TStaticsForm, StaticsForm);
   Application.Run;
 end.
 

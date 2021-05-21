@@ -1,11 +1,13 @@
 object StorageForm: TStorageForm
-  Left = 2597
+  Left = 2230
   Height = 460
-  Top = 474
+  Top = 304
   Width = 1156
   Caption = 'Lager'
   ClientHeight = 440
   ClientWidth = 1156
+  Constraints.MinHeight = 460
+  Constraints.MinWidth = 960
   Icon.Data = {
     1F9E040000000100090010100000010020006804000096000000181800000100
     200088090000FE0400002020000001002000A8100000860E0000303000000100
@@ -9468,7 +9470,6 @@ object StorageForm: TStorageForm
   }
   Menu = MainMenu
   OnCreate = FormCreate
-  OnResize = FormResize
   Position = poDefault
   LCLVersion = '2.0.12.0'
   object SG: TStringGrid

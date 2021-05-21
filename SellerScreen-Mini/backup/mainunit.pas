@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Buttons, ExtCtrls,
-  StdCtrls, ButtonPanel, ComCtrls, Menus, LCLIntf, Grids, FGL;
+  StdCtrls, ComCtrls, Menus, LCLIntf, Grids;
 
 type
 
@@ -48,9 +48,11 @@ type
     procedure DocsMIClick(Sender: TObject);
     procedure NewCustomerBtnClick(Sender: TObject);
     procedure OpenStorageMIClick(Sender: TObject);
+    procedure PayBtnClick(Sender: TObject);
     procedure SaveMIClick(Sender: TObject);
     procedure ReloadMIClick(Sender: TObject);
     procedure SGButtonClick(Sender: TObject; aCol, aRow: Integer);
+    procedure ShowStaticsMIClick(Sender: TObject);
   private
 
   public
@@ -64,7 +66,7 @@ var
 implementation
 
 uses
-  AboutUnit, StorageUnit;
+  AboutUnit, StorageUnit, StaticsUnit;
 
 {$R *.lfm}
 
@@ -117,10 +119,15 @@ begin
 end;
 
 procedure TMainForm.CancelBtnClick(Sender: TObject);
+var
+  i : integer;
 begin
   SG.Enabled := false;
   SellPanel.Visible := true;
   PayPanel.Visible := false;
+  MainPriceLbl.Caption := 'Gesamtpreis: 0,00 €';
+
+  for i:= 1 to SG.RowCount - 1 do SG.Cells[4, i]:= '0';
 end;
 
 procedure TMainForm.GitHubMIClick(Sender: TObject);
@@ -144,6 +151,75 @@ procedure TMainForm.OpenStorageMIClick(Sender: TObject);
 begin
   StorageForm.ShowModal;
   StorageForm.FormCreate(sender);
+end;
+
+procedure TMainForm.PayBtnClick(Sender: TObject);
+var
+  i, j, k, sell, sold : integer;
+  found : boolean = false;
+  price, revenue : double;
+begin
+  if (SG.RowCount > 1) then
+  begin
+    for i:= 1 to SG.RowCount - 1 do
+    begin
+      sell:= StrToInt(SG.Cells[4, i]);
+      if sell > 0 then
+      begin
+        price:= CurrToFloat(SG.Cells[2, i]);
+        revenue:= price * sell;
+
+        for j:= 1 to StaticsForm.DaySG.RowCount - 1 do
+        begin
+          if (StaticsForm.DaySG.Cells[1, j] = SG.Cells[1, i]) and (StaticsForm.DaySG.Cells[2, j] = SG.Cells[2, i]) then
+          begin
+            sold:= StrToInt(StaticsForm.DaySG.Cells[3, j]) + sell;
+            StaticsForm.DaySG.Cells[3, j]:= sold.ToString;
+            StaticsForm.DaySG.Cells[4, j]:= FloatToStrF(price * sold, ffCurrency, 10, 2);
+
+            found := true;
+            continue;
+          end;
+        end;
+
+        if not found or (StaticsForm.DaySG.RowCount < 2) then
+        begin
+          StaticsForm.DaySG.RowCount:= StaticsForm.DaySG.RowCount + 1;
+          k:= StaticsForm.DaySG.RowCount - 1;
+          StaticsForm.DaySG.Cells[1, k]:= SG.Cells[1, i];
+          StaticsForm.DaySG.Cells[2, k]:= SG.Cells[2, i];
+          StaticsForm.DaySG.Cells[3, k]:= sell.ToString;
+          StaticsForm.DaySG.Cells[4, k]:= revenue.ToString;
+          StaticsForm.DaySG.Cells[5, k]:= '0';
+          StaticsForm.DaySG.Cells[6, k]:= FloatToStrF(0, ffCurrency, 10, 2);
+        end;
+
+        StaticsForm.DayValues.Cells[1, 0] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 0]) + 1);
+        StaticsForm.DayValues.Cells[1, 1] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 1]) + sell);
+        StaticsForm.DayValues.Cells[1, 2] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 2]) + revenue, ffCurrency, 10, 2);
+
+        for j:= 1 to StorageForm.SG.RowCount - 1 do
+        begin
+          if (StorageForm.SG.Cells[1, j] = SG.Cells[1, i]) and (StorageForm.SG.Cells[3, j] = SG.Cells[2, i]) then
+          begin
+            sold:= StrToInt(StorageForm.SG.Cells[4, j]) - sell;
+            StorageForm.SG.Cells[4, j]:= sold.ToString;
+            StorageForm.SG.SaveToFile('storage.xml');
+            SG.Cells[3, j]:= sold.ToString();
+
+            continue;
+          end;
+        end;
+      end;
+    end;
+    StaticsForm.SaveDayStatics(Date);
+    CancelBtnClick(sender);
+  end
+  else
+  begin
+    ShowMessage('Es wurde nichts zum Verkaufen ausgewählt.');
+    CancelBtnClick(sender);
+  end;
 end;
 
 procedure TMainForm.SaveMIClick(Sender: TObject);
@@ -174,7 +250,12 @@ begin
   price:= CurrToFloat(SG.Cells[2, aRow]);
   MainPrice:= MainPrice - (price * befor);
   MainPrice:= MainPrice + (price * StrToInt(SG.Cells[4, aRow]));
-  MainPriceLbl.Caption := FloatToStrF(MainPrice, ffCurrency, 10, 2);
+  MainPriceLbl.Caption := 'Gesamtpreis: ' + FloatToStrF(MainPrice, ffCurrency, 10, 2);
+end;
+
+procedure TMainForm.ShowStaticsMIClick(Sender: TObject);
+begin
+  StaticsForm.Show;
 end;
 
 procedure TMainForm.AboutMIClick(Sender: TObject);

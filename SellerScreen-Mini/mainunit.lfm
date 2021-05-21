@@ -1,11 +1,13 @@
 object MainForm: TMainForm
-  Left = 2008
-  Height = 557
-  Top = 57
-  Width = 1091
+  Left = 2360
+  Height = 554
+  Top = 303
+  Width = 1099
   Caption = 'SellerScreen-Mini'
-  ClientHeight = 537
-  ClientWidth = 1091
+  ClientHeight = 534
+  ClientWidth = 1099
+  Constraints.MinHeight = 460
+  Constraints.MinWidth = 960
   Font.CharSet = ANSI_CHARSET
   Font.Color = clBlack
   Font.Height = -16
@@ -9479,8 +9481,8 @@ object MainForm: TMainForm
   object StatusBar: TStatusBar
     Left = 1
     Height = 23
-    Top = 514
-    Width = 1090
+    Top = 511
+    Width = 1098
     BorderSpacing.Left = 1
     Panels = <    
       item
@@ -9556,7 +9558,7 @@ object MainForm: TMainForm
     Left = 24
     Height = 51
     Top = 15
-    Width = 579
+    Width = 583
     AutoSize = True
     BevelOuter = bvNone
     BorderSpacing.Around = 5
@@ -9593,6 +9595,7 @@ object MainForm: TMainForm
       Anchors = []
       BorderSpacing.Around = 5
       Caption = 'Bezahlen'
+      OnClick = PayBtnClick
       TabOrder = 0
     end
     object CancelBtn: TButton
@@ -9620,18 +9623,18 @@ object MainForm: TMainForm
       Left = 431
       Height = 21
       Top = 15
-      Width = 133
+      Width = 137
       Anchors = []
       BorderSpacing.Around = 15
-      Caption = 'Gesamtpreis: 0,00€'
+      Caption = 'Gesamtpreis: 0,00 €'
       ParentColor = False
     end
   end
   object SG: TStringGrid
     Left = 24
-    Height = 418
+    Height = 415
     Top = 80
-    Width = 1044
+    Width = 1052
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     ColCount = 9
@@ -9670,6 +9673,7 @@ object MainForm: TMainForm
         ButtonStyle = cbsButtonColumn
         Title.Caption = 'Leeren'
       end>
+    Enabled = False
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goColMoving, goSmoothScroll, goFixedRowNumbering, goFixedColSizing]
     Options2 = [goScrollToLastCol, goScrollToLastRow]
     RowCount = 1
@@ -9698,6 +9702,7 @@ object MainForm: TMainForm
       end
       object ShowStaticsMI: TMenuItem
         Caption = 'Statistiken anzeigen'
+        OnClick = ShowStaticsMIClick
       end
       object OpenSettingsMI: TMenuItem
         Caption = 'Einstellungen'

@@ -34,7 +34,6 @@ type
     PrEditAvailableBox: TSpinEdit;
     procedure AddProductMIClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure FormResize(Sender: TObject);
     procedure GenStorageMIClick(Sender: TObject);
     procedure PrEditCancelBtnClick(Sender: TObject);
     procedure PrEditSaveBtnClick(Sender: TObject);
@@ -51,6 +50,9 @@ var
   StorageForm: TStorageForm;
 
 implementation
+
+uses
+  MainUnit;
 
 {$R *.lfm}
 
@@ -141,6 +143,7 @@ begin
     SG.LoadFromFile('storage.xml');
     SG.Refresh;
     GetSelectedProduct();
+    MainForm.LoadShop();
     except
      Application.MessageBox('Lager konnte nicht geladen werden!', 'Lager', mb_IconError + mb_Ok)
     end;
@@ -149,12 +152,6 @@ end;
 procedure TStorageForm.AddProductMIClick(Sender: TObject);
 begin
   SG.RowCount:= SG.RowCount + 1;
-end;
-
-procedure TStorageForm.FormResize(Sender: TObject);
-begin
-  if StorageForm.Height < 460 then StorageForm.Height := 460;
-  if StorageForm.Width < 960 then StorageForm.Width := 960;
 end;
 
 procedure TStorageForm.GenStorageMIClick(Sender: TObject);
