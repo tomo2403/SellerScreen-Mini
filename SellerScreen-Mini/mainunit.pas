@@ -14,6 +14,7 @@ type
 
   TMainForm = class(TForm)
     CancelBtn: TButton;
+    NotReadyLbl: TLabel;
     MainPriceLbl: TLabel;
     PayPanel: TFlowPanel;
     CustomerLbl: TLabel;
@@ -109,6 +110,20 @@ begin
       SG.Cells[8, SG.RowCount - 1]:= '---';
     end;
   end;
+
+  if SG.RowCount < 2 then
+  begin
+    SG.Visible := false;
+    SellPanel.Enabled := false;
+    NotReadyLbl.Visible:= true;
+  end
+  else
+  begin
+    SG.Visible := true;
+    SellPanel.Enabled := true;
+    NotReadyLbl.Visible:= false;
+  end;
+
   StatusBar.Panels[1].Text := IntToStr(SG.RowCount - 1) + ' von ' + IntToStr(StorageForm.SG.RowCount - 1) + ' Produkten aktiv';
   StatusBar.Panels[0].Text := 'Bereit';
 end;
@@ -160,6 +175,9 @@ var
   found : boolean = false;
   price, revenue : double;
 begin
+  if not StaticsForm.loadedToday then
+    StaticsForm.LoadDayStatics(Date);
+
   if (SG.RowCount > 1) then
   begin
     for i:= 1 to SG.RowCount - 1 do

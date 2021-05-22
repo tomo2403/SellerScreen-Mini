@@ -9475,7 +9475,7 @@ object StaticsForm: TStaticsForm
   OnCreate = FormCreate
   Position = poDefaultPosOnly
   LCLVersion = '2.0.12.0'
-  object PageControl1: TPageControl
+  object PC: TPageControl
     Left = 10
     Height = 643
     Top = 10
@@ -9665,7 +9665,6 @@ object StaticsForm: TStaticsForm
     end
     object YearSheet: TTabSheet
       Caption = 'Jahr'
-      OnContextPopup = YearSheetContextPopup
     end
     object TotalSheet: TTabSheet
       Caption = 'Gesamt'

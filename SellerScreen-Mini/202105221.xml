@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <grid version="3">
+    <saveoptions create="False" position="False" content="True"/>
+    <content>
+      <cells cellcount="12">
+        <cell1 column="0" row="0" text="Kunden"/>
+        <cell2 column="0" row="1" text="Verkauf"/>
+        <cell3 column="0" row="2" text="Umsatz"/>
+        <cell4 column="0" row="3" text="Storniert"/>
+        <cell5 column="0" row="4" text="Rücknahmen"/>
+        <cell6 column="0" row="5" text="Verluste"/>
+        <cell7 column="1" row="0" text="3"/>
+        <cell8 column="1" row="1" text="3"/>
+        <cell9 column="1" row="2" text="175,74 €"/>
+        <cell10 column="1" row="3" text="0"/>
+        <cell11 column="1" row="4" text="0"/>
+        <cell12 column="1" row="5" text="0,00 €"/>
+      </cells>
+    </content>
+  </grid>
+</CONFIG>
