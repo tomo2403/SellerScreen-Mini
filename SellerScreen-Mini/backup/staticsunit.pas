@@ -6,33 +6,36 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, StdCtrls,
-  EditBtn, Calendar, ExtCtrls, Grids, ValEdit, SynHighlighterXML, TAGraph,
-  TASources, TASeries, TALegendPanel, Types, LCLType;
+  EditBtn, Calendar, ExtCtrls, Grids, SynHighlighterXML, TAGraph,
+  TASeries, TADbSource, LCLType, Types;
 
 type
 
   { TStaticsForm }
 
   TStaticsForm = class(TForm)
-    Chart1: TChart;
-    DayCPS: TPieSeries;
+    DaySoldChart: TChart;
+    DayRevenueChart: TChart;
+    DayCPS1: TPieSeries;
     DayCal: TCalendar;
-    DayLoadBtn: TButton;
     DayCalendar: TCalendar;
     Day404Lbl: TLabel;
+    DayCPS2: TPieSeries;
+    FlowPanel1: TFlowPanel;
     PC: TPageControl;
     DaySheet: TTabSheet;
     MonthSheet: TTabSheet;
     DaySG: TStringGrid;
-    RandomChartSource1: TRandomChartSource;
     DayValues: TStringGrid;
+    ScrollBox1: TScrollBox;
     YearSheet: TTabSheet;
     TotalSheet: TTabSheet;
     procedure DayCalDayChanged(Sender: TObject);
+    procedure DaySheetContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure SaveDayStatics(d : TDateTime);
-    procedure LoadDayStatics(d : TDateTime);
-    procedure DayLoadBtnClick(Sender: TObject);
+    procedure LoadDayStatics(d : TDateTime; charts : boolean = false);
   private
 
   public
@@ -49,6 +52,22 @@ implementation
 
 { TStaticsForm }
 
+function CurrToFloat(curr: String) : double;
+var
+  i : Integer;
+  Str : String = '';
+begin
+  Result := 0;
+  for i := 1 to length(curr) do
+  begin
+    if (curr[i] in ['0'..'9', ',']) then
+    begin
+      Str := Str + curr[i];
+      Result := StrToFloat(Str);
+    end;
+  end;
+end;
+
 procedure TStaticsForm.SaveDayStatics(d : TDateTime);
 var
   fileName : string;
@@ -59,9 +78,10 @@ begin
   DayValues.SaveToFile(fileName);
 end;
 
-procedure TStaticsForm.LoadDayStatics(d : TDateTime);
+procedure TStaticsForm.LoadDayStatics(d : TDateTime; charts : boolean = false);
 var
   fileName : string;
+  i : integer;
 begin
   DateTimeToString(fileName, 'yyyymmdd"0.xml"', d);
   if FileExists(fileName) then
@@ -77,7 +97,20 @@ begin
     except
       Application.MessageBox('Die Zusammenfassung des Tages konnte nicht geladen werden!', 'Tagesstatistiken', MB_ICONERROR + MB_OK);
     end;
-    if d = Date then loadedToday := true;
+
+    if charts then
+    begin
+      DayCPS1.Clear ;
+      DayCPS2.Clear ;
+      for i:=1 to DaySG.RowCount - 1 do
+      begin
+        DayCPS1.AddXY(0, StrToInt(DaySG.Cells[3, i]), DaySG.Cells[2, i]);
+        DayCPS2.AddXY(0, CurrToFloat(DaySG.Cells[4, i]), DaySG.Cells[2, i]);
+      end;
+    end;
+
+    if d = Date then loadedToday := true
+    else loadedToday := false;
   end
   else Day404Lbl.Visible := true;
 end;
@@ -86,17 +119,18 @@ procedure TStaticsForm.FormCreate(Sender: TObject);
 begin
   DaySG.SaveOptions := [soDesign, soContent];
   DayValues.SaveOptions := [soContent];
-  LoadDayStatics(Date);
+  LoadDayStatics(Date, true);
 end;
 
 procedure TStaticsForm.DayCalDayChanged(Sender: TObject);
 begin
-  LoadDayStatics(DayCal.DateTime);
+  LoadDayStatics(DayCal.DateTime, true);
 end;
 
-procedure TStaticsForm.DayLoadBtnClick(Sender: TObject);
+procedure TStaticsForm.DaySheetContextPopup(Sender: TObject; MousePos: TPoint;
+  var Handled: Boolean);
 begin
-  LoadDayStatics(DayCal.DateTime);
+
 end;
 
 end.

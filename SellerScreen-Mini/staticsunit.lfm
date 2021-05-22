@@ -1,11 +1,13 @@
 object StaticsForm: TStaticsForm
-  Left = 2097
-  Height = 663
-  Top = 46
-  Width = 1517
-  Caption = 'StaticsForm'
-  ClientHeight = 663
-  ClientWidth = 1517
+  Left = 2402
+  Height = 500
+  Top = 367
+  Width = 1000
+  Caption = 'Statistiken'
+  ClientHeight = 500
+  ClientWidth = 1000
+  Constraints.MinHeight = 500
+  Constraints.MinWidth = 1000
   Font.CharSet = ANSI_CHARSET
   Font.Color = clBlack
   Font.Height = -16
@@ -9473,13 +9475,14 @@ object StaticsForm: TStaticsForm
     426082
   }
   OnCreate = FormCreate
-  Position = poDefaultPosOnly
+  Position = poDefault
   LCLVersion = '2.0.12.0'
+  WindowState = wsMaximized
   object PC: TPageControl
     Left = 10
-    Height = 643
+    Height = 480
     Top = 10
-    Width = 1497
+    Width = 980
     ActivePage = DaySheet
     Align = alClient
     BorderSpacing.Around = 10
@@ -9487,8 +9490,9 @@ object StaticsForm: TStaticsForm
     TabOrder = 0
     object DaySheet: TTabSheet
       Caption = 'Tag'
-      ClientHeight = 609
-      ClientWidth = 1489
+      ClientHeight = 446
+      ClientWidth = 972
+      OnContextPopup = DaySheetContextPopup
       object DayCal: TCalendar
         Left = 16
         Height = 160
@@ -9500,20 +9504,11 @@ object StaticsForm: TStaticsForm
         OnDayChanged = DayCalDayChanged
         TabOrder = 0
       end
-      object DayLoadBtn: TButton
-        Left = 16
-        Height = 33
-        Top = 184
-        Width = 198
-        Caption = 'Laden'
-        OnClick = DayLoadBtnClick
-        TabOrder = 1
-      end
       object DaySG: TStringGrid
         Left = 232
-        Height = 578
+        Height = 415
         Top = 16
-        Width = 776
+        Width = 380
         Anchors = [akTop, akLeft, akRight, akBottom]
         ColCount = 7
         Columns = <        
@@ -9546,7 +9541,7 @@ object StaticsForm: TStaticsForm
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goTabs, goRowSelect, goSmoothScroll]
         Options2 = [goScrollToLastCol, goScrollToLastRow]
         RowCount = 1
-        TabOrder = 2
+        TabOrder = 1
         Cells = (
           1
           0
@@ -9557,7 +9552,7 @@ object StaticsForm: TStaticsForm
       object Day404Lbl: TLabel
         Left = 16
         Height = 21
-        Top = 224
+        Top = 184
         Width = 198
         AutoSize = False
         Caption = 'Tag nicht gefunden!'
@@ -9571,46 +9566,10 @@ object StaticsForm: TStaticsForm
         ParentFont = False
         Visible = False
       end
-      object Chart1: TChart
-        Left = 1024
-        Height = 279
-        Top = 16
-        Width = 312
-        AutoFocus = True
-        AllowZoom = False
-        AxisList = <        
-          item
-            Marks.LabelBrush.Style = bsClear
-            Minors = <>
-            Title.LabelFont.Orientation = 900
-            Title.LabelBrush.Style = bsClear
-          end        
-          item
-            Alignment = calBottom
-            Marks.LabelBrush.Style = bsClear
-            Minors = <>
-            Title.LabelBrush.Style = bsClear
-          end>
-        AxisVisible = False
-        Extent.UseXMax = True
-        Extent.UseXMin = True
-        Extent.UseYMax = True
-        Extent.UseYMin = True
-        Foot.Brush.Color = clBtnFace
-        Foot.Font.Color = clBlue
-        Title.Brush.Color = clBtnFace
-        Title.Font.Color = clBlue
-        Title.Text.Strings = (
-          'TAChart'
-        )
-        object DayCPS: TPieSeries
-          Source = RandomChartSource1
-        end
-      end
       object DayValues: TStringGrid
         Left = 16
-        Height = 298
-        Top = 296
+        Height = 183
+        Top = 248
         Width = 198
         Anchors = [akTop, akLeft, akBottom]
         ColCount = 2
@@ -9618,7 +9577,7 @@ object StaticsForm: TStaticsForm
         FixedRows = 0
         RowCount = 6
         ScrollBars = ssNone
-        TabOrder = 4
+        TabOrder = 2
         Cells = (
           12
           0
@@ -9659,6 +9618,114 @@ object StaticsForm: TStaticsForm
           '0,00 €'
         )
       end
+      object ScrollBox1: TScrollBox
+        Left = 628
+        Height = 415
+        Top = 16
+        Width = 333
+        HorzScrollBar.Increment = 31
+        HorzScrollBar.Page = 312
+        HorzScrollBar.Smooth = True
+        HorzScrollBar.Tracking = True
+        VertScrollBar.Page = 411
+        Anchors = [akTop, akRight, akBottom]
+        ClientHeight = 411
+        ClientWidth = 312
+        TabOrder = 3
+        object FlowPanel1: TFlowPanel
+          Left = 0
+          Height = 558
+          Top = 0
+          Width = 312
+          Align = alClient
+          AutoSize = True
+          BevelOuter = bvNone
+          ControlList = <          
+            item
+              Control = DaySoldChart
+              WrapAfter = waAuto
+              Index = 0
+            end          
+            item
+              Control = DayRevenueChart
+              WrapAfter = waAuto
+              Index = 1
+            end>
+          FlowLayout = tlTop
+          FlowStyle = fsLeftRightTopBottom
+          TabOrder = 0
+          object DayRevenueChart: TChart
+            Left = 0
+            Height = 279
+            Top = 279
+            Width = 312
+            AutoFocus = True
+            AllowZoom = False
+            AxisList = <>
+            AxisVisible = False
+            BackColor = clDefault
+            Extent.UseXMax = True
+            Extent.UseXMin = True
+            Extent.UseYMax = True
+            Extent.UseYMin = True
+            Foot.Brush.Color = clBtnFace
+            Foot.Font.Color = clBlue
+            Frame.Visible = False
+            Title.Brush.Color = clDefault
+            Title.Font.CharSet = ANSI_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -19
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Pitch = fpVariable
+            Title.Font.Quality = fqDraft
+            Title.Font.Style = [fsBold]
+            Title.Text.Strings = (
+              'Umsätze'
+            )
+            Title.Visible = True
+            Anchors = []
+            Color = clDefault
+            object DayCPS2: TPieSeries
+              Legend.Multiplicity = lmPoint
+            end
+          end
+          object DaySoldChart: TChart
+            Left = 0
+            Height = 279
+            Top = 0
+            Width = 312
+            AutoFocus = True
+            AllowZoom = False
+            AxisList = <>
+            AxisVisible = False
+            BackColor = clDefault
+            Extent.UseXMax = True
+            Extent.UseXMin = True
+            Extent.UseYMax = True
+            Extent.UseYMin = True
+            Foot.Brush.Color = clBtnFace
+            Foot.Font.Color = clBlue
+            Frame.Visible = False
+            Title.Brush.Color = clDefault
+            Title.Font.CharSet = ANSI_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -19
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Pitch = fpVariable
+            Title.Font.Quality = fqDraft
+            Title.Font.Style = [fsBold]
+            Title.Text.Strings = (
+              'Verkäufe'
+            )
+            Title.Visible = True
+            Anchors = []
+            Color = clDefault
+            object DayCPS1: TPieSeries
+              Legend.Multiplicity = lmPoint
+            end
+          end
+        end
+      end
     end
     object MonthSheet: TTabSheet
       Caption = 'Monat'
@@ -9669,14 +9736,5 @@ object StaticsForm: TStaticsForm
     object TotalSheet: TTabSheet
       Caption = 'Gesamt'
     end
-  end
-  object RandomChartSource1: TRandomChartSource
-    PointsNumber = 6
-    RandomX = True
-    RandSeed = 1205201824
-    XMax = 5
-    YMax = 5
-    Left = 1304
-    Top = 360
   end
 end

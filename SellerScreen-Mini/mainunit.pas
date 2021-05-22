@@ -187,6 +187,7 @@ begin
       begin
         price:= CurrToFloat(SG.Cells[2, i]);
         revenue:= price * sell;
+        found:= false;
 
         for j:= 1 to StaticsForm.DaySG.RowCount - 1 do
         begin
@@ -197,7 +198,7 @@ begin
             StaticsForm.DaySG.Cells[4, j]:= FloatToStrF(price * sold, ffCurrency, 10, 2);
 
             found := true;
-            continue;
+            break;
           end;
         end;
 
@@ -226,7 +227,7 @@ begin
             StorageForm.SG.SaveToFile('storage.xml');
             SG.Cells[3, j]:= sold.ToString();
 
-            continue;
+            break;
           end;
         end;
       end;

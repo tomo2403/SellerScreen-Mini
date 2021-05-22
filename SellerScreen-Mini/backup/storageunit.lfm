@@ -1,7 +1,7 @@
 object StorageForm: TStorageForm
-  Left = 2597
+  Left = 2230
   Height = 460
-  Top = 474
+  Top = 304
   Width = 1156
   Caption = 'Lager'
   ClientHeight = 440

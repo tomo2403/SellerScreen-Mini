@@ -1,13 +1,13 @@
 object MainForm: TMainForm
-  Left = 2352
-  Height = 554
-  Top = 307
-  Width = 1099
+  Left = 2339
+  Height = 500
+  Top = 137
+  Width = 1000
   Caption = 'SellerScreen-Mini'
-  ClientHeight = 534
-  ClientWidth = 1099
-  Constraints.MinHeight = 460
-  Constraints.MinWidth = 960
+  ClientHeight = 480
+  ClientWidth = 1000
+  Constraints.MinHeight = 500
+  Constraints.MinWidth = 1000
   Font.CharSet = ANSI_CHARSET
   Font.Color = clBlack
   Font.Height = -16
@@ -9480,9 +9480,9 @@ object MainForm: TMainForm
   LCLVersion = '2.0.12.0'
   object SG: TStringGrid
     Left = 24
-    Height = 415
+    Height = 361
     Top = 80
-    Width = 1052
+    Width = 953
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     ColCount = 9
@@ -9531,8 +9531,8 @@ object MainForm: TMainForm
   object StatusBar: TStatusBar
     Left = 1
     Height = 23
-    Top = 511
-    Width = 1098
+    Top = 457
+    Width = 999
     BorderSpacing.Left = 1
     Panels = <    
       item
@@ -9571,7 +9571,7 @@ object MainForm: TMainForm
       end>
     FlowLayout = tlTop
     FlowStyle = fsBottomTopLeftRight
-    TabOrder = 1
+    TabOrder = 0
     object NewCustomerBtn: TButton
       Left = 5
       Height = 40
@@ -9635,7 +9635,7 @@ object MainForm: TMainForm
       end>
     FlowLayout = tlTop
     FlowStyle = fsBottomTopLeftRight
-    TabOrder = 2
+    TabOrder = 1
     Visible = False
     object PayBtn: TButton
       Left = 5
@@ -9690,7 +9690,7 @@ object MainForm: TMainForm
     Visible = False
   end
   object MainMenu1: TMainMenu
-    Left = 1032
+    Left = 664
     Top = 24
     object MenuItem1: TMenuItem
       Caption = 'Datei'
