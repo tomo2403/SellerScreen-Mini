@@ -35,7 +35,7 @@ type
       var Handled: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure SaveDayStatics(d : TDateTime);
-    procedure LoadDayStatics(d : TDateTime; charts : boolean = false);
+    function LoadDayStatics(d : TDateTime; charts : boolean = false) : boolean;
   private
 
   public
@@ -78,7 +78,7 @@ begin
   DayValues.SaveToFile(fileName);
 end;
 
-procedure TStaticsForm.LoadDayStatics(d : TDateTime; charts : boolean = false);
+function TStaticsForm.LoadDayStatics(d : TDateTime; charts : boolean = false) : boolean;
 var
   fileName : string;
   i : integer;
@@ -111,8 +111,14 @@ begin
 
     if d = Date then loadedToday := true
     else loadedToday := false;
+
+    Result:= true;
   end
-  else Day404Lbl.Visible := true;
+  else
+  begin
+    Day404Lbl.Visible := true;
+    Result:= true;
+  end;
 end;
 
 procedure TStaticsForm.FormCreate(Sender: TObject);

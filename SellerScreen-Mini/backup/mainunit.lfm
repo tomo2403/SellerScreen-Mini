@@ -1,13 +1,13 @@
 object MainForm: TMainForm
-  Left = 2352
-  Height = 554
-  Top = 307
-  Width = 1099
+  Left = 1997
+  Height = 500
+  Top = 65
+  Width = 1000
   Caption = 'SellerScreen-Mini'
-  ClientHeight = 534
-  ClientWidth = 1099
-  Constraints.MinHeight = 460
-  Constraints.MinWidth = 960
+  ClientHeight = 480
+  ClientWidth = 1000
+  Constraints.MinHeight = 500
+  Constraints.MinWidth = 1000
   Font.CharSet = ANSI_CHARSET
   Font.Color = clBlack
   Font.Height = -16
@@ -9480,9 +9480,9 @@ object MainForm: TMainForm
   LCLVersion = '2.0.12.0'
   object SG: TStringGrid
     Left = 24
-    Height = 415
+    Height = 361
     Top = 80
-    Width = 1052
+    Width = 953
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     ColCount = 9
@@ -9516,10 +9516,12 @@ object MainForm: TMainForm
       item
         ButtonStyle = cbsButtonColumn
         Title.Caption = 'SV/Rest'
+        Width = 64
       end    
       item
         ButtonStyle = cbsButtonColumn
         Title.Caption = 'Leeren'
+        Width = 64
       end>
     Enabled = False
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goColMoving, goSmoothScroll, goFixedRowNumbering, goFixedColSizing]
@@ -9527,12 +9529,29 @@ object MainForm: TMainForm
     RowCount = 1
     TabOrder = 3
     OnButtonClick = SGButtonClick
+    ColWidths = (
+      64
+      200
+      100
+      100
+      80
+      40
+      40
+      64
+      64
+    )
+    Cells = (
+      1
+      0
+      0
+      'Nr.'
+    )
   end
   object StatusBar: TStatusBar
     Left = 1
     Height = 23
-    Top = 511
-    Width = 1098
+    Top = 457
+    Width = 999
     BorderSpacing.Left = 1
     Panels = <    
       item
@@ -9591,6 +9610,7 @@ object MainForm: TMainForm
       Anchors = []
       BorderSpacing.Around = 5
       Caption = 'Stornieren'
+      OnClick = CancelPurchaseBtnClick
       TabOrder = 1
     end
     object RetourBtn: TButton
@@ -9690,9 +9710,9 @@ object MainForm: TMainForm
     Visible = False
   end
   object MainMenu1: TMainMenu
-    Left = 1032
+    Left = 664
     Top = 24
-    object MenuItem1: TMenuItem
+    object FileMI: TMenuItem
       Caption = 'Datei'
       object ReloadMI: TMenuItem
         Caption = 'Neu laden'
@@ -9703,7 +9723,7 @@ object MainForm: TMainForm
         OnClick = SaveMIClick
       end
     end
-    object MenuItem2: TMenuItem
+    object ViewMI: TMenuItem
       Caption = 'Ansicht'
       object OpenStorageMI: TMenuItem
         Caption = 'Lager öffnen'
@@ -9717,7 +9737,7 @@ object MainForm: TMainForm
         Caption = 'Einstellungen'
       end
     end
-    object MenuItem3: TMenuItem
+    object DemoMI: TMenuItem
       Caption = 'Demo'
       object MenuItem8: TMenuItem
         Caption = 'Lager füllen'
@@ -9725,11 +9745,12 @@ object MainForm: TMainForm
       object MenuItem9: TMenuItem
         Caption = 'Käufe simulieren'
       end
-      object MenuItem10: TMenuItem
+      object ResetData: TMenuItem
         Caption = 'Daten zurücksetzten'
+        OnClick = ResetDataClick
       end
     end
-    object MenuItem4: TMenuItem
+    object HelpMI: TMenuItem
       Caption = 'Hilfe'
       object AboutMI: TMenuItem
         Caption = 'Über'

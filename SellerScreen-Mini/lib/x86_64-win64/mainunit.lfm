@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 2339
+  Left = 1997
   Height = 500
-  Top = 137
+  Top = 65
   Width = 1000
   Caption = 'SellerScreen-Mini'
   ClientHeight = 480
@@ -9516,10 +9516,12 @@ object MainForm: TMainForm
       item
         ButtonStyle = cbsButtonColumn
         Title.Caption = 'SV/Rest'
+        Width = 64
       end    
       item
         ButtonStyle = cbsButtonColumn
         Title.Caption = 'Leeren'
+        Width = 64
       end>
     Enabled = False
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goColMoving, goSmoothScroll, goFixedRowNumbering, goFixedColSizing]
@@ -9527,6 +9529,23 @@ object MainForm: TMainForm
     RowCount = 1
     TabOrder = 3
     OnButtonClick = SGButtonClick
+    ColWidths = (
+      64
+      200
+      100
+      100
+      80
+      40
+      40
+      64
+      64
+    )
+    Cells = (
+      1
+      0
+      0
+      'Nr.'
+    )
   end
   object StatusBar: TStatusBar
     Left = 1
@@ -9591,6 +9610,7 @@ object MainForm: TMainForm
       Anchors = []
       BorderSpacing.Around = 5
       Caption = 'Stornieren'
+      OnClick = CancelPurchaseBtnClick
       TabOrder = 1
     end
     object RetourBtn: TButton
@@ -9692,7 +9712,7 @@ object MainForm: TMainForm
   object MainMenu1: TMainMenu
     Left = 664
     Top = 24
-    object MenuItem1: TMenuItem
+    object FileMI: TMenuItem
       Caption = 'Datei'
       object ReloadMI: TMenuItem
         Caption = 'Neu laden'
@@ -9703,7 +9723,7 @@ object MainForm: TMainForm
         OnClick = SaveMIClick
       end
     end
-    object MenuItem2: TMenuItem
+    object ViewMI: TMenuItem
       Caption = 'Ansicht'
       object OpenStorageMI: TMenuItem
         Caption = 'Lager öffnen'
@@ -9717,7 +9737,7 @@ object MainForm: TMainForm
         Caption = 'Einstellungen'
       end
     end
-    object MenuItem3: TMenuItem
+    object DemoMI: TMenuItem
       Caption = 'Demo'
       object MenuItem8: TMenuItem
         Caption = 'Lager füllen'
@@ -9725,11 +9745,12 @@ object MainForm: TMainForm
       object MenuItem9: TMenuItem
         Caption = 'Käufe simulieren'
       end
-      object MenuItem10: TMenuItem
+      object ResetData: TMenuItem
         Caption = 'Daten zurücksetzten'
+        OnClick = ResetDataClick
       end
     end
-    object MenuItem4: TMenuItem
+    object HelpMI: TMenuItem
       Caption = 'Hilfe'
       object AboutMI: TMenuItem
         Caption = 'Über'

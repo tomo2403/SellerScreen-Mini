@@ -1,11 +1,11 @@
 object StaticsForm: TStaticsForm
-  Left = 2402
-  Height = 500
-  Top = 367
-  Width = 1000
+  Left = 2325
+  Height = 653
+  Top = 276
+  Width = 1396
   Caption = 'Statistiken'
-  ClientHeight = 500
-  ClientWidth = 1000
+  ClientHeight = 653
+  ClientWidth = 1396
   Constraints.MinHeight = 500
   Constraints.MinWidth = 1000
   Font.CharSet = ANSI_CHARSET
@@ -9480,9 +9480,9 @@ object StaticsForm: TStaticsForm
   WindowState = wsMaximized
   object PC: TPageControl
     Left = 10
-    Height = 480
+    Height = 633
     Top = 10
-    Width = 980
+    Width = 1376
     ActivePage = DaySheet
     Align = alClient
     BorderSpacing.Around = 10
@@ -9490,8 +9490,8 @@ object StaticsForm: TStaticsForm
     TabOrder = 0
     object DaySheet: TTabSheet
       Caption = 'Tag'
-      ClientHeight = 446
-      ClientWidth = 972
+      ClientHeight = 599
+      ClientWidth = 1368
       OnContextPopup = DaySheetContextPopup
       object DayCal: TCalendar
         Left = 16
@@ -9506,9 +9506,9 @@ object StaticsForm: TStaticsForm
       end
       object DaySG: TStringGrid
         Left = 232
-        Height = 415
+        Height = 568
         Top = 16
-        Width = 380
+        Width = 776
         Anchors = [akTop, akLeft, akRight, akBottom]
         ColCount = 7
         Columns = <        
@@ -9568,7 +9568,7 @@ object StaticsForm: TStaticsForm
       end
       object DayValues: TStringGrid
         Left = 16
-        Height = 183
+        Height = 336
         Top = 248
         Width = 198
         Anchors = [akTop, akLeft, akBottom]
@@ -9619,24 +9619,24 @@ object StaticsForm: TStaticsForm
         )
       end
       object ScrollBox1: TScrollBox
-        Left = 628
-        Height = 415
+        Left = 1024
+        Height = 568
         Top = 16
         Width = 333
         HorzScrollBar.Increment = 31
         HorzScrollBar.Page = 312
         HorzScrollBar.Smooth = True
         HorzScrollBar.Tracking = True
-        VertScrollBar.Page = 411
+        VertScrollBar.Page = 558
         Anchors = [akTop, akRight, akBottom]
-        ClientHeight = 411
-        ClientWidth = 312
+        ClientHeight = 564
+        ClientWidth = 329
         TabOrder = 3
         object FlowPanel1: TFlowPanel
           Left = 0
-          Height = 558
+          Height = 564
           Top = 0
-          Width = 312
+          Width = 329
           Align = alClient
           AutoSize = True
           BevelOuter = bvNone
@@ -9661,7 +9661,19 @@ object StaticsForm: TStaticsForm
             Width = 312
             AutoFocus = True
             AllowZoom = False
-            AxisList = <>
+            AxisList = <            
+              item
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelFont.Orientation = 900
+                Title.LabelBrush.Style = bsClear
+              end            
+              item
+                Alignment = calBottom
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelBrush.Style = bsClear
+              end>
             AxisVisible = False
             BackColor = clDefault
             Extent.UseXMax = True
@@ -9696,7 +9708,19 @@ object StaticsForm: TStaticsForm
             Width = 312
             AutoFocus = True
             AllowZoom = False
-            AxisList = <>
+            AxisList = <            
+              item
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelFont.Orientation = 900
+                Title.LabelBrush.Style = bsClear
+              end            
+              item
+                Alignment = calBottom
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelBrush.Style = bsClear
+              end>
             AxisVisible = False
             BackColor = clDefault
             Extent.UseXMax = True
