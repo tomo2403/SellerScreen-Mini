@@ -9621,6 +9621,7 @@ object MainForm: TMainForm
       Anchors = []
       BorderSpacing.Around = 5
       Caption = 'Rücknehmen'
+      OnClick = RetourBtnClick
       TabOrder = 2
     end
   end

@@ -10,12 +10,12 @@
         <cell4 column="0" row="3" text="Storniert"/>
         <cell5 column="0" row="4" text="Rücknahmen"/>
         <cell6 column="0" row="5" text="Verluste"/>
-        <cell7 column="1" row="0" text="3"/>
-        <cell8 column="1" row="1" text="0"/>
-        <cell9 column="1" row="2" text="0,00 €"/>
-        <cell10 column="1" row="3" text="6"/>
-        <cell11 column="1" row="4" text="0"/>
-        <cell12 column="1" row="5" text="0,00 €"/>
+        <cell7 column="1" row="0" text="2"/>
+        <cell8 column="1" row="1" text="4"/>
+        <cell9 column="1" row="2" text="134,86 €"/>
+        <cell10 column="1" row="3" text="3"/>
+        <cell11 column="1" row="4" text="2"/>
+        <cell12 column="1" row="5" text="117,16 €"/>
       </cells>
     </content>
   </grid>

@@ -14,6 +14,7 @@ type
   { TStaticsForm }
 
   TStaticsForm = class(TForm)
+    DrawChartsBtn: TButton;
     DaySoldChart: TChart;
     DayRevenueChart: TChart;
     DayCPS1: TPieSeries;
@@ -33,6 +34,7 @@ type
     procedure DayCalDayChanged(Sender: TObject);
     procedure DaySheetContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
+    procedure DrawChartsBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SaveDayStatics(d : TDateTime);
     function LoadDayStatics(d : TDateTime; charts : boolean = false) : boolean;
@@ -81,7 +83,6 @@ end;
 function TStaticsForm.LoadDayStatics(d : TDateTime; charts : boolean = false) : boolean;
 var
   fileName : string;
-  i : integer;
 begin
   DateTimeToString(fileName, 'yyyymmdd"0.xml"', d);
   if FileExists(fileName) then
@@ -98,16 +99,7 @@ begin
       Application.MessageBox('Die Zusammenfassung des Tages konnte nicht geladen werden!', 'Tagesstatistiken', MB_ICONERROR + MB_OK);
     end;
 
-    if charts then
-    begin
-      DayCPS1.Clear ;
-      DayCPS2.Clear ;
-      for i:=1 to DaySG.RowCount - 1 do
-      begin
-        DayCPS1.AddXY(0, StrToInt(DaySG.Cells[3, i]), DaySG.Cells[2, i]);
-        DayCPS2.AddXY(0, CurrToFloat(DaySG.Cells[4, i]), DaySG.Cells[2, i]);
-      end;
-    end;
+    if charts then DrawChartsBtnClick(DrawChartsBtn);
 
     if d = Date then loadedToday := true
     else loadedToday := false;
@@ -137,6 +129,19 @@ procedure TStaticsForm.DaySheetContextPopup(Sender: TObject; MousePos: TPoint;
   var Handled: Boolean);
 begin
 
+end;
+
+procedure TStaticsForm.DrawChartsBtnClick(Sender: TObject);
+var
+  i : integer;
+begin
+      DayCPS1.Clear ;
+      DayCPS2.Clear ;
+      for i:=1 to DaySG.RowCount - 1 do
+      begin
+        DayCPS1.AddXY(0, StrToInt(DaySG.Cells[3, i]), DaySG.Cells[2, i]);
+        DayCPS2.AddXY(0, CurrToFloat(DaySG.Cells[4, i]), DaySG.Cells[2, i]);
+      end;
 end;
 
 end.

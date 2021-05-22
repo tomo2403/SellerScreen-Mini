@@ -9568,8 +9568,8 @@ object StaticsForm: TStaticsForm
       end
       object DayValues: TStringGrid
         Left = 16
-        Height = 336
-        Top = 248
+        Height = 288
+        Top = 296
         Width = 198
         Anchors = [akTop, akLeft, akBottom]
         ColCount = 2
@@ -9749,6 +9749,15 @@ object StaticsForm: TStaticsForm
             end
           end
         end
+      end
+      object DrawChartsBtn: TButton
+        Left = 16
+        Height = 41
+        Top = 240
+        Width = 198
+        Caption = 'Grafiken zeichnen'
+        OnClick = DrawChartsBtnClick
+        TabOrder = 4
       end
     end
     object MonthSheet: TTabSheet

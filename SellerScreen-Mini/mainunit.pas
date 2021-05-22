@@ -75,6 +75,7 @@ type
     procedure NewCustomerBtnClick(Sender: TObject);
     procedure OpenStorageMIClick(Sender: TObject);
     procedure PayBtnClick(Sender: TObject);
+    procedure RetourBtnClick(Sender: TObject);
     procedure SaveMIClick(Sender: TObject);
     procedure ReloadMIClick(Sender: TObject);
     procedure SGButtonClick(Sender: TObject; aCol, aRow: Integer);
@@ -186,24 +187,22 @@ begin
     SG.RowCount:= 1;
     for i:= 1 to StaticsForm.DaySG.RowCount - 1 do
     begin
-      row:= SG.RowCount;
-      SG.RowCount:= row + 1;
-      SG.Cells[1, row]:= StaticsForm.DaySG.Cells[1, row];
-      SG.Cells[2, row]:= StaticsForm.DaySG.Cells[2, row];
-      SG.Cells[3, row]:= StaticsForm.DaySG.Cells[3, row];
-      SG.Cells[4, row]:= '0';
-      SG.Cells[5, row]:= '+';
-      SG.Cells[6, row]:= '-';
-      SG.Cells[7, row]:= '+++';
-      SG.Cells[8, row]:= '---';
+      if (StrToInt(StaticsForm.DaySG.Cells[3, i]) - StrToInt(StaticsForm.DaySG.Cells[5, i]) > 0) then
+      begin
+        row:= SG.RowCount;
+        SG.RowCount:= row + 1;
+        SG.Cells[1, row]:= StaticsForm.DaySG.Cells[1, row];
+        SG.Cells[2, row]:= StaticsForm.DaySG.Cells[2, row];
+        SG.Cells[3, row]:= (StrToInt(StaticsForm.DaySG.Cells[3, row]) - StrToInt(StaticsForm.DaySG.Cells[5, row])).ToString;
+        SG.Cells[4, row]:= '0';
+        SG.Cells[5, row]:= '+';
+        SG.Cells[6, row]:= '-';
+        SG.Cells[7, row]:= '+++';
+        SG.Cells[8, row]:= '---';
+      end;
     end;
     NewCustomerBtnClick(sender);
     ShopMode:= 2;
-  end
-  else
-  begin
-    CancelPurchaseBtn.Enabled:= false;
-    RetourBtn.Enabled:= false;
   end;
 end;
 
@@ -359,14 +358,54 @@ begin
     end
     else
     begin
-      ShowMessage('Es wurde nichts zum Verkaufen ausgewählt.');
+      ShowMessage('Es wurde nichts zum Stornieren ausgewählt.');
       CancelBtnClick(sender);
     end;
   end
   else if (ShopMode = 3) then
   begin
+    if (SG.RowCount > 1) then
+    begin
+      for i:= 1 to SG.RowCount - 1 do
+      begin
+        sell:= StrToInt(SG.Cells[4, i]);
+        if sell > 0 then
+        begin
+          price:= CurrToFloat(SG.Cells[2, i]);
+          revenue:= price * sell;
 
+          for j:= 1 to StaticsForm.DaySG.RowCount - 1 do
+          begin
+            if (StaticsForm.DaySG.Cells[1, j] = SG.Cells[1, i]) and (StaticsForm.DaySG.Cells[2, j] = SG.Cells[2, i]) then
+            begin
+              sold:= StrToInt(StaticsForm.DaySG.Cells[5, j]) + sell;
+              StaticsForm.DaySG.Cells[5, j]:= sold.ToString;
+              StaticsForm.DaySG.Cells[6, j]:= FloatToStrF(price * sold, ffCurrency, 10, 2);
+              break;
+            end;
+          end;
+
+          StaticsForm.DayValues.Cells[1, 4] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 4]) + sell);
+          StaticsForm.DayValues.Cells[1, 5] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 5]) + revenue, ffCurrency, 10, 2);
+      end;
+    end;
+      StorageForm.SG.SaveToFile('storage.xml');
+      StaticsForm.SaveDayStatics(Date);
+      CancelBtnClick(sender);
+      LoadShop();
+    end
+    else
+    begin
+      ShowMessage('Es wurde nichts zum Zurücknehmen ausgewählt.');
+      CancelBtnClick(sender);
+    end;
   end;
+end;
+
+procedure TMainForm.RetourBtnClick(Sender: TObject);
+begin
+  CancelPurchaseBtnClick(sender);
+  ShopMode:= 3;
 end;
 
 procedure TMainForm.SaveMIClick(Sender: TObject);

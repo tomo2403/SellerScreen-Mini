@@ -6,8 +6,8 @@ object StorageForm: TStorageForm
   Caption = 'Lager'
   ClientHeight = 440
   ClientWidth = 1156
-  Constraints.MinHeight = 460
-  Constraints.MinWidth = 960
+  Constraints.MinHeight = 500
+  Constraints.MinWidth = 1000
   Icon.Data = {
     1F9E040000000100090010100000010020006804000096000000181800000100
     200088090000FE0400002020000001002000A8100000860E0000303000000100
