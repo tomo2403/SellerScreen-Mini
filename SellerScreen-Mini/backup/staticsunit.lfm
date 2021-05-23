@@ -1,11 +1,11 @@
 object StaticsForm: TStaticsForm
-  Left = 2325
-  Height = 653
-  Top = 276
-  Width = 1396
+  Left = 2018
+  Height = 969
+  Top = 7
+  Width = 1739
   Caption = 'Statistiken'
-  ClientHeight = 653
-  ClientWidth = 1396
+  ClientHeight = 969
+  ClientWidth = 1739
   Constraints.MinHeight = 500
   Constraints.MinWidth = 1000
   Font.CharSet = ANSI_CHARSET
@@ -9476,23 +9476,23 @@ object StaticsForm: TStaticsForm
   }
   OnCreate = FormCreate
   Position = poDefault
+  ShowInTaskBar = stAlways
   LCLVersion = '2.0.12.0'
   WindowState = wsMaximized
   object PC: TPageControl
     Left = 10
-    Height = 633
+    Height = 949
     Top = 10
-    Width = 1376
-    ActivePage = DaySheet
+    Width = 1719
+    ActivePage = TotalSheet
     Align = alClient
     BorderSpacing.Around = 10
-    TabIndex = 0
+    TabIndex = 3
     TabOrder = 0
     object DaySheet: TTabSheet
       Caption = 'Tag'
-      ClientHeight = 599
-      ClientWidth = 1368
-      OnContextPopup = DaySheetContextPopup
+      ClientHeight = 963
+      ClientWidth = 1892
       object DayCal: TCalendar
         Left = 16
         Height = 160
@@ -9506,9 +9506,9 @@ object StaticsForm: TStaticsForm
       end
       object DaySG: TStringGrid
         Left = 232
-        Height = 568
+        Height = 932
         Top = 16
-        Width = 776
+        Width = 1300
         Anchors = [akTop, akLeft, akRight, akBottom]
         ColCount = 7
         Columns = <        
@@ -9538,7 +9538,7 @@ object StaticsForm: TStaticsForm
             Width = 100
           end>
         DefaultColWidth = 64
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goTabs, goRowSelect, goSmoothScroll]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goTabs, goRowSelect, goSmoothScroll, goFixedRowNumbering]
         Options2 = [goScrollToLastCol, goScrollToLastRow]
         RowCount = 1
         TabOrder = 1
@@ -9568,7 +9568,7 @@ object StaticsForm: TStaticsForm
       end
       object DayValues: TStringGrid
         Left = 16
-        Height = 288
+        Height = 652
         Top = 296
         Width = 198
         Anchors = [akTop, akLeft, akBottom]
@@ -9619,8 +9619,8 @@ object StaticsForm: TStaticsForm
         )
       end
       object ScrollBox1: TScrollBox
-        Left = 1024
-        Height = 568
+        Left = 1548
+        Height = 932
         Top = 16
         Width = 333
         HorzScrollBar.Increment = 31
@@ -9629,12 +9629,12 @@ object StaticsForm: TStaticsForm
         HorzScrollBar.Tracking = True
         VertScrollBar.Page = 558
         Anchors = [akTop, akRight, akBottom]
-        ClientHeight = 564
+        ClientHeight = 928
         ClientWidth = 329
         TabOrder = 3
         object FlowPanel1: TFlowPanel
           Left = 0
-          Height = 564
+          Height = 928
           Top = 0
           Width = 329
           Align = alClient
@@ -9699,6 +9699,10 @@ object StaticsForm: TStaticsForm
             Color = clDefault
             object DayCPS2: TPieSeries
               Legend.Multiplicity = lmPoint
+              Shadow.OffsetX = 10
+              Shadow.Transparency = 200
+              Shadow.Visible = True
+              Depth = 10
             end
           end
           object DaySoldChart: TChart
@@ -9746,6 +9750,10 @@ object StaticsForm: TStaticsForm
             Color = clDefault
             object DayCPS1: TPieSeries
               Legend.Multiplicity = lmPoint
+              Shadow.OffsetX = 10
+              Shadow.Transparency = 200
+              Shadow.Visible = True
+              Depth = 10
             end
           end
         end
@@ -9762,12 +9770,1830 @@ object StaticsForm: TStaticsForm
     end
     object MonthSheet: TTabSheet
       Caption = 'Monat'
+      ClientHeight = 915
+      ClientWidth = 1711
+      object FlowPanel11: TFlowPanel
+        Left = 0
+        Height = 915
+        Top = 0
+        Width = 258
+        Align = alLeft
+        AutoSize = True
+        BevelOuter = bvNone
+        ControlList = <        
+          item
+            Control = Panel6
+            WrapAfter = waAuto
+            Index = 0
+          end        
+          item
+            Control = Panel7
+            WrapAfter = waAuto
+            Index = 1
+          end>
+        FlowLayout = tlTop
+        FlowStyle = fsLeftRightTopBottom
+        TabOrder = 0
+        object Panel6: TPanel
+          Left = 20
+          Height = 29
+          Top = 20
+          Width = 192
+          Anchors = []
+          AutoSize = True
+          BorderSpacing.Around = 20
+          BevelOuter = bvNone
+          ClientHeight = 29
+          ClientWidth = 192
+          TabOrder = 0
+          object Label32: TLabel
+            Left = 0
+            Height = 21
+            Top = 0
+            Width = 48
+            Alignment = taCenter
+            Caption = 'Monat:'
+            ParentColor = False
+          end
+          object DateEdit2: TDateEdit
+            Left = 64
+            Height = 29
+            Top = 0
+            Width = 128
+            CalendarDisplaySettings = [dsShowHeadings]
+            DefaultToday = True
+            DateOrder = doNone
+            DateFormat = 'mm.yyyy'
+            ButtonWidth = 23
+            NumGlyphs = 1
+            Flat = True
+            MaxLength = 0
+            TabOrder = 0
+            Spacing = 2
+          end
+        end
+        object Panel7: TPanel
+          Left = 0
+          Height = 310
+          Top = 134
+          Width = 258
+          Anchors = []
+          AutoSize = True
+          BorderSpacing.Top = 65
+          BevelOuter = bvNone
+          ClientHeight = 310
+          ClientWidth = 258
+          TabOrder = 1
+          object Label33: TLabel
+            Left = 21
+            Height = 21
+            Top = 10
+            Width = 132
+            BorderSpacing.Around = 10
+            Caption = 'Zusammenfassung'
+            ParentColor = False
+          end
+          object ScrollBox6: TScrollBox
+            Left = 20
+            Height = 250
+            Top = 40
+            Width = 218
+            HorzScrollBar.Page = 214
+            VertScrollBar.Page = 246
+            AutoSize = True
+            BorderSpacing.Around = 20
+            ClientHeight = 246
+            ClientWidth = 214
+            TabOrder = 0
+            OnClick = ScrollBox2Click
+            object FlowPanel12: TFlowPanel
+              Left = 0
+              Height = 246
+              Top = 0
+              Width = 214
+              Align = alClient
+              BevelOuter = bvNone
+              ControlList = <              
+                item
+                  Control = FlowPanel13
+                  WrapAfter = waAuto
+                  Index = 0
+                end              
+                item
+                  Control = FlowPanel14
+                  WrapAfter = waAuto
+                  Index = 1
+                end>
+              FlowLayout = tlTop
+              FlowStyle = fsTopBottomLeftRight
+              TabOrder = 0
+              object FlowPanel13: TFlowPanel
+                Left = 0
+                Height = 246
+                Top = 0
+                Width = 122
+                Anchors = []
+                AutoSize = True
+                BevelOuter = bvNone
+                ControlList = <                
+                  item
+                    Control = Label34
+                    WrapAfter = waAuto
+                    Index = 0
+                  end                
+                  item
+                    Control = Label35
+                    WrapAfter = waAuto
+                    Index = 1
+                  end                
+                  item
+                    Control = Label36
+                    WrapAfter = waAuto
+                    Index = 2
+                  end                
+                  item
+                    Control = Label37
+                    WrapAfter = waAuto
+                    Index = 3
+                  end                
+                  item
+                    Control = Label38
+                    WrapAfter = waAuto
+                    Index = 4
+                  end                
+                  item
+                    Control = Label39
+                    WrapAfter = waAuto
+                    Index = 5
+                  end>
+                FlowLayout = tlTop
+                FlowStyle = fsLeftRightTopBottom
+                TabOrder = 0
+                object Label34: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 10
+                  Width = 56
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = 'Kunden:'
+                  ParentColor = False
+                end
+                object Label35: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 51
+                  Width = 61
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = 'Verkauft:'
+                  ParentColor = False
+                end
+                object Label36: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 92
+                  Width = 55
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = 'Umsatz:'
+                  ParentColor = False
+                end
+                object Label37: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 133
+                  Width = 102
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = 'Stornierungen:'
+                  ParentColor = False
+                end
+                object Label38: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 174
+                  Width = 94
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = 'Rücknahmen:'
+                  ParentColor = False
+                end
+                object Label39: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 215
+                  Width = 59
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = 'Verluste:'
+                  ParentColor = False
+                end
+              end
+              object FlowPanel14: TFlowPanel
+                Left = 122
+                Height = 246
+                Top = 0
+                Width = 92
+                Anchors = []
+                AutoSize = True
+                BevelOuter = bvNone
+                ControlList = <                
+                  item
+                    Control = Label40
+                    WrapAfter = waAuto
+                    Index = 0
+                  end                
+                  item
+                    Control = Label41
+                    WrapAfter = waAuto
+                    Index = 1
+                  end                
+                  item
+                    Control = Label42
+                    WrapAfter = waAuto
+                    Index = 2
+                  end                
+                  item
+                    Control = Label43
+                    WrapAfter = waAuto
+                    Index = 3
+                  end                
+                  item
+                    Control = Label44
+                    WrapAfter = waAuto
+                    Index = 4
+                  end                
+                  item
+                    Control = Label45
+                    WrapAfter = waAuto
+                    Index = 5
+                  end>
+                FlowLayout = tlTop
+                FlowStyle = fsLeftRightTopBottom
+                TabOrder = 1
+                object Label40: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 10
+                  Width = 72
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = '00000000'
+                  ParentColor = False
+                end
+                object Label41: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 51
+                  Width = 27
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = '000'
+                  ParentColor = False
+                end
+                object Label42: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 92
+                  Width = 43
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = '0,00 €'
+                  ParentColor = False
+                end
+                object Label43: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 133
+                  Width = 27
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = '000'
+                  ParentColor = False
+                end
+                object Label44: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 174
+                  Width = 27
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = '000'
+                  ParentColor = False
+                end
+                object Label45: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 215
+                  Width = 43
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = '0,00 €'
+                  ParentColor = False
+                end
+              end
+            end
+          end
+        end
+      end
+      object ScrollBox7: TScrollBox
+        Left = 256
+        Height = 915
+        Top = 0
+        Width = 1455
+        HorzScrollBar.Page = 1438
+        VertScrollBar.Page = 898
+        Align = alRight
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        AutoSize = True
+        BorderStyle = bsNone
+        ClientHeight = 898
+        ClientWidth = 1438
+        TabOrder = 1
+        object FlowPanel15: TFlowPanel
+          Left = 0
+          Height = 1022
+          Top = 0
+          Width = 1540
+          Align = alClient
+          BevelOuter = bvNone
+          ControlList = <          
+            item
+              Control = YearSoldChart1
+              WrapAfter = waAuto
+              Index = 0
+            end          
+            item
+              Control = YearRevenueChart1
+              WrapAfter = waAuto
+              Index = 1
+            end          
+            item
+              Control = Panel8
+              WrapAfter = waAuto
+              Index = 2
+            end          
+            item
+              Control = Panel9
+              WrapAfter = waAuto
+              Index = 3
+            end>
+          FlowLayout = tlTop
+          FlowStyle = fsLeftRightTopBottom
+          TabOrder = 0
+          object YearSoldChart1: TChart
+            Left = 20
+            Height = 368
+            Top = 20
+            Width = 1500
+            AutoFocus = True
+            AllowZoom = False
+            AxisList = <            
+              item
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelFont.CharSet = ANSI_CHARSET
+                Title.LabelFont.Color = clBlack
+                Title.LabelFont.Height = -13
+                Title.LabelFont.Name = 'Segoe UI'
+                Title.LabelFont.Orientation = 900
+                Title.LabelFont.Pitch = fpVariable
+                Title.LabelFont.Quality = fqDraft
+                Title.Visible = True
+                Title.Caption = 'Verkäufe'
+                Title.LabelBrush.Style = bsClear
+              end            
+              item
+                Intervals.NiceSteps = '1'
+                Alignment = calBottom
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelFont.CharSet = ANSI_CHARSET
+                Title.LabelFont.Color = clBlack
+                Title.LabelFont.Height = -13
+                Title.LabelFont.Name = 'Segoe UI'
+                Title.LabelFont.Pitch = fpVariable
+                Title.LabelFont.Quality = fqDraft
+                Title.Visible = True
+                Title.Caption = 'Monat'
+                Title.LabelBrush.Style = bsClear
+              end>
+            BackColor = clNone
+            Foot.Brush.Color = clBtnFace
+            Foot.Font.Color = clBlue
+            Title.Brush.Color = clNone
+            Title.Font.CharSet = ANSI_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -16
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Pitch = fpVariable
+            Title.Font.Quality = fqDraft
+            Title.Font.Style = [fsBold]
+            Title.Text.Strings = (
+              'Verkäufe im Monat'
+            )
+            Title.Visible = True
+            BorderSpacing.Around = 20
+            Color = clNone
+            Enabled = False
+            ParentShowHint = False
+            object Chart1BarSeries4: TBarSeries
+              Shadow.Transparency = 200
+              Shadow.Visible = True
+              BarBrush.Color = clRed
+              Depth = 5
+              Source = RandomChartSource3
+            end
+          end
+          object YearRevenueChart1: TChart
+            Left = 20
+            Height = 368
+            Top = 428
+            Width = 1500
+            AutoFocus = True
+            AllowZoom = False
+            AxisList = <            
+              item
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelFont.CharSet = ANSI_CHARSET
+                Title.LabelFont.Color = clBlack
+                Title.LabelFont.Height = -13
+                Title.LabelFont.Name = 'Segoe UI'
+                Title.LabelFont.Orientation = 900
+                Title.LabelFont.Pitch = fpVariable
+                Title.LabelFont.Quality = fqDraft
+                Title.Visible = True
+                Title.Caption = 'Einnahmen'
+                Title.LabelBrush.Style = bsClear
+              end            
+              item
+                Intervals.NiceSteps = '1'
+                Alignment = calBottom
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelFont.CharSet = ANSI_CHARSET
+                Title.LabelFont.Color = clBlack
+                Title.LabelFont.Height = -13
+                Title.LabelFont.Name = 'Segoe UI'
+                Title.LabelFont.Pitch = fpVariable
+                Title.LabelFont.Quality = fqDraft
+                Title.Visible = True
+                Title.Caption = 'Monat'
+                Title.LabelBrush.Style = bsClear
+              end>
+            BackColor = clNone
+            Foot.Brush.Color = clBtnFace
+            Foot.Font.Color = clBlue
+            Title.Brush.Color = clNone
+            Title.Font.CharSet = ANSI_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -16
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Pitch = fpVariable
+            Title.Font.Quality = fqDraft
+            Title.Font.Style = [fsBold]
+            Title.Text.Strings = (
+              'Umsätze im Monat'
+            )
+            Title.Visible = True
+            Anchors = []
+            BorderSpacing.Around = 20
+            Color = clNone
+            Enabled = False
+            ParentShowHint = False
+            object Chart1BarSeries5: TBarSeries
+              Shadow.Transparency = 200
+              Shadow.Visible = True
+              BarBrush.Color = clTeal
+              Depth = 5
+              Source = RandomChartSource4
+            end
+          end
+          object Panel8: TPanel
+            Left = 0
+            Height = 206
+            Top = 816
+            Width = 492
+            Anchors = []
+            AutoSize = True
+            BevelOuter = bvNone
+            ClientHeight = 206
+            ClientWidth = 492
+            TabOrder = 2
+            object Label46: TLabel
+              Left = 20
+              Height = 21
+              Top = 10
+              Width = 112
+              BorderSpacing.Around = 10
+              Caption = 'Am Beliebtesten'
+              ParentColor = False
+            end
+            object StringGrid5: TStringGrid
+              Left = 20
+              Height = 146
+              Top = 40
+              Width = 452
+              AutoFillColumns = True
+              BorderSpacing.Around = 20
+              ColCount = 4
+              Columns = <              
+                item
+                  Title.Caption = 'Bezeichnung'
+                  Width = 132
+                end              
+                item
+                  Title.Caption = 'Einzelpreis'
+                  Width = 132
+                end              
+                item
+                  Title.Caption = 'Verkauft'
+                  Width = 134
+                end>
+              DefaultColWidth = 50
+              Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
+              TabOrder = 0
+              ColWidths = (
+                50
+                132
+                132
+                134
+              )
+              Cells = (
+                5
+                0
+                0
+                'Platz'
+                0
+                1
+                '1.'
+                0
+                2
+                '2.'
+                0
+                3
+                '3.'
+                0
+                4
+                '4.'
+              )
+            end
+          end
+          object Panel9: TPanel
+            Left = 492
+            Height = 206
+            Top = 816
+            Width = 492
+            Anchors = []
+            AutoSize = True
+            BevelOuter = bvNone
+            ClientHeight = 206
+            ClientWidth = 492
+            TabOrder = 3
+            object Label49: TLabel
+              Left = 20
+              Height = 21
+              Top = 10
+              Width = 138
+              BorderSpacing.Around = 10
+              Caption = 'Höchste Einnahmen'
+              ParentColor = False
+            end
+            object StringGrid8: TStringGrid
+              Left = 20
+              Height = 146
+              Top = 40
+              Width = 452
+              AutoFillColumns = True
+              BorderSpacing.Around = 20
+              ColCount = 4
+              Columns = <              
+                item
+                  Title.Caption = 'Bezeichnung'
+                  Width = 132
+                end              
+                item
+                  Title.Caption = 'Einzelpreis'
+                  Width = 132
+                end              
+                item
+                  Title.Caption = 'Einnahmen'
+                  Width = 134
+                end>
+              DefaultColWidth = 50
+              Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
+              TabOrder = 0
+              ColWidths = (
+                50
+                132
+                132
+                134
+              )
+              Cells = (
+                5
+                0
+                0
+                'Platz'
+                0
+                1
+                '1.'
+                0
+                2
+                '2.'
+                0
+                3
+                '3.'
+                0
+                4
+                '4.'
+              )
+            end
+          end
+        end
+      end
     end
     object YearSheet: TTabSheet
       Caption = 'Jahr'
+      ClientHeight = 915
+      ClientWidth = 1711
+      object ScrollBox4: TScrollBox
+        Left = 256
+        Height = 915
+        Top = 0
+        Width = 1455
+        HorzScrollBar.Page = 640
+        VertScrollBar.Page = 812
+        Align = alRight
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        AutoSize = True
+        BorderStyle = bsNone
+        ClientHeight = 915
+        ClientWidth = 1455
+        TabOrder = 0
+        object FlowPanel6: TFlowPanel
+          Left = 0
+          Height = 915
+          Top = 0
+          Width = 1455
+          Align = alClient
+          BevelOuter = bvNone
+          ControlList = <          
+            item
+              Control = YearSoldChart
+              WrapAfter = waAuto
+              Index = 0
+            end          
+            item
+              Control = YearRevenueChart
+              WrapAfter = waAuto
+              Index = 1
+            end          
+            item
+              Control = Panel5
+              WrapAfter = waAuto
+              Index = 2
+            end>
+          FlowLayout = tlTop
+          FlowStyle = fsLeftRightTopBottom
+          TabOrder = 0
+          object YearSoldChart: TChart
+            Left = 20
+            Height = 368
+            Top = 20
+            Width = 600
+            AutoFocus = True
+            AllowZoom = False
+            AxisList = <            
+              item
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelFont.CharSet = ANSI_CHARSET
+                Title.LabelFont.Color = clBlack
+                Title.LabelFont.Height = -13
+                Title.LabelFont.Name = 'Segoe UI'
+                Title.LabelFont.Orientation = 900
+                Title.LabelFont.Pitch = fpVariable
+                Title.LabelFont.Quality = fqDraft
+                Title.Visible = True
+                Title.Caption = 'Verkäufe'
+                Title.LabelBrush.Style = bsClear
+              end            
+              item
+                Intervals.NiceSteps = '1'
+                Alignment = calBottom
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelFont.CharSet = ANSI_CHARSET
+                Title.LabelFont.Color = clBlack
+                Title.LabelFont.Height = -13
+                Title.LabelFont.Name = 'Segoe UI'
+                Title.LabelFont.Pitch = fpVariable
+                Title.LabelFont.Quality = fqDraft
+                Title.Visible = True
+                Title.Caption = 'Monat'
+                Title.LabelBrush.Style = bsClear
+              end>
+            BackColor = clNone
+            Foot.Brush.Color = clBtnFace
+            Foot.Font.Color = clBlue
+            Title.Brush.Color = clNone
+            Title.Font.CharSet = ANSI_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -16
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Pitch = fpVariable
+            Title.Font.Quality = fqDraft
+            Title.Font.Style = [fsBold]
+            Title.Text.Strings = (
+              'Verkäufe im Jahr'
+            )
+            Title.Visible = True
+            BorderSpacing.Around = 20
+            Color = clNone
+            Enabled = False
+            ParentShowHint = False
+            object Chart1BarSeries2: TBarSeries
+              Shadow.Transparency = 200
+              Shadow.Visible = True
+              BarBrush.Color = clGreen
+              Depth = 5
+              Source = RandomChartSource1
+            end
+          end
+          object YearRevenueChart: TChart
+            Left = 660
+            Height = 368
+            Top = 20
+            Width = 600
+            AutoFocus = True
+            AllowZoom = False
+            AxisList = <            
+              item
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelFont.CharSet = ANSI_CHARSET
+                Title.LabelFont.Color = clBlack
+                Title.LabelFont.Height = -13
+                Title.LabelFont.Name = 'Segoe UI'
+                Title.LabelFont.Orientation = 900
+                Title.LabelFont.Pitch = fpVariable
+                Title.LabelFont.Quality = fqDraft
+                Title.Visible = True
+                Title.Caption = 'Einnahmen'
+                Title.LabelBrush.Style = bsClear
+              end            
+              item
+                Intervals.NiceSteps = '1'
+                Alignment = calBottom
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelFont.CharSet = ANSI_CHARSET
+                Title.LabelFont.Color = clBlack
+                Title.LabelFont.Height = -13
+                Title.LabelFont.Name = 'Segoe UI'
+                Title.LabelFont.Pitch = fpVariable
+                Title.LabelFont.Quality = fqDraft
+                Title.Visible = True
+                Title.Caption = 'Monat'
+                Title.LabelBrush.Style = bsClear
+              end>
+            BackColor = clNone
+            Foot.Brush.Color = clBtnFace
+            Foot.Font.Color = clBlue
+            Title.Brush.Color = clNone
+            Title.Font.CharSet = ANSI_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -16
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Pitch = fpVariable
+            Title.Font.Quality = fqDraft
+            Title.Font.Style = [fsBold]
+            Title.Text.Strings = (
+              'Umsätze im Jahr'
+            )
+            Title.Visible = True
+            Anchors = []
+            BorderSpacing.Around = 20
+            Color = clNone
+            Enabled = False
+            ParentShowHint = False
+            object Chart1BarSeries3: TBarSeries
+              Shadow.Transparency = 200
+              Shadow.Visible = True
+              BarBrush.Color = clMaroon
+              Depth = 5
+              Source = RandomChartSource2
+            end
+          end
+          object Panel5: TPanel
+            Left = 0
+            Height = 404
+            Top = 408
+            Width = 492
+            Anchors = []
+            AutoSize = True
+            BevelOuter = bvNone
+            ClientHeight = 404
+            ClientWidth = 492
+            TabOrder = 2
+            object Label30: TLabel
+              Left = 20
+              Height = 21
+              Top = 10
+              Width = 112
+              BorderSpacing.Around = 10
+              Caption = 'Am Beliebtesten'
+              ParentColor = False
+            end
+            object StringGrid3: TStringGrid
+              Left = 20
+              Height = 146
+              Top = 40
+              Width = 452
+              AutoFillColumns = True
+              BorderSpacing.Around = 20
+              ColCount = 4
+              Columns = <              
+                item
+                  Title.Caption = 'Bezeichnung'
+                  Width = 132
+                end              
+                item
+                  Title.Caption = 'Einzelpreis'
+                  Width = 132
+                end              
+                item
+                  Title.Caption = 'Verkauft'
+                  Width = 134
+                end>
+              DefaultColWidth = 50
+              Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
+              TabOrder = 0
+              ColWidths = (
+                50
+                132
+                132
+                134
+              )
+              Cells = (
+                5
+                0
+                0
+                'Platz'
+                0
+                1
+                '1.'
+                0
+                2
+                '2.'
+                0
+                3
+                '3.'
+                0
+                4
+                '4.'
+              )
+            end
+            object Label31: TLabel
+              Left = 20
+              Height = 21
+              Top = 208
+              Width = 138
+              BorderSpacing.Around = 10
+              Caption = 'Höchste Einnahmen'
+              ParentColor = False
+            end
+            object StringGrid4: TStringGrid
+              Left = 20
+              Height = 146
+              Top = 238
+              Width = 452
+              AutoFillColumns = True
+              BorderSpacing.Around = 20
+              ColCount = 4
+              Columns = <              
+                item
+                  Title.Caption = 'Bezeichnung'
+                  Width = 132
+                end              
+                item
+                  Title.Caption = 'Einzelpreis'
+                  Width = 132
+                end              
+                item
+                  Title.Caption = 'Einnahmen'
+                  Width = 134
+                end>
+              DefaultColWidth = 50
+              Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
+              TabOrder = 1
+              ColWidths = (
+                50
+                132
+                132
+                134
+              )
+              Cells = (
+                5
+                0
+                0
+                'Platz'
+                0
+                1
+                '1.'
+                0
+                2
+                '2.'
+                0
+                3
+                '3.'
+                0
+                4
+                '4.'
+              )
+            end
+          end
+        end
+      end
+      object FlowPanel10: TFlowPanel
+        Left = 0
+        Height = 915
+        Top = 0
+        Width = 258
+        Align = alLeft
+        AutoSize = True
+        BevelOuter = bvNone
+        ControlList = <        
+          item
+            Control = Panel4
+            WrapAfter = waAuto
+            Index = 0
+          end        
+          item
+            Control = Panel3
+            WrapAfter = waAuto
+            Index = 1
+          end>
+        FlowLayout = tlTop
+        FlowStyle = fsLeftRightTopBottom
+        TabOrder = 1
+        object Panel4: TPanel
+          Left = 20
+          Height = 29
+          Top = 20
+          Width = 192
+          Anchors = []
+          AutoSize = True
+          BorderSpacing.Around = 20
+          BevelOuter = bvNone
+          ClientHeight = 29
+          ClientWidth = 192
+          TabOrder = 0
+          object Label29: TLabel
+            Left = 0
+            Height = 21
+            Top = 0
+            Width = 32
+            Alignment = taCenter
+            Caption = 'Jahr:'
+            ParentColor = False
+          end
+          object DateEdit1: TDateEdit
+            Left = 64
+            Height = 29
+            Top = 0
+            Width = 128
+            CalendarDisplaySettings = [dsShowHeadings]
+            DefaultToday = True
+            DateOrder = doNone
+            DateFormat = 'yyyy'
+            ButtonWidth = 23
+            NumGlyphs = 1
+            Flat = True
+            MaxLength = 0
+            TabOrder = 0
+            Spacing = 2
+          end
+        end
+        object Panel3: TPanel
+          Left = 0
+          Height = 310
+          Top = 134
+          Width = 258
+          Anchors = []
+          AutoSize = True
+          BorderSpacing.Top = 65
+          BevelOuter = bvNone
+          ClientHeight = 310
+          ClientWidth = 258
+          TabOrder = 1
+          object Label16: TLabel
+            Left = 21
+            Height = 21
+            Top = 10
+            Width = 132
+            BorderSpacing.Around = 10
+            Caption = 'Zusammenfassung'
+            ParentColor = False
+          end
+          object ScrollBox5: TScrollBox
+            Left = 20
+            Height = 250
+            Top = 40
+            Width = 218
+            HorzScrollBar.Page = 214
+            VertScrollBar.Page = 246
+            AutoSize = True
+            BorderSpacing.Around = 20
+            ClientHeight = 246
+            ClientWidth = 214
+            TabOrder = 0
+            OnClick = ScrollBox2Click
+            object FlowPanel7: TFlowPanel
+              Left = 0
+              Height = 246
+              Top = 0
+              Width = 214
+              Align = alClient
+              BevelOuter = bvNone
+              ControlList = <              
+                item
+                  Control = FlowPanel8
+                  WrapAfter = waAuto
+                  Index = 0
+                end              
+                item
+                  Control = FlowPanel9
+                  WrapAfter = waAuto
+                  Index = 1
+                end>
+              FlowLayout = tlTop
+              FlowStyle = fsTopBottomLeftRight
+              TabOrder = 0
+              object FlowPanel8: TFlowPanel
+                Left = 0
+                Height = 246
+                Top = 0
+                Width = 122
+                Anchors = []
+                AutoSize = True
+                BevelOuter = bvNone
+                ControlList = <                
+                  item
+                    Control = Label17
+                    WrapAfter = waAuto
+                    Index = 0
+                  end                
+                  item
+                    Control = Label18
+                    WrapAfter = waAuto
+                    Index = 1
+                  end                
+                  item
+                    Control = Label19
+                    WrapAfter = waAuto
+                    Index = 2
+                  end                
+                  item
+                    Control = Label20
+                    WrapAfter = waAuto
+                    Index = 3
+                  end                
+                  item
+                    Control = Label21
+                    WrapAfter = waAuto
+                    Index = 4
+                  end                
+                  item
+                    Control = Label22
+                    WrapAfter = waAuto
+                    Index = 5
+                  end>
+                FlowLayout = tlTop
+                FlowStyle = fsLeftRightTopBottom
+                TabOrder = 0
+                object Label17: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 10
+                  Width = 56
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = 'Kunden:'
+                  ParentColor = False
+                end
+                object Label18: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 51
+                  Width = 61
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = 'Verkauft:'
+                  ParentColor = False
+                end
+                object Label19: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 92
+                  Width = 55
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = 'Umsatz:'
+                  ParentColor = False
+                end
+                object Label20: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 133
+                  Width = 102
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = 'Stornierungen:'
+                  ParentColor = False
+                end
+                object Label21: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 174
+                  Width = 94
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = 'Rücknahmen:'
+                  ParentColor = False
+                end
+                object Label22: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 215
+                  Width = 59
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = 'Verluste:'
+                  ParentColor = False
+                end
+              end
+              object FlowPanel9: TFlowPanel
+                Left = 122
+                Height = 246
+                Top = 0
+                Width = 92
+                Anchors = []
+                AutoSize = True
+                BevelOuter = bvNone
+                ControlList = <                
+                  item
+                    Control = Label23
+                    WrapAfter = waAuto
+                    Index = 0
+                  end                
+                  item
+                    Control = Label24
+                    WrapAfter = waAuto
+                    Index = 1
+                  end                
+                  item
+                    Control = Label25
+                    WrapAfter = waAuto
+                    Index = 2
+                  end                
+                  item
+                    Control = Label26
+                    WrapAfter = waAuto
+                    Index = 3
+                  end                
+                  item
+                    Control = Label27
+                    WrapAfter = waAuto
+                    Index = 4
+                  end                
+                  item
+                    Control = Label28
+                    WrapAfter = waAuto
+                    Index = 5
+                  end>
+                FlowLayout = tlTop
+                FlowStyle = fsLeftRightTopBottom
+                TabOrder = 1
+                object Label23: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 10
+                  Width = 72
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = '00000000'
+                  ParentColor = False
+                end
+                object Label24: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 51
+                  Width = 27
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = '000'
+                  ParentColor = False
+                end
+                object Label25: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 92
+                  Width = 43
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = '0,00 €'
+                  ParentColor = False
+                end
+                object Label26: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 133
+                  Width = 27
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = '000'
+                  ParentColor = False
+                end
+                object Label27: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 174
+                  Width = 27
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = '000'
+                  ParentColor = False
+                end
+                object Label28: TLabel
+                  Left = 10
+                  Height = 21
+                  Top = 215
+                  Width = 43
+                  Anchors = []
+                  BorderSpacing.Around = 10
+                  Caption = '0,00 €'
+                  ParentColor = False
+                end
+              end
+            end
+          end
+        end
+      end
     end
     object TotalSheet: TTabSheet
       Caption = 'Gesamt'
+      ClientHeight = 915
+      ClientWidth = 1711
+      object ScrollBox3: TScrollBox
+        Left = 0
+        Height = 915
+        Top = 0
+        Width = 1711
+        HorzScrollBar.Page = 640
+        VertScrollBar.Page = 408
+        Align = alClient
+        BorderStyle = bsNone
+        ClientHeight = 915
+        ClientWidth = 1711
+        TabOrder = 0
+        object FlowPanel5: TFlowPanel
+          Left = 0
+          Height = 915
+          Top = 0
+          Width = 1711
+          Align = alClient
+          BevelOuter = bvNone
+          ControlList = <          
+            item
+              Control = Panel1
+              WrapAfter = waAuto
+              Index = 0
+            end          
+            item
+              Control = Panel2
+              WrapAfter = waAuto
+              Index = 1
+            end          
+            item
+              Control = YearSoldChart2
+              WrapAfter = waAuto
+              Index = 2
+            end>
+          FlowLayout = tlTop
+          FlowStyle = fsLeftRightTopBottom
+          TabOrder = 0
+          object Panel1: TPanel
+            Left = 0
+            Height = 310
+            Top = 0
+            Width = 229
+            AutoSize = True
+            BevelOuter = bvNone
+            ClientHeight = 310
+            ClientWidth = 229
+            TabOrder = 0
+            object Label13: TLabel
+              Left = 21
+              Height = 21
+              Top = 10
+              Width = 132
+              BorderSpacing.Around = 10
+              Caption = 'Zusammenfassung'
+              ParentColor = False
+            end
+            object ScrollBox2: TScrollBox
+              Left = 20
+              Height = 250
+              Top = 40
+              Width = 189
+              HorzScrollBar.Page = 185
+              VertScrollBar.Page = 246
+              AutoSize = True
+              BorderSpacing.Around = 20
+              ClientHeight = 246
+              ClientWidth = 185
+              TabOrder = 0
+              OnClick = ScrollBox2Click
+              object FlowPanel3: TFlowPanel
+                Left = 0
+                Height = 246
+                Top = 0
+                Width = 185
+                Align = alClient
+                BevelOuter = bvNone
+                ControlList = <                
+                  item
+                    Control = FlowPanel2
+                    WrapAfter = waAuto
+                    Index = 0
+                  end                
+                  item
+                    Control = FlowPanel4
+                    WrapAfter = waAuto
+                    Index = 1
+                  end>
+                FlowLayout = tlTop
+                FlowStyle = fsTopBottomLeftRight
+                TabOrder = 0
+                object FlowPanel2: TFlowPanel
+                  Left = 0
+                  Height = 246
+                  Top = 0
+                  Width = 122
+                  Anchors = []
+                  AutoSize = True
+                  BevelOuter = bvNone
+                  ControlList = <                  
+                    item
+                      Control = Label1
+                      WrapAfter = waAuto
+                      Index = 0
+                    end                  
+                    item
+                      Control = Label3
+                      WrapAfter = waAuto
+                      Index = 1
+                    end                  
+                    item
+                      Control = Label5
+                      WrapAfter = waAuto
+                      Index = 2
+                    end                  
+                    item
+                      Control = Label6
+                      WrapAfter = waAuto
+                      Index = 3
+                    end                  
+                    item
+                      Control = Label7
+                      WrapAfter = waAuto
+                      Index = 4
+                    end                  
+                    item
+                      Control = Label8
+                      WrapAfter = waAuto
+                      Index = 5
+                    end>
+                  FlowLayout = tlTop
+                  FlowStyle = fsLeftRightTopBottom
+                  TabOrder = 0
+                  object Label1: TLabel
+                    Left = 10
+                    Height = 21
+                    Top = 10
+                    Width = 56
+                    Anchors = []
+                    BorderSpacing.Around = 10
+                    Caption = 'Kunden:'
+                    ParentColor = False
+                  end
+                  object Label3: TLabel
+                    Left = 10
+                    Height = 21
+                    Top = 51
+                    Width = 61
+                    Anchors = []
+                    BorderSpacing.Around = 10
+                    Caption = 'Verkauft:'
+                    ParentColor = False
+                  end
+                  object Label5: TLabel
+                    Left = 10
+                    Height = 21
+                    Top = 92
+                    Width = 55
+                    Anchors = []
+                    BorderSpacing.Around = 10
+                    Caption = 'Umsatz:'
+                    ParentColor = False
+                  end
+                  object Label6: TLabel
+                    Left = 10
+                    Height = 21
+                    Top = 133
+                    Width = 102
+                    Anchors = []
+                    BorderSpacing.Around = 10
+                    Caption = 'Stornierungen:'
+                    ParentColor = False
+                  end
+                  object Label7: TLabel
+                    Left = 10
+                    Height = 21
+                    Top = 174
+                    Width = 94
+                    Anchors = []
+                    BorderSpacing.Around = 10
+                    Caption = 'Rücknahmen:'
+                    ParentColor = False
+                  end
+                  object Label8: TLabel
+                    Left = 10
+                    Height = 21
+                    Top = 215
+                    Width = 59
+                    Anchors = []
+                    BorderSpacing.Around = 10
+                    Caption = 'Verluste:'
+                    ParentColor = False
+                  end
+                end
+                object FlowPanel4: TFlowPanel
+                  Left = 122
+                  Height = 246
+                  Top = 0
+                  Width = 63
+                  Anchors = []
+                  AutoSize = True
+                  BevelOuter = bvNone
+                  ControlList = <                  
+                    item
+                      Control = Label2
+                      WrapAfter = waAuto
+                      Index = 0
+                    end                  
+                    item
+                      Control = Label4
+                      WrapAfter = waAuto
+                      Index = 1
+                    end                  
+                    item
+                      Control = Label9
+                      WrapAfter = waAuto
+                      Index = 2
+                    end                  
+                    item
+                      Control = Label10
+                      WrapAfter = waAuto
+                      Index = 3
+                    end                  
+                    item
+                      Control = Label11
+                      WrapAfter = waAuto
+                      Index = 4
+                    end                  
+                    item
+                      Control = Label12
+                      WrapAfter = waAuto
+                      Index = 5
+                    end>
+                  FlowLayout = tlTop
+                  FlowStyle = fsLeftRightTopBottom
+                  TabOrder = 1
+                  object Label2: TLabel
+                    Left = 10
+                    Height = 21
+                    Top = 10
+                    Width = 27
+                    Anchors = []
+                    BorderSpacing.Around = 10
+                    Caption = '000'
+                    ParentColor = False
+                  end
+                  object Label4: TLabel
+                    Left = 10
+                    Height = 21
+                    Top = 51
+                    Width = 27
+                    Anchors = []
+                    BorderSpacing.Around = 10
+                    Caption = '000'
+                    ParentColor = False
+                  end
+                  object Label9: TLabel
+                    Left = 10
+                    Height = 21
+                    Top = 92
+                    Width = 43
+                    Anchors = []
+                    BorderSpacing.Around = 10
+                    Caption = '0,00 €'
+                    ParentColor = False
+                  end
+                  object Label10: TLabel
+                    Left = 10
+                    Height = 21
+                    Top = 133
+                    Width = 27
+                    Anchors = []
+                    BorderSpacing.Around = 10
+                    Caption = '000'
+                    ParentColor = False
+                  end
+                  object Label11: TLabel
+                    Left = 10
+                    Height = 21
+                    Top = 174
+                    Width = 27
+                    Anchors = []
+                    BorderSpacing.Around = 10
+                    Caption = '000'
+                    ParentColor = False
+                  end
+                  object Label12: TLabel
+                    Left = 10
+                    Height = 21
+                    Top = 215
+                    Width = 43
+                    Anchors = []
+                    BorderSpacing.Around = 10
+                    Caption = '0,00 €'
+                    ParentColor = False
+                  end
+                end
+              end
+            end
+          end
+          object Panel2: TPanel
+            Left = 229
+            Height = 404
+            Top = 0
+            Width = 492
+            Anchors = []
+            AutoSize = True
+            BevelOuter = bvNone
+            ClientHeight = 404
+            ClientWidth = 492
+            TabOrder = 1
+            object Label14: TLabel
+              Left = 20
+              Height = 21
+              Top = 10
+              Width = 112
+              BorderSpacing.Around = 10
+              Caption = 'Am Beliebtesten'
+              ParentColor = False
+            end
+            object StringGrid1: TStringGrid
+              Left = 20
+              Height = 146
+              Top = 40
+              Width = 452
+              AutoFillColumns = True
+              BorderSpacing.Around = 20
+              ColCount = 4
+              Columns = <              
+                item
+                  Title.Caption = 'Bezeichnung'
+                  Width = 132
+                end              
+                item
+                  Title.Caption = 'Einzelpreis'
+                  Width = 132
+                end              
+                item
+                  Title.Caption = 'Verkauft'
+                  Width = 134
+                end>
+              DefaultColWidth = 50
+              Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
+              TabOrder = 0
+              ColWidths = (
+                50
+                132
+                132
+                134
+              )
+              Cells = (
+                5
+                0
+                0
+                'Platz'
+                0
+                1
+                '1.'
+                0
+                2
+                '2.'
+                0
+                3
+                '3.'
+                0
+                4
+                '4.'
+              )
+            end
+            object Label15: TLabel
+              Left = 20
+              Height = 21
+              Top = 208
+              Width = 138
+              BorderSpacing.Around = 10
+              Caption = 'Höchste Einnahmen'
+              ParentColor = False
+            end
+            object StringGrid2: TStringGrid
+              Left = 20
+              Height = 146
+              Top = 238
+              Width = 452
+              AutoFillColumns = True
+              BorderSpacing.Around = 20
+              ColCount = 4
+              Columns = <              
+                item
+                  Title.Caption = 'Bezeichnung'
+                  Width = 132
+                end              
+                item
+                  Title.Caption = 'Einzelpreis'
+                  Width = 132
+                end              
+                item
+                  Title.Caption = 'Einnahmen'
+                  Width = 134
+                end>
+              DefaultColWidth = 50
+              Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
+              TabOrder = 1
+              ColWidths = (
+                50
+                132
+                132
+                134
+              )
+              Cells = (
+                5
+                0
+                0
+                'Platz'
+                0
+                1
+                '1.'
+                0
+                2
+                '2.'
+                0
+                3
+                '3.'
+                0
+                4
+                '4.'
+              )
+            end
+          end
+          object YearSoldChart2: TChart
+            Left = 741
+            Height = 368
+            Top = 20
+            Width = 600
+            AutoFocus = True
+            AllowZoom = False
+            AxisList = <            
+              item
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelFont.CharSet = ANSI_CHARSET
+                Title.LabelFont.Color = clBlack
+                Title.LabelFont.Height = -13
+                Title.LabelFont.Name = 'Segoe UI'
+                Title.LabelFont.Orientation = 900
+                Title.LabelFont.Pitch = fpVariable
+                Title.LabelFont.Quality = fqDraft
+                Title.Visible = True
+                Title.Caption = 'Verkäufe'
+                Title.LabelBrush.Style = bsClear
+              end            
+              item
+                Intervals.Count = 6
+                Intervals.MaxLength = 1000
+                Intervals.NiceSteps = '1'
+                Intervals.Options = [aipUseCount, aipUseMaxLength, aipUseNiceSteps]
+                Alignment = calBottom
+                Marks.LabelBrush.Style = bsClear
+                Minors = <>
+                Title.LabelFont.CharSet = ANSI_CHARSET
+                Title.LabelFont.Color = clBlack
+                Title.LabelFont.Height = -13
+                Title.LabelFont.Name = 'Segoe UI'
+                Title.LabelFont.Pitch = fpVariable
+                Title.LabelFont.Quality = fqDraft
+                Title.Visible = True
+                Title.Caption = 'Jahr'
+                Title.LabelBrush.Style = bsClear
+              end>
+            BackColor = clNone
+            Foot.Brush.Color = clBtnFace
+            Foot.Font.Color = clBlue
+            Title.Brush.Color = clNone
+            Title.Font.CharSet = ANSI_CHARSET
+            Title.Font.Color = clBlack
+            Title.Font.Height = -16
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Pitch = fpVariable
+            Title.Font.Quality = fqDraft
+            Title.Font.Style = [fsBold]
+            Title.Text.Strings = (
+              'Jahresübersicht'
+            )
+            Title.Visible = True
+            Anchors = []
+            BorderSpacing.Around = 20
+            Color = clNone
+            Enabled = False
+            ParentShowHint = False
+            object Chart1BarSeries6: TBarSeries
+              Shadow.Transparency = 200
+              Shadow.Visible = True
+              BarBrush.Color = clSkyBlue
+              Depth = 5
+              Source = RandomChartSource5
+            end
+          end
+        end
+      end
     end
+  end
+  object RandomChartSource1: TRandomChartSource
+    PointsNumber = 12
+    RandSeed = 1
+    XCount = 12
+    XMax = 12
+    XMin = 1
+    YMax = 100
+    YMin = 10
+    Left = 1160
+  end
+  object RandomChartSource2: TRandomChartSource
+    PointsNumber = 12
+    RandSeed = 1228780275
+    XCount = 12
+    XMax = 12
+    XMin = 1
+    YMax = 200
+    YMin = 50
+    Left = 1280
+  end
+  object RandomChartSource3: TRandomChartSource
+    PointsNumber = 31
+    RandSeed = 1
+    XCount = 31
+    XMax = 31
+    XMin = 1
+    YMax = 100
+    YMin = 10
+    Left = 1400
+  end
+  object RandomChartSource4: TRandomChartSource
+    PointsNumber = 31
+    RandSeed = 1228780275
+    XCount = 31
+    XMax = 31
+    XMin = 1
+    YMax = 200
+    YMin = 50
+    Left = 1520
+  end
+  object RandomChartSource5: TRandomChartSource
+    PointsNumber = 7
+    RandSeed = 874196519
+    XMax = 2026
+    XMin = 2020
+    YMax = 1896
+    YMin = 456
+    Left = 1640
   end
 end

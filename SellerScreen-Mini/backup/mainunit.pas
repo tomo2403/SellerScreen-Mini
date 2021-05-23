@@ -159,7 +159,10 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
-
+  ForceDirectories('Config');
+  ForceDirectories('Statics\Day');
+  ForceDirectories('Statics\Month');
+  ForceDirectories('Statics\Year');
 end;
 
 procedure TMainForm.CancelBtnClick(Sender: TObject);
@@ -187,24 +190,22 @@ begin
     SG.RowCount:= 1;
     for i:= 1 to StaticsForm.DaySG.RowCount - 1 do
     begin
-      row:= SG.RowCount;
-      SG.RowCount:= row + 1;
-      SG.Cells[1, row]:= StaticsForm.DaySG.Cells[1, row];
-      SG.Cells[2, row]:= StaticsForm.DaySG.Cells[2, row];
-      SG.Cells[3, row]:= StaticsForm.DaySG.Cells[3, row];
-      SG.Cells[4, row]:= '0';
-      SG.Cells[5, row]:= '+';
-      SG.Cells[6, row]:= '-';
-      SG.Cells[7, row]:= '+++';
-      SG.Cells[8, row]:= '---';
+      if (StrToInt(StaticsForm.DaySG.Cells[3, i]) - StrToInt(StaticsForm.DaySG.Cells[5, i]) > 0) then
+      begin
+        row:= SG.RowCount;
+        SG.RowCount:= row + 1;
+        SG.Cells[1, row]:= StaticsForm.DaySG.Cells[1, row];
+        SG.Cells[2, row]:= StaticsForm.DaySG.Cells[2, row];
+        SG.Cells[3, row]:= (StrToInt(StaticsForm.DaySG.Cells[3, row]) - StrToInt(StaticsForm.DaySG.Cells[5, row])).ToString;
+        SG.Cells[4, row]:= '0';
+        SG.Cells[5, row]:= '+';
+        SG.Cells[6, row]:= '-';
+        SG.Cells[7, row]:= '+++';
+        SG.Cells[8, row]:= '---';
+      end;
     end;
     NewCustomerBtnClick(sender);
     ShopMode:= 2;
-  end
-  else
-  begin
-    CancelPurchaseBtn.Enabled:= false;
-    RetourBtn.Enabled:= false;
   end;
 end;
 
@@ -401,7 +402,7 @@ begin
       ShowMessage('Es wurde nichts zum Zurücknehmen ausgewählt.');
       CancelBtnClick(sender);
     end;
-end;
+  end;
 end;
 
 procedure TMainForm.RetourBtnClick(Sender: TObject);

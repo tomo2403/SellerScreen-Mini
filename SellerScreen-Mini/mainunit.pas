@@ -159,7 +159,10 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
-
+  ForceDirectories('Config');
+  ForceDirectories('Statics\Day');
+  ForceDirectories('Statics\Month');
+  ForceDirectories('Statics\Year');
 end;
 
 procedure TMainForm.CancelBtnClick(Sender: TObject);
@@ -299,7 +302,7 @@ begin
           end;
         end;
       end;
-      StorageForm.SG.SaveToFile('storage.xml');
+      StorageForm.SG.SaveToFile('Config\storage.xml');
       StaticsForm.SaveDayStatics(Date);
       CancelBtnClick(sender);
     end
@@ -351,7 +354,7 @@ begin
           if not found then Application.MessageBox(PChar('Das Produkt ' + SG.Cells[1, i] + ' befindet sich nicht mehr im Lager!'), 'Problem beim Stornieren', MB_ICONWARNING + MB_OK);
       end;
     end;
-      StorageForm.SG.SaveToFile('storage.xml');
+      StorageForm.SG.SaveToFile('Config\storage.xml');
       StaticsForm.SaveDayStatics(Date);
       CancelBtnClick(sender);
       LoadShop();
@@ -389,7 +392,7 @@ begin
           StaticsForm.DayValues.Cells[1, 5] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 5]) + revenue, ffCurrency, 10, 2);
       end;
     end;
-      StorageForm.SG.SaveToFile('storage.xml');
+      StorageForm.SG.SaveToFile('Config\storage.xml');
       StaticsForm.SaveDayStatics(Date);
       CancelBtnClick(sender);
       LoadShop();
@@ -410,7 +413,7 @@ end;
 
 procedure TMainForm.SaveMIClick(Sender: TObject);
 begin
-  StorageForm.SG.SaveToFile('storage.xml');
+  StorageForm.SG.SaveToFile('Config\storage.xml');
 end;
 
 procedure TMainForm.ReloadMIClick(Sender: TObject);
