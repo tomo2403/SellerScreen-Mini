@@ -2,12 +2,15 @@
  
 <img src="SellerScreen.png" alt="SellerScreen-Mini" width="150" />
 <h1>SellerScreen-Mini</h1>
- 
+
 This repo is a school project and only availible in german.
  
 ![GitHub](https://img.shields.io/github/license/tomo2403/sellerscreen-mini?color=red&style=flat-square) ![GitHub language count](https://img.shields.io/github/languages/count/tomo2403/sellerscreen-mini?color=goldenrod&style=flat-square) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/tomo2403/sellerscreen-mini?style=flat-square) ![GitHub all releases](https://img.shields.io/github/downloads/tomo2403/sellerscreen-mini/total?style=flat-square) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/tomo2403/sellerscreen-mini?color=darkgreen&include_prereleases&style=flat-square)
  
 </div>
+
+<br>
+<br>
 
 ### Was ist SellerScreen-Mini?
 
