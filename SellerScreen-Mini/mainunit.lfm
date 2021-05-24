@@ -9734,9 +9734,6 @@ object MainForm: TMainForm
         Caption = 'Statistiken anzeigen'
         OnClick = ShowStaticsMIClick
       end
-      object OpenSettingsMI: TMenuItem
-        Caption = 'Einstellungen'
-      end
     end
     object DemoMI: TMenuItem
       Caption = 'Demo'

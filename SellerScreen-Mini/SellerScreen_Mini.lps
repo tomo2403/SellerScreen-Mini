@@ -8,7 +8,7 @@
       <Unit0>
         <Filename Value="SellerScreen_Mini.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="25"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainunit.pas"/>
@@ -18,9 +18,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainUnit"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="421"/>
-        <CursorPos X="37" Y="416"/>
-        <UsageCount Value="21"/>
+        <TopLine Value="56"/>
+        <CursorPos Y="73"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
@@ -30,7 +30,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="AboutUnit"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="25"/>
       </Unit2>
       <Unit3>
         <Filename Value="storageunit.pas"/>
@@ -39,11 +39,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="StorageUnit"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="11"/>
+        <TopLine Value="161"/>
         <CursorPos X="27" Y="186"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -53,58 +52,135 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="StaticsUnit"/>
-        <TopLine Value="232"/>
-        <CursorPos X="5" Y="263"/>
-        <UsageCount Value="21"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="206"/>
+        <CursorPos X="73" Y="224"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit4>
     </Units>
-    <JumpHistory Count="11" HistoryIndex="10">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="staticsunit.pas"/>
-        <Caret Line="232" Column="9" TopLine="226"/>
+        <Caret Line="225" Column="31" TopLine="208"/>
       </Position1>
       <Position2>
         <Filename Value="staticsunit.pas"/>
-        <Caret Line="237" Column="9" TopLine="231"/>
+        <Caret Line="224" Column="31" TopLine="207"/>
       </Position2>
       <Position3>
         <Filename Value="staticsunit.pas"/>
-        <Caret Line="236" Column="9" TopLine="230"/>
+        <Caret Line="223" Column="31" TopLine="206"/>
       </Position3>
       <Position4>
         <Filename Value="staticsunit.pas"/>
-        <Caret Line="235" Column="9" TopLine="229"/>
+        <Caret Line="222" Column="31" TopLine="205"/>
       </Position4>
       <Position5>
         <Filename Value="staticsunit.pas"/>
-        <Caret Line="234" Column="9" TopLine="228"/>
+        <Caret Line="221" Column="31" TopLine="204"/>
       </Position5>
       <Position6>
         <Filename Value="staticsunit.pas"/>
-        <Caret Line="233" Column="9" TopLine="227"/>
+        <Caret Line="220" Column="31" TopLine="203"/>
       </Position6>
       <Position7>
         <Filename Value="staticsunit.pas"/>
-        <Caret Line="235" Column="9" TopLine="229"/>
+        <Caret Line="219" Column="31" TopLine="202"/>
       </Position7>
       <Position8>
         <Filename Value="staticsunit.pas"/>
-        <Caret Line="234" Column="11" TopLine="229"/>
+        <Caret Line="218" Column="31" TopLine="201"/>
       </Position8>
       <Position9>
         <Filename Value="staticsunit.pas"/>
-        <Caret Line="235" Column="11" TopLine="230"/>
+        <Caret Line="217" Column="31" TopLine="200"/>
       </Position9>
       <Position10>
         <Filename Value="staticsunit.pas"/>
-        <Caret Line="234" Column="11" TopLine="229"/>
+        <Caret Line="216" Column="31" TopLine="199"/>
       </Position10>
       <Position11>
         <Filename Value="staticsunit.pas"/>
-        <Caret Line="236" Column="11" TopLine="231"/>
+        <Caret Line="215" Column="31" TopLine="198"/>
       </Position11>
+      <Position12>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="214" Column="31" TopLine="197"/>
+      </Position12>
+      <Position13>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="213" Column="31" TopLine="196"/>
+      </Position13>
+      <Position14>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="212" Column="31" TopLine="195"/>
+      </Position14>
+      <Position15>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="211" Column="31" TopLine="194"/>
+      </Position15>
+      <Position16>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="210" Column="31" TopLine="193"/>
+      </Position16>
+      <Position17>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="209" Column="31" TopLine="192"/>
+      </Position17>
+      <Position18>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="208" Column="31" TopLine="191"/>
+      </Position18>
+      <Position19>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="207" Column="31" TopLine="190"/>
+      </Position19>
+      <Position20>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="206" Column="31" TopLine="189"/>
+      </Position20>
+      <Position21>
+        <Filename Value="mainunit.pas"/>
+        <Caret Line="443" TopLine="415"/>
+      </Position21>
+      <Position22>
+        <Filename Value="mainunit.pas"/>
+        <Caret Line="225" Column="3" TopLine="223"/>
+      </Position22>
+      <Position23>
+        <Filename Value="mainunit.pas"/>
+        <Caret Line="224" Column="3" TopLine="222"/>
+      </Position23>
+      <Position24>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="224" Column="31" TopLine="207"/>
+      </Position24>
+      <Position25>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="223" Column="31" TopLine="206"/>
+      </Position25>
+      <Position26>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="222" Column="31" TopLine="205"/>
+      </Position26>
+      <Position27>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="221" Column="31" TopLine="204"/>
+      </Position27>
+      <Position28>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="220" Column="31" TopLine="203"/>
+      </Position28>
+      <Position29>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="221" Column="73" TopLine="203"/>
+      </Position29>
+      <Position30>
+        <Filename Value="staticsunit.pas"/>
+        <Caret Line="223" Column="73" TopLine="205"/>
+      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

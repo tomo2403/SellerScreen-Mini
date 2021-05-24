@@ -45,7 +45,6 @@ type
     OpenStorageMI: TMenuItem;
     SG: TStringGrid;
     ShowStaticsMI: TMenuItem;
-    OpenSettingsMI: TMenuItem;
     AboutMI: TMenuItem;
     GitHubMI: TMenuItem;
     DocsMI: TMenuItem;

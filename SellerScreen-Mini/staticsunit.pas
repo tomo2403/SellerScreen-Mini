@@ -14,19 +14,45 @@ type
   { TStaticsForm }
 
   TStaticsForm = class(TForm)
-    Chart1BarSeries2: TBarSeries;
-    Chart1BarSeries3: TBarSeries;
-    Chart1BarSeries4: TBarSeries;
-    Chart1BarSeries5: TBarSeries;
-    Chart1BarSeries6: TBarSeries;
-    DateEdit1: TDateEdit;
+    MonthDrawChartsBtn: TButton;
+    TotalRevChart: TChart;
+    TotalRevChSeries: TBarSeries;
+    TotalRevRCS: TRandomChartSource;
+    YearDrawChartsBtn: TButton;
+    TotalDrawChartsBtn: TButton;
+    FlowPanel2: TFlowPanel;
+    FlowPanel4: TFlowPanel;
+    Label1: TLabel;
+    Label3: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    TotalCanLbl: TLabel;
+    TotalCustomersLbl: TLabel;
+    TotalLossesLbl: TLabel;
+    TotalRedLbl: TLabel;
+    TotalRevLbl: TLabel;
+    TotalSoldLbl: TLabel;
+    TotalSummaryLbl: TLabel;
+    TotalSummaryPanel: TPanel;
+    TotalSummarySBFlowPanel: TFlowPanel;
+    TotalSummaryScrollBox: TScrollBox;
+    YearFlowPane1: TFlowPanel;
+    YearSoldChSeries: TBarSeries;
+    YearRevChSeries: TBarSeries;
+    MonthSoldChSeries: TBarSeries;
+    MonthRevChSeries: TBarSeries;
+    TotalSoldChSeries: TBarSeries;
+    YearDateEdit: TDateEdit;
     DateEdit2: TDateEdit;
-    FlowPanel10: TFlowPanel;
-    FlowPanel11: TFlowPanel;
-    FlowPanel12: TFlowPanel;
+    Month404Lbl: TLabel;
+    YearFlowPane: TFlowPanel;
+    MonthFlowPanel: TFlowPanel;
+    MonthSummarySBFlowPanel: TFlowPanel;
     FlowPanel13: TFlowPanel;
     FlowPanel14: TFlowPanel;
-    FlowPanel15: TFlowPanel;
+    MonthSBFlowPanel: TFlowPanel;
     FlowPanel7: TFlowPanel;
     FlowPanel8: TFlowPanel;
     FlowPanel9: TFlowPanel;
@@ -37,106 +63,90 @@ type
     Label20: TLabel;
     Label21: TLabel;
     Label22: TLabel;
-    Label23: TLabel;
-    Label24: TLabel;
-    Label25: TLabel;
-    Label26: TLabel;
-    Label27: TLabel;
-    Label28: TLabel;
+    YearCustomersLbl: TLabel;
+    YearSoldLbl: TLabel;
+    YearRevLbl: TLabel;
+    YearCanLbl: TLabel;
+    YearRedLbl: TLabel;
+    YearLossesLbl: TLabel;
     Label29: TLabel;
     Label30: TLabel;
     Label31: TLabel;
     Label32: TLabel;
-    Label33: TLabel;
+    MonthSummaryLbl: TLabel;
     Label34: TLabel;
     Label35: TLabel;
     Label36: TLabel;
     Label37: TLabel;
     Label38: TLabel;
     Label39: TLabel;
-    Label40: TLabel;
-    Label41: TLabel;
-    Label42: TLabel;
-    Label43: TLabel;
-    Label44: TLabel;
-    Label45: TLabel;
+    MonthCustomersLbl: TLabel;
+    MonthSoldLbl: TLabel;
+    MonthRevLbl: TLabel;
+    MonthCanLbl: TLabel;
+    MonthRedLbl: TLabel;
+    MonthLossesLbl: TLabel;
     Label46: TLabel;
     Label49: TLabel;
+    Year404Lbl: TLabel;
     Panel3: TPanel;
-    Panel4: TPanel;
+    YearSelectionPanel: TPanel;
     Panel5: TPanel;
-    Panel6: TPanel;
-    Panel7: TPanel;
+    MonthSelectionPanel: TPanel;
+    MonthSummaryPanel: TPanel;
     Panel8: TPanel;
     Panel9: TPanel;
-    RandomChartSource2: TRandomChartSource;
-    RandomChartSource3: TRandomChartSource;
-    RandomChartSource4: TRandomChartSource;
-    RandomChartSource5: TRandomChartSource;
+    YearRevenueRCS: TRandomChartSource;
+    MonthSoldRCS: TRandomChartSource;
+    MonthRevenueRCS: TRandomChartSource;
+    TotalSoldRCS: TRandomChartSource;
     ScrollBox5: TScrollBox;
-    ScrollBox6: TScrollBox;
-    ScrollBox7: TScrollBox;
-    StringGrid3: TStringGrid;
-    StringGrid4: TStringGrid;
-    StringGrid5: TStringGrid;
-    StringGrid8: TStringGrid;
-    YearRevenueChart1: TChart;
+    MonthSummaryScrollBox: TScrollBox;
+    MonthScrollBox: TScrollBox;
+    YearTopSoldSG: TStringGrid;
+    YearTopRevSG: TStringGrid;
+    MonthTopSoldSG: TStringGrid;
+    MonthTopRevSG: TStringGrid;
+    MonthRevenueChart: TChart;
     YearSoldChart: TChart;
-    DrawChartsBtn: TButton;
+    DayDrawChartsBtn: TButton;
     DaySoldChart: TChart;
     DayRevenueChart: TChart;
-    DayCPS1: TPieSeries;
+    DaySoldChSeries: TPieSeries;
     DayCal: TCalendar;
     DayCalendar: TCalendar;
     Day404Lbl: TLabel;
-    DayCPS2: TPieSeries;
-    FlowPanel1: TFlowPanel;
-    FlowPanel2: TFlowPanel;
-    FlowPanel3: TFlowPanel;
-    FlowPanel4: TFlowPanel;
-    FlowPanel5: TFlowPanel;
-    FlowPanel6: TFlowPanel;
-    Label1: TLabel;
-    Label10: TLabel;
-    Label11: TLabel;
-    Label12: TLabel;
-    Label13: TLabel;
+    DayRevChSeries: TPieSeries;
+    DayChartsSBFlowPanel: TFlowPanel;
+    TotalSBFlowPanel: TFlowPanel;
+    YearSBFlowPanel: TFlowPanel;
     Label14: TLabel;
     Label15: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    Panel1: TPanel;
     Panel2: TPanel;
     PC: TPageControl;
     DaySheet: TTabSheet;
     MonthSheet: TTabSheet;
     DaySG: TStringGrid;
     DayValues: TStringGrid;
-    RandomChartSource1: TRandomChartSource;
-    ScrollBox1: TScrollBox;
-    ScrollBox2: TScrollBox;
-    ScrollBox3: TScrollBox;
-    ScrollBox4: TScrollBox;
-    StringGrid1: TStringGrid;
-    StringGrid2: TStringGrid;
+    YearSoldRCS: TRandomChartSource;
+    DayChartsScrollBox: TScrollBox;
+    TotalScrollBox: TScrollBox;
+    YearScrollBox: TScrollBox;
+    TotalTopSoldSG: TStringGrid;
+    TotalTopRevLbl: TStringGrid;
     TotalSheet: TTabSheet;
     YearSheet: TTabSheet;
     YearRevenueChart: TChart;
-    YearSoldChart1: TChart;
-    YearSoldChart2: TChart;
+    MonthSoldChart: TChart;
+    TotalSoldChart: TChart;
     procedure DayCalDayChanged(Sender: TObject);
-    procedure DrawChartsBtnClick(Sender: TObject);
+    procedure DayDrawChartsBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure PCChange(Sender: TObject);
     procedure SaveDayStatics(d : TDateTime);
     procedure LoadTotalStatics(charts : boolean = false);
     function LoadDayStatics(d : TDateTime; charts : boolean = false) : boolean;
-    procedure ScrollBox2Click(Sender: TObject);
+    procedure TotalSummaryScrollBoxClick(Sender: TObject);
   private
 
   public
@@ -210,7 +220,7 @@ begin
       Application.MessageBox('Die Zusammenfassung des Tages konnte nicht geladen werden!', 'Tagesstatistiken', MB_ICONERROR + MB_OK);
     end;
 
-    if charts then DrawChartsBtnClick(DrawChartsBtn);
+    if charts then DayDrawChartsBtnClick(DayDrawChartsBtn);
 
     if d = Date then loadedToday := true
     else loadedToday := false;
@@ -224,7 +234,7 @@ begin
   end;
 end;
 
-procedure TStaticsForm.ScrollBox2Click(Sender: TObject);
+procedure TStaticsForm.TotalSummaryScrollBoxClick(Sender: TObject);
 begin
 
 end;
@@ -246,21 +256,28 @@ begin
   LoadDayStatics(Date, true);
 end;
 
+procedure TStaticsForm.PCChange(Sender: TObject);
+begin
+  case PC.TabIndex of
+  0: DayDrawChartsBtnClick(sender);
+  end;
+end;
+
 procedure TStaticsForm.DayCalDayChanged(Sender: TObject);
 begin
   LoadDayStatics(DayCal.DateTime, true);
 end;
 
-procedure TStaticsForm.DrawChartsBtnClick(Sender: TObject);
+procedure TStaticsForm.DayDrawChartsBtnClick(Sender: TObject);
 var
   i : integer;
 begin
-  DayCPS1.Clear ;
-  DayCPS2.Clear ;
+  DaySoldChSeries.Clear ;
+  DayRevChSeries.Clear ;
   for i:=1 to DaySG.RowCount - 1 do
   begin
-    DayCPS1.AddXY(0, StrToInt(DaySG.Cells[3, i]), DaySG.Cells[2, i]);
-    DayCPS2.AddXY(0, CurrToFloat(DaySG.Cells[4, i]), DaySG.Cells[2, i]);
+    DaySoldChSeries.AddXY(0, StrToInt(DaySG.Cells[3, i]), DaySG.Cells[2, i]);
+    DayRevChSeries.AddXY(0, CurrToFloat(DaySG.Cells[4, i]), DaySG.Cells[2, i]);
   end;
 end;
 
