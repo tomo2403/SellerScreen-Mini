@@ -37,11 +37,11 @@ type
 
   TMainForm = class(TForm)
     CancelBtn: TButton;
+    ResetData: TMenuItem;
     NotReadyLbl: TLabel;
     MainPriceLbl: TLabel;
     PayPanel: TFlowPanel;
     CustomerLbl: TLabel;
-    ResetData: TMenuItem;
     OpenStorageMI: TMenuItem;
     SG: TStringGrid;
     ShowStaticsMI: TMenuItem;
@@ -50,16 +50,13 @@ type
     DocsMI: TMenuItem;
     ReloadMI: TMenuItem;
     SaveMI: TMenuItem;
-    MenuItem8: TMenuItem;
-    MenuItem9: TMenuItem;
     PayBtn: TButton;
     RetourBtn: TButton;
     NewCustomerBtn: TButton;
     SellPanel: TFlowPanel;
-    MainMenu1: TMainMenu;
+    MainMenu: TMainMenu;
     FileMI: TMenuItem;
     ViewMI: TMenuItem;
-    DemoMI: TMenuItem;
     HelpMI: TMenuItem;
     CancelPurchaseBtn: TButton;
     StatusBar: TStatusBar;
@@ -215,12 +212,21 @@ end;
 
 procedure TMainForm.DocsMIClick(Sender: TObject);
 begin
-
+  OpenURL('https://github.com/tomo2403/SellerScreen-Mini/wiki');
 end;
 
 procedure TMainForm.ResetDataClick(Sender: TObject);
 begin
-
+  if Application.MessageBox('Möchten Sie das Lager wirklich zurücksetzten? Diese Aktion kann nicht Rückgängig gemacht werden!', 'Lager zurücksetzen', MB_ICONWARNING + MB_YESNO) = IDYES then
+  begin
+    StorageForm.SG.RowCount := 1;
+    StorageForm.SG.SaveToFile('Config\storage.xml');
+    LoadShop();
+    if Application.MessageBox('Möchten Sie alle Statistiken löschen? Diese Aktion kann nicht Rückgängig gemacht werden!', 'Statistiken zurücksetzen', MB_ICONWARNING + MB_YESNO) = IDYES then
+    begin
+      //DeleteDirectory('Statics');
+    end;
+  end;
 end;
 
 procedure TMainForm.NewCustomerBtnClick(Sender: TObject);
@@ -301,9 +307,6 @@ begin
           end;
         end;
       end;
-      StorageForm.SG.SaveToFile('Config\storage.xml');
-      StaticsForm.SaveDayStatics(Date);
-      CancelBtnClick(sender);
     end
     else
     begin
@@ -353,9 +356,6 @@ begin
           if not found then Application.MessageBox(PChar('Das Produkt ' + SG.Cells[1, i] + ' befindet sich nicht mehr im Lager!'), 'Problem beim Stornieren', MB_ICONWARNING + MB_OK);
       end;
     end;
-      StorageForm.SG.SaveToFile('Config\storage.xml');
-      StaticsForm.SaveDayStatics(Date);
-      CancelBtnClick(sender);
       LoadShop();
     end
     else
@@ -391,9 +391,6 @@ begin
           StaticsForm.DayValues.Cells[1, 5] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 5]) + revenue, ffCurrency, 10, 2);
       end;
     end;
-      StorageForm.SG.SaveToFile('Config\storage.xml');
-      StaticsForm.SaveDayStatics(Date);
-      CancelBtnClick(sender);
       LoadShop();
     end
     else
@@ -402,6 +399,11 @@ begin
       CancelBtnClick(sender);
     end;
   end;
+
+  StaticsForm.DayValues.Cells[1, 6] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 2]) - CurrToFloat(StaticsForm.DayValues.Cells[1, 5]), ffCurrency, 10, 2);
+  StorageForm.SG.SaveToFile('Config\storage.xml');
+  StaticsForm.SaveDayStatics(Date);
+  CancelBtnClick(sender);
 end;
 
 procedure TMainForm.RetourBtnClick(Sender: TObject);

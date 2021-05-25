@@ -9512,7 +9512,7 @@ object StorageForm: TStorageForm
     Font.Name = 'Segoe UI'
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goRowMoving, goColMoving, goTabs, goRowSelect, goSmoothScroll, goFixedRowNumbering, goSelectionActive, goRowHighlight]
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goRowMoving, goTabs, goRowSelect, goSmoothScroll, goFixedRowNumbering, goSelectionActive, goRowHighlight]
     Options2 = [goScrollToLastCol, goScrollToLastRow]
     ParentFont = False
     RowCount = 1

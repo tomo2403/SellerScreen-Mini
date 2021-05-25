@@ -9484,10 +9484,10 @@ object StaticsForm: TStaticsForm
     Height = 949
     Top = 10
     Width = 1707
-    ActivePage = TotalSheet
+    ActivePage = YearSheet
     Align = alClient
     BorderSpacing.Around = 10
-    TabIndex = 3
+    TabIndex = 2
     TabOrder = 0
     OnChange = PCChange
     object DaySheet: TTabSheet
@@ -9576,11 +9576,11 @@ object StaticsForm: TStaticsForm
         ColCount = 2
         DefaultColWidth = 98
         FixedRows = 0
-        RowCount = 6
+        RowCount = 7
         ScrollBars = ssNone
         TabOrder = 2
         Cells = (
-          12
+          14
           0
           0
           'Kunden'
@@ -9599,6 +9599,9 @@ object StaticsForm: TStaticsForm
           0
           5
           'Verluste'
+          0
+          6
+          'Einnahmen'
           1
           0
           '0'
@@ -9616,6 +9619,9 @@ object StaticsForm: TStaticsForm
           '0'
           1
           5
+          '0,00 €'
+          1
+          6
           '0,00 €'
         )
       end
@@ -9826,7 +9832,7 @@ object StaticsForm: TStaticsForm
             Caption = 'Monat:'
             ParentColor = False
           end
-          object DateEdit2: TDateEdit
+          object MonthDateEdit: TDateEdit
             Left = 64
             Height = 29
             Top = 0
@@ -9876,7 +9882,6 @@ object StaticsForm: TStaticsForm
             ClientHeight = 246
             ClientWidth = 185
             TabOrder = 0
-            OnClick = TotalSummaryScrollBoxClick
             object MonthSummarySBFlowPanel: TFlowPanel
               Left = 0
               Height = 246
@@ -10862,7 +10867,6 @@ object StaticsForm: TStaticsForm
             ClientHeight = 246
             ClientWidth = 185
             TabOrder = 0
-            OnClick = TotalSummaryScrollBoxClick
             object FlowPanel7: TFlowPanel
               Left = 0
               Height = 246
@@ -11200,24 +11204,24 @@ object StaticsForm: TStaticsForm
               Columns = <              
                 item
                   Title.Caption = 'Bezeichnung'
-                  Width = 132
+                  Width = 127
                 end              
                 item
                   Title.Caption = 'Einzelpreis'
-                  Width = 132
+                  Width = 127
                 end              
                 item
                   Title.Caption = 'Verkauft'
-                  Width = 134
+                  Width = 127
                 end>
               DefaultColWidth = 50
               Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
               TabOrder = 0
               ColWidths = (
                 50
-                132
-                132
-                134
+                127
+                127
+                127
               )
               Cells = (
                 5
@@ -11258,24 +11262,24 @@ object StaticsForm: TStaticsForm
               Columns = <              
                 item
                   Title.Caption = 'Bezeichnung'
-                  Width = 132
+                  Width = 127
                 end              
                 item
                   Title.Caption = 'Einzelpreis'
-                  Width = 132
+                  Width = 127
                 end              
                 item
                   Title.Caption = 'Einnahmen'
-                  Width = 134
+                  Width = 127
                 end>
               DefaultColWidth = 50
               Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
               TabOrder = 1
               ColWidths = (
                 50
-                132
-                132
-                134
+                127
+                127
+                127
               )
               Cells = (
                 5
@@ -11502,7 +11506,6 @@ object StaticsForm: TStaticsForm
             ClientHeight = 246
             ClientWidth = 185
             TabOrder = 0
-            OnClick = TotalSummaryScrollBoxClick
             object TotalSummarySBFlowPanel: TFlowPanel
               Left = 0
               Height = 246

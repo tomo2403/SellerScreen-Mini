@@ -1,11 +1,11 @@
 object AboutForm: TAboutForm
-  Left = 1362
-  Height = 455
-  Top = 385
+  Left = 1235
+  Height = 483
+  Top = 283
   Width = 515
   BorderStyle = bsToolWindow
   Caption = 'Über'
-  ClientHeight = 455
+  ClientHeight = 483
   ClientWidth = 515
   Icon.Data = {
     1F9E040000000100090010100000010020006804000096000000181800000100
@@ -10014,8 +10014,8 @@ object AboutForm: TAboutForm
   end
   object InfoTxtLbl: TLabel
     Left = 24
-    Height = 120
-    Top = 280
+    Height = 128
+    Top = 288
     Width = 466
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoSize = False
@@ -10061,7 +10061,7 @@ object AboutForm: TAboutForm
   object AboutS22Lbl: TLabel
     Left = 340
     Height = 15
-    Top = 427
+    Top = 455
     Width = 150
     Anchors = [akRight, akBottom]
     Caption = 'Mehr über SellerScreen-2022'
@@ -10079,9 +10079,10 @@ object AboutForm: TAboutForm
   object CopyrightLbl: TLabel
     Left = 24
     Height = 30
-    Top = 410
-    Width = 193
-    Caption = 'SellerScreen-Mini © tomo2403'#13#10'SellerScreen-2022 © T-App Germany'
+    Top = 438
+    Width = 220
+    Anchors = [akLeft, akBottom]
+    Caption = 'SellerScreen-Mini © 2021 tomo2403'#13#10'SellerScreen-2022 © 2021 T-App Germany'
     ParentColor = False
   end
 end

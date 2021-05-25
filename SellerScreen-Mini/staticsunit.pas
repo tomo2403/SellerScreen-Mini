@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, StdCtrls,
   EditBtn, Calendar, ExtCtrls, Grids, SynHighlighterXML, TAGraph,
-  TASeries, TADbSource, TAIntervalSources, TASources, LCLType, Buttons, Types;
+  TASeries, TADbSource, TASources, LCLType, Buttons;
 
 type
 
@@ -45,7 +45,7 @@ type
     MonthRevChSeries: TBarSeries;
     TotalSoldChSeries: TBarSeries;
     YearDateEdit: TDateEdit;
-    DateEdit2: TDateEdit;
+    MonthDateEdit: TDateEdit;
     Month404Lbl: TLabel;
     YearFlowPane: TFlowPanel;
     MonthFlowPanel: TFlowPanel;
@@ -146,7 +146,6 @@ type
     procedure SaveDayStatics(d : TDateTime);
     procedure LoadTotalStatics(charts : boolean = false);
     function LoadDayStatics(d : TDateTime; charts : boolean = false) : boolean;
-    procedure TotalSummaryScrollBoxClick(Sender: TObject);
   private
 
   public
@@ -234,11 +233,6 @@ begin
   end;
 end;
 
-procedure TStaticsForm.TotalSummaryScrollBoxClick(Sender: TObject);
-begin
-
-end;
-
 procedure TStaticsForm.LoadTotalStatics(charts : boolean = false);
 begin
   AssignFile(tSFile, 'total');
@@ -246,6 +240,11 @@ begin
   while not EOF(tSFile) do
   begin
     Read(tSFile, tStatics);
+
+    if charts then
+    begin
+
+    end;
   end;
   CloseFile(tSFile);
 end;

@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 1997
+  Left = 632
   Height = 500
-  Top = 65
+  Top = 237
   Width = 1000
   Caption = 'SellerScreen-Mini'
   ClientHeight = 480
@@ -9474,7 +9474,7 @@ object MainForm: TMainForm
     C264368BF782F3C09662169D1FF87F0C37CA032A64C3CC0000000049454E44AE
     426082
   }
-  Menu = MainMenu1
+  Menu = MainMenu
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '2.0.12.0'
@@ -9524,7 +9524,7 @@ object MainForm: TMainForm
         Width = 64
       end>
     Enabled = False
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goColMoving, goSmoothScroll, goFixedRowNumbering, goFixedColSizing]
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goSmoothScroll, goFixedRowNumbering, goFixedColSizing]
     Options2 = [goScrollToLastCol, goScrollToLastRow]
     RowCount = 1
     TabOrder = 3
@@ -9710,9 +9710,9 @@ object MainForm: TMainForm
     ParentColor = False
     Visible = False
   end
-  object MainMenu1: TMainMenu
-    Left = 664
-    Top = 24
+  object MainMenu: TMainMenu
+    Left = 864
+    Top = 16
     object FileMI: TMenuItem
       Caption = 'Datei'
       object ReloadMI: TMenuItem
@@ -9722,6 +9722,10 @@ object MainForm: TMainForm
       object SaveMI: TMenuItem
         Caption = 'Speichern'
         OnClick = SaveMIClick
+      end
+      object ResetData: TMenuItem
+        Caption = 'Daten zurücksetzten'
+        OnClick = ResetDataClick
       end
     end
     object ViewMI: TMenuItem
@@ -9733,19 +9737,6 @@ object MainForm: TMainForm
       object ShowStaticsMI: TMenuItem
         Caption = 'Statistiken anzeigen'
         OnClick = ShowStaticsMIClick
-      end
-    end
-    object DemoMI: TMenuItem
-      Caption = 'Demo'
-      object MenuItem8: TMenuItem
-        Caption = 'Lager füllen'
-      end
-      object MenuItem9: TMenuItem
-        Caption = 'Käufe simulieren'
-      end
-      object ResetData: TMenuItem
-        Caption = 'Daten zurücksetzten'
-        OnClick = ResetDataClick
       end
     end
     object HelpMI: TMenuItem

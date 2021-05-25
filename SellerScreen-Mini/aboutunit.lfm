@@ -10080,9 +10080,9 @@ object AboutForm: TAboutForm
     Left = 24
     Height = 30
     Top = 438
-    Width = 193
+    Width = 220
     Anchors = [akLeft, akBottom]
-    Caption = 'SellerScreen-Mini © tomo2403'#13#10'SellerScreen-2022 © T-App Germany'
+    Caption = 'SellerScreen-Mini © 2021 tomo2403'#13#10'SellerScreen-2022 © 2021 T-App Germany'
     ParentColor = False
   end
 end

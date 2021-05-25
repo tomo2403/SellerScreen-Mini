@@ -1,10 +1,10 @@
 object StorageForm: TStorageForm
   Left = 2230
-  Height = 460
+  Height = 500
   Top = 304
   Width = 1156
   Caption = 'Lager'
-  ClientHeight = 440
+  ClientHeight = 480
   ClientWidth = 1156
   Constraints.MinHeight = 500
   Constraints.MinWidth = 1000
@@ -9471,10 +9471,11 @@ object StorageForm: TStorageForm
   Menu = MainMenu
   OnCreate = FormCreate
   Position = poDefault
+  ShowInTaskBar = stAlways
   LCLVersion = '2.0.12.0'
   object SG: TStringGrid
     Left = 0
-    Height = 440
+    Height = 480
     Top = 0
     Width = 832
     Align = alCustom
@@ -9642,7 +9643,7 @@ object StorageForm: TStorageForm
   object CloseBtn: TBitBtn
     Left = 970
     Height = 40
-    Top = 386
+    Top = 426
     Width = 169
     Anchors = [akRight, akBottom]
     Caption = '&Schließen'

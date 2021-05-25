@@ -14,9 +14,12 @@ type
   { TStaticsForm }
 
   TStaticsForm = class(TForm)
-    DayDrawChartsBtn1: TButton;
-    DayDrawChartsBtn2: TButton;
-    DayDrawChartsBtn3: TButton;
+    MonthDrawChartsBtn: TButton;
+    TotalRevChart: TChart;
+    TotalRevChSeries: TBarSeries;
+    TotalRevRCS: TRandomChartSource;
+    YearDrawChartsBtn: TButton;
+    TotalDrawChartsBtn: TButton;
     FlowPanel2: TFlowPanel;
     FlowPanel4: TFlowPanel;
     Label1: TLabel;
@@ -42,7 +45,7 @@ type
     MonthRevChSeries: TBarSeries;
     TotalSoldChSeries: TBarSeries;
     YearDateEdit: TDateEdit;
-    DateEdit2: TDateEdit;
+    MonthDateEdit: TDateEdit;
     Month404Lbl: TLabel;
     YearFlowPane: TFlowPanel;
     MonthFlowPanel: TFlowPanel;

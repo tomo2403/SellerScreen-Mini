@@ -140,7 +140,7 @@ procedure TStorageForm.FormCreate(Sender: TObject);
 begin
   try
     SG.SaveOptions := [soDesign, soContent];
-    SG.LoadFromFile('storage.xml');
+    SG.LoadFromFile('Config\storage.xml');
     SG.Refresh;
     GetSelectedProduct();
     MainForm.LoadShop();
@@ -156,7 +156,7 @@ end;
 
 procedure TStorageForm.GenStorageMIClick(Sender: TObject);
 begin
-  SG.SaveToFile('storage.xml');
+  SG.SaveToFile('Config\storage.xml');
 end;
 
 procedure TStorageForm.PrEditCancelBtnClick(Sender: TObject);
@@ -171,7 +171,7 @@ begin
   SG.Cells[3, SG.Row] := GetCurrency(FloatToStr(PrEditPriceBox.Value));
   SG.Cells[4, SG.Row] := FloatToStr(PrEditAvailableBox.Value);
 
-  SG.SaveToFile('storage.xml');
+  SG.SaveToFile('Config\storage.xml');
 end;
 
 procedure TStorageForm.RemoveProdctBtnClick(Sender: TObject);
@@ -183,7 +183,7 @@ begin
   if Reply = IDYES then
   begin
     SG.DeleteRow(SG.Row);
-    SG.SaveToFile('storage.xml');
+    SG.SaveToFile('Config\storage.xml');
   end;
 end;
 
