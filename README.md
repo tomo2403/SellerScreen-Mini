@@ -14,4 +14,4 @@ This repo is a school project and only availible in german.
 
 ### Was ist SellerScreen-Mini?
 
-SellerScreen-Mini ist eine einfache Variante von SellerScreen-2021 und seinem Nachvolger [SellerScreen-2022](https://github.com/T-App-Germany/SellerScreen-2022). Das Programm soll dabei helfen, den Lagerbestand zu verwalten und Produkte daraus zu verkaufen. Durch den Verkauf werden Statistiken erstellt, die dabei Helfen, dass Kaufverhalten der Kunden zu Analysieren, um besser Ein- und Verkaufen zu können.
+SellerScreen-Mini ist eine einfache Variante von SellerScreen-2021 und seinem Nachfolger [SellerScreen-2022](https://github.com/T-App-Germany/SellerScreen-2022). Das Programm soll dabei helfen, den Lagerbestand zu verwalten und Produkte daraus zu verkaufen. Durch den Verkauf werden Statistiken erstellt, die dabei Helfen, dass Kaufverhalten der Kunden zu Analysieren, um besser Ein- und Verkaufen zu können.
