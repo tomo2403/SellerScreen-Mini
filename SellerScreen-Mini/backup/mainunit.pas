@@ -29,7 +29,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Buttons, ExtCtrls,
-  StdCtrls, ComCtrls, Menus, LCLIntf, Grids, LCLType;
+  StdCtrls, ComCtrls, Menus, LCLIntf, Grids, LCLType, DateUtils;
 
 type
 
@@ -294,6 +294,32 @@ begin
           StaticsForm.DayValues.Cells[1, 1] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 1]) + sell);
           StaticsForm.DayValues.Cells[1, 2] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 2]) + revenue, ffCurrency, 10, 2);
 
+          StaticsForm.TotalCustomersLbl.Caption := IntToStr(StrToInt(StaticsForm.TotalCustomersLbl.Caption) + 1);
+          StaticsForm.TotalSoldLbl.Caption := IntToStr(StrToInt(StaticsForm.TotalSoldLbl.Caption) + sell);
+          StaticsForm.TotalRevLbl.Caption := FloatToStrF(CurrToFloat(StaticsForm.TotalRevLbl.Caption) + revenue, ffCurrency, 10, 2);
+
+          found:= false;
+          for j:= 0 to StaticsForm.TotalChartDataSG.RowCount - 1 do
+          begin
+            if (StaticsForm.TotalChartDataSG.Cells[0,j] = YearOf(Now).ToString) then
+            begin
+              StaticsForm.TotalChartDataSG.Cells[1,j]:= (StrToInt(StaticsForm.TotalChartDataSG.Cells[1,j]) + sell).ToString;
+              StaticsForm.TotalChartDataSG.Cells[2,j]:= (StrToFloat(StaticsForm.TotalChartDataSG.Cells[2,j]) + revenue).ToString;
+
+              found:= true;
+              break;
+            end;
+          end;
+
+          if not found then
+          begin
+            j:= StaticsForm.TotalChartDataSG.RowCount;
+            StaticsForm.TotalChartDataSG.RowCount := StaticsForm.TotalChartDataSG.RowCount + 1;
+            StaticsForm.TotalChartDataSG.Cells[0,j]:= YearOf(Now).ToString;
+            StaticsForm.TotalChartDataSG.Cells[1,j]:= sell.ToString;
+            StaticsForm.TotalChartDataSG.Cells[2,j]:= revenue.ToString;
+          end;
+
           for j:= 1 to StorageForm.SG.RowCount - 1 do
           begin
             if (StorageForm.SG.Cells[1, j] = SG.Cells[1, i]) and (StorageForm.SG.Cells[3, j] = SG.Cells[2, i]) then
@@ -400,9 +426,10 @@ begin
     end;
   end;
 
-  StaticsForm.DayValues.Cells[1, 6] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 2]) + CurrToFloat(StaticsForm.DayValues.Cells[1, 5]), ffCurrency, 10, 2);
+  StaticsForm.DayValues.Cells[1, 6] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 2]) - CurrToFloat(StaticsForm.DayValues.Cells[1, 5]), ffCurrency, 10, 2);
   StorageForm.SG.SaveToFile('Config\storage.xml');
   StaticsForm.SaveDayStatics(Date);
+  StaticsForm.SaveTotalStatics();
   CancelBtnClick(sender);
 end;
 

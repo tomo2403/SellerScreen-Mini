@@ -9484,10 +9484,10 @@ object StaticsForm: TStaticsForm
     Height = 949
     Top = 10
     Width = 1707
-    ActivePage = YearSheet
+    ActivePage = TotalSheet
     Align = alClient
     BorderSpacing.Around = 10
-    TabIndex = 2
+    TabIndex = 3
     TabOrder = 0
     OnChange = PCChange
     object DaySheet: TTabSheet
@@ -10251,6 +10251,7 @@ object StaticsForm: TStaticsForm
               BarBrush.Color = clRed
               Depth = 5
               Source = MonthSoldRCS
+              UseZeroLevel = False
             end
           end
           object MonthRevenueChart: TChart
@@ -10316,6 +10317,7 @@ object StaticsForm: TStaticsForm
               BarBrush.Color = clTeal
               Depth = 5
               Source = MonthRevenueRCS
+              UseZeroLevel = False
             end
           end
           object Panel8: TPanel
@@ -10349,24 +10351,24 @@ object StaticsForm: TStaticsForm
               Columns = <              
                 item
                   Title.Caption = 'Bezeichnung'
-                  Width = 132
+                  Width = 127
                 end              
                 item
                   Title.Caption = 'Einzelpreis'
-                  Width = 132
+                  Width = 127
                 end              
                 item
                   Title.Caption = 'Verkauft'
-                  Width = 134
+                  Width = 127
                 end>
               DefaultColWidth = 50
               Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
               TabOrder = 0
               ColWidths = (
                 50
-                132
-                132
-                134
+                127
+                127
+                127
               )
               Cells = (
                 5
@@ -10419,24 +10421,24 @@ object StaticsForm: TStaticsForm
               Columns = <              
                 item
                   Title.Caption = 'Bezeichnung'
-                  Width = 132
+                  Width = 127
                 end              
                 item
                   Title.Caption = 'Einzelpreis'
-                  Width = 132
+                  Width = 127
                 end              
                 item
                   Title.Caption = 'Einnahmen'
-                  Width = 134
+                  Width = 127
                 end>
               DefaultColWidth = 50
               Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
               TabOrder = 0
               ColWidths = (
                 50
-                132
-                132
-                134
+                127
+                127
+                127
               )
               Cells = (
                 5
@@ -10567,6 +10569,7 @@ object StaticsForm: TStaticsForm
               BarBrush.Color = clGreen
               Depth = 5
               Source = YearSoldRCS
+              UseZeroLevel = False
             end
           end
           object YearRevenueChart: TChart
@@ -10632,6 +10635,7 @@ object StaticsForm: TStaticsForm
               BarBrush.Color = clMaroon
               Depth = 5
               Source = YearRevenueRCS
+              UseZeroLevel = False
             end
           end
           object Panel5: TPanel
@@ -10665,24 +10669,24 @@ object StaticsForm: TStaticsForm
               Columns = <              
                 item
                   Title.Caption = 'Bezeichnung'
-                  Width = 132
+                  Width = 127
                 end              
                 item
                   Title.Caption = 'Einzelpreis'
-                  Width = 132
+                  Width = 127
                 end              
                 item
                   Title.Caption = 'Verkauft'
-                  Width = 134
+                  Width = 127
                 end>
               DefaultColWidth = 50
               Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
               TabOrder = 0
               ColWidths = (
                 50
-                132
-                132
-                134
+                127
+                127
+                127
               )
               Cells = (
                 5
@@ -10723,24 +10727,24 @@ object StaticsForm: TStaticsForm
               Columns = <              
                 item
                   Title.Caption = 'Bezeichnung'
-                  Width = 132
+                  Width = 127
                 end              
                 item
                   Title.Caption = 'Einzelpreis'
-                  Width = 132
+                  Width = 127
                 end              
                 item
                   Title.Caption = 'Einnahmen'
-                  Width = 134
+                  Width = 127
                 end>
               DefaultColWidth = 50
               Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
               TabOrder = 1
               ColWidths = (
                 50
-                132
-                132
-                134
+                127
+                127
+                127
               )
               Cells = (
                 5
@@ -11204,24 +11208,24 @@ object StaticsForm: TStaticsForm
               Columns = <              
                 item
                   Title.Caption = 'Bezeichnung'
-                  Width = 127
+                  Width = 132
                 end              
                 item
                   Title.Caption = 'Einzelpreis'
-                  Width = 127
+                  Width = 132
                 end              
                 item
                   Title.Caption = 'Verkauft'
-                  Width = 127
+                  Width = 134
                 end>
               DefaultColWidth = 50
               Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
               TabOrder = 0
               ColWidths = (
                 50
-                127
-                127
-                127
+                132
+                132
+                134
               )
               Cells = (
                 5
@@ -11262,24 +11266,24 @@ object StaticsForm: TStaticsForm
               Columns = <              
                 item
                   Title.Caption = 'Bezeichnung'
-                  Width = 127
+                  Width = 132
                 end              
                 item
                   Title.Caption = 'Einzelpreis'
-                  Width = 127
+                  Width = 132
                 end              
                 item
                   Title.Caption = 'Einnahmen'
-                  Width = 127
+                  Width = 134
                 end>
               DefaultColWidth = 50
               Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
               TabOrder = 1
               ColWidths = (
                 50
-                127
-                127
-                127
+                132
+                132
+                134
               )
               Cells = (
                 5
@@ -11324,8 +11328,7 @@ object StaticsForm: TStaticsForm
                 Title.LabelBrush.Style = bsClear
               end            
               item
-                Intervals.Count = 21
-                Intervals.MaxLength = 1000
+                Intervals.MaxLength = 10000
                 Intervals.NiceSteps = '1'
                 Intervals.Options = [aipUseCount, aipUseMaxLength, aipUseNiceSteps]
                 Alignment = calBottom
@@ -11366,7 +11369,7 @@ object StaticsForm: TStaticsForm
               Shadow.Visible = True
               BarBrush.Color = clSkyBlue
               Depth = 5
-              Source = TotalSoldRCS
+              UseZeroLevel = False
             end
           end
           object TotalRevChart: TChart
@@ -11393,7 +11396,7 @@ object StaticsForm: TStaticsForm
               end            
               item
                 Intervals.Count = 21
-                Intervals.MaxLength = 1000
+                Intervals.MaxLength = 10000
                 Intervals.NiceSteps = '1'
                 Intervals.Options = [aipUseCount, aipUseMaxLength, aipUseNiceSteps]
                 Alignment = calBottom
@@ -11434,7 +11437,7 @@ object StaticsForm: TStaticsForm
               Shadow.Visible = True
               BarBrush.Color = clOlive
               Depth = 5
-              Source = TotalRevRCS
+              UseZeroLevel = False
             end
           end
         end
@@ -11457,6 +11460,11 @@ object StaticsForm: TStaticsForm
             Control = TotalSummaryPanel
             WrapAfter = waAuto
             Index = 1
+          end        
+          item
+            Control = TotalChartDataSG
+            WrapAfter = waAuto
+            Index = 2
           end>
         FlowLayout = tlTop
         FlowStyle = fsLeftRightTopBottom
@@ -11470,7 +11478,7 @@ object StaticsForm: TStaticsForm
           BorderSpacing.Top = 10
           BorderSpacing.Around = 20
           Caption = 'Grafiken zeichnen'
-          OnClick = DayDrawChartsBtnClick
+          OnClick = TotalDrawChartsBtnClick
           TabOrder = 0
         end
         object TotalSummaryPanel: TPanel
@@ -11665,7 +11673,7 @@ object StaticsForm: TStaticsForm
                     Index = 4
                   end                
                   item
-                    Control = TotalLossesLbl
+                    Control = TotalLosesLbl
                     WrapAfter = waAuto
                     Index = 5
                   end>
@@ -11676,20 +11684,22 @@ object StaticsForm: TStaticsForm
                   Left = 10
                   Height = 21
                   Top = 10
-                  Width = 27
+                  Width = 40
                   Anchors = []
                   BorderSpacing.Around = 10
                   Caption = '000'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
                 object TotalSoldLbl: TLabel
                   Left = 10
                   Height = 21
                   Top = 51
-                  Width = 27
+                  Width = 40
                   Anchors = []
                   BorderSpacing.Around = 10
                   Caption = '000'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
                 object TotalRevLbl: TLabel
@@ -11700,29 +11710,32 @@ object StaticsForm: TStaticsForm
                   Anchors = []
                   BorderSpacing.Around = 10
                   Caption = '0,00 €'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
                 object TotalCanLbl: TLabel
                   Left = 10
                   Height = 21
                   Top = 133
-                  Width = 27
+                  Width = 40
                   Anchors = []
                   BorderSpacing.Around = 10
                   Caption = '000'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
                 object TotalRedLbl: TLabel
                   Left = 10
                   Height = 21
                   Top = 174
-                  Width = 27
+                  Width = 40
                   Anchors = []
                   BorderSpacing.Around = 10
                   Caption = '000'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
-                object TotalLossesLbl: TLabel
+                object TotalLosesLbl: TLabel
                   Left = 10
                   Height = 21
                   Top = 215
@@ -11730,11 +11743,35 @@ object StaticsForm: TStaticsForm
                   Anchors = []
                   BorderSpacing.Around = 10
                   Caption = '0,00 €'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
               end
             end
           end
+        end
+        object TotalChartDataSG: TStringGrid
+          Left = 0
+          Height = 148
+          Top = 446
+          Width = 232
+          Anchors = []
+          ColCount = 3
+          Columns = <          
+            item
+              Title.Caption = 'Year'
+            end          
+            item
+              Title.Caption = 'Sold'
+            end          
+            item
+              Title.Caption = 'Revenue'
+            end>
+          FixedCols = 0
+          FixedRows = 0
+          RowCount = 0
+          TabOrder = 2
+          Visible = False
         end
       end
     end
@@ -11745,8 +11782,8 @@ object StaticsForm: TStaticsForm
     XCount = 12
     XMax = 12
     XMin = 1
-    YMax = 100
-    YMin = 10
+    YMax = 1500
+    YMin = 300
     Left = 544
   end
   object YearRevenueRCS: TRandomChartSource
@@ -11755,8 +11792,8 @@ object StaticsForm: TStaticsForm
     XCount = 12
     XMax = 12
     XMin = 1
-    YMax = 200
-    YMin = 50
+    YMax = 10000
+    YMin = 800
     Left = 640
   end
   object MonthSoldRCS: TRandomChartSource

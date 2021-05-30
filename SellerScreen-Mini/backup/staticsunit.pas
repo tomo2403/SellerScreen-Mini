@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, StdCtrls,
   EditBtn, Calendar, ExtCtrls, Grids, SynHighlighterXML, TAGraph,
-  TASeries, TADbSource, TAIntervalSources, TASources, LCLType, Buttons, Types;
+  TASeries, TADbSource, TASources, LCLType, Buttons;
 
 type
 
@@ -15,6 +15,7 @@ type
 
   TStaticsForm = class(TForm)
     MonthDrawChartsBtn: TButton;
+    TotalChartDataSG: TStringGrid;
     TotalRevChart: TChart;
     TotalRevChSeries: TBarSeries;
     TotalRevRCS: TRandomChartSource;
@@ -30,7 +31,7 @@ type
     Label8: TLabel;
     TotalCanLbl: TLabel;
     TotalCustomersLbl: TLabel;
-    TotalLossesLbl: TLabel;
+    TotalLosesLbl: TLabel;
     TotalRedLbl: TLabel;
     TotalRevLbl: TLabel;
     TotalSoldLbl: TLabel;
@@ -146,28 +147,30 @@ type
     procedure SaveDayStatics(d : TDateTime);
     procedure LoadTotalStatics(charts : boolean = false);
     function LoadDayStatics(d : TDateTime; charts : boolean = false) : boolean;
-    procedure TotalSummaryScrollBoxClick(Sender: TObject);
+    procedure SaveTotalStatics();
+    procedure TotalDrawChartsBtnClick(Sender: TObject);
   private
 
   public
     loadedToday: boolean;
   end;
 
-  TotalStatics = record
+  TotalStaticsSummary = record
     Customers : word;
     Sold : word;
     Revenue : double;
     Cancellations : word;
     Redemptions : word;
     Loses : double;
-
   end;
+
 
 var
   StaticsForm: TStaticsForm;
   loadedToday: boolean = false;
-  tStatics : TotalStatics;
-  tSFile : File of TotalStatics;
+  tStatics : TotalStaticsSummary;
+  tSFile : File of TotalStaticsSummary;
+
 
 implementation
 
@@ -234,26 +237,82 @@ begin
   end;
 end;
 
-procedure TStaticsForm.TotalSummaryScrollBoxClick(Sender: TObject);
-begin
-
-end;
-
 procedure TStaticsForm.LoadTotalStatics(charts : boolean = false);
 begin
-  AssignFile(tSFile, 'total');
-  Reset(tSFile);
-  while not EOF(tSFile) do
-  begin
-    Read(tSFile, tStatics);
+  try
+    AssignFile(tSFile, 'Statics\Total\total_summary');
+    Reset(tSFile);
+    while not EOF(tSFile) do
+    begin
+      Read(tSFile, tStatics);
+    end;
+    CloseFile(tSFile);
+
+    TotalCustomersLbl.Caption:= tStatics.Customers.ToString;
+    TotalSoldLbl.Caption:= tStatics.Sold.ToString;
+    TotalRevLbl.Caption:= FloatToStrF(tStatics.Revenue, ffCurrency, 10, 2);
+    TotalCanLbl.Caption:= tStatics.Cancellations.ToString;
+    TotalRedLbl.Caption:= tStatics.Redemptions.ToString;
+    TotalLosesLbl.Caption:= FloatToStrF(tStatics.Loses, ffCurrency, 10, 2);
+  except
+    Application.MessageBox('Die Zusammenfassung konnte nicht geladen werden!', 'Gesamtstatistiken', MB_ICONERROR + MB_OK);
   end;
-  CloseFile(tSFile);
+
+  try
+    TotalChartDataSG.LoadFromFile('Statics\Total\total_charts.xml');
+  except
+    Application.MessageBox('Die Daten der Diagramme konnten nicht geladen werden!', 'Gesamtstatistiken', MB_ICONERROR + MB_OK);
+  end;
+
+  if charts then TotalDrawChartsBtnClick(TotalDrawChartsBtn);
 end;
+
+procedure TStaticsForm.SaveTotalStatics();
+begin
+  try
+    tStatics.Customers:= StrToInt(TotalCustomersLbl.Caption);
+    tStatics.Sold:= StrToInt(TotalSoldLbl.Caption);
+    tStatics.Revenue:= CurrToFloat(TotalRevLbl.Caption);
+    tStatics.Cancellations:= StrToInt(TotalCanLbl.Caption);
+    tStatics.Redemptions:= StrToInt(TotalRedLbl.Caption);
+    tStatics.Loses:= CurrToFloat(TotalLosesLbl.Caption);
+    AssignFile(tSFile, 'Statics\Total\total_summary');
+    Rewrite(tSFile);
+    Write(tSFile, tStatics);
+    CloseFile(tSFile);
+  except
+    Application.MessageBox('Die Zusammenfassung konnte nicht gespeichert werden!', 'Gesamtstatistiken', MB_ICONERROR + MB_OK);
+  end;
+
+  try
+    TotalChartDataSG.SaveToFile('Statics\Total\total_charts.xml');
+  except
+    Application.MessageBox('Die Daten der Diagramme konnten nicht gespeichert werden!', 'Gesamtstatistiken', MB_ICONERROR + MB_OK);
+  end;
+end;
+
+procedure TStaticsForm.TotalDrawChartsBtnClick(Sender: TObject);
+var
+  i : integer;
+begin
+    TotalSoldChSeries.Clear;
+    TotalRevChSeries.Clear;
+    for i:= 0 to TotalChartDataSG.RowCount - 1 do
+    begin
+      TotalSoldChSeries.AddXY(StrToInt(TotalChartDataSG.Cells[0,i]), StrToInt(TotalChartDataSG.Cells[1,i]), TotalChartDataSG.Cells[0,i]);
+      TotalRevChSeries.AddXY(StrToInt(TotalChartDataSG.Cells[0,i]), StrToFloat(TotalChartDataSG.Cells[2,i]), TotalChartDataSG.Cells[0,i]);
+    end;
+    TotalSoldChart.AxisList[1].Intervals.Count := TotalChartDataSG.RowCount;
+    TotalRevChart.AxisList[1].Intervals.Count := TotalChartDataSG.RowCount;
+end;
+
 procedure TStaticsForm.FormCreate(Sender: TObject);
 begin
   DaySG.SaveOptions := [soDesign, soContent];
   DayValues.SaveOptions := [soContent];
+  TotalChartDataSG.SaveOptions := [soDesign, soContent];
   LoadDayStatics(Date, true);
+  LoadTotalStatics();
 end;
 
 procedure TStaticsForm.PCChange(Sender: TObject);
