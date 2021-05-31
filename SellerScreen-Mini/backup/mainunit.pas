@@ -155,10 +155,7 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
-  ForceDirectories('Config');
-  ForceDirectories('Statics\Day');
-  ForceDirectories('Statics\Month');
-  ForceDirectories('Statics\Year');
+
 end;
 
 procedure TMainForm.CancelBtnClick(Sender: TObject);
@@ -220,7 +217,7 @@ begin
   if Application.MessageBox('Möchten Sie das Lager wirklich zurücksetzten? Diese Aktion kann nicht Rückgängig gemacht werden!', 'Lager zurücksetzen', MB_ICONWARNING + MB_YESNO) = IDYES then
   begin
     StorageForm.SG.RowCount := 1;
-    StorageForm.SG.SaveToFile('Config\storage.xml');
+    StorageForm.SaveStorage();
     LoadShop();
     if Application.MessageBox('Möchten Sie alle Statistiken löschen? Diese Aktion kann nicht Rückgängig gemacht werden!', 'Statistiken zurücksetzen', MB_ICONWARNING + MB_YESNO) = IDYES then
     begin
@@ -245,10 +242,13 @@ end;
 
 procedure TMainForm.PayBtnClick(Sender: TObject);
 var
-  i, j, k, sell, sold : integer;
+  i, j, k, sell, sold, month, day : integer;
   found : boolean = false;
   price, revenue : double;
 begin
+  month:= StrToInt(MonthOf(Now).ToString) - 1;
+  day:= StrToInt(DayOf(Now).ToString) - 1;
+
   if ShopMode = 1 then
   begin
     if not StaticsForm.loadedToday then
@@ -294,9 +294,9 @@ begin
           StaticsForm.DayValues.Cells[1, 1] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 1]) + sell);
           StaticsForm.DayValues.Cells[1, 2] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 2]) + revenue, ffCurrency, 10, 2);
 
-          StaticsForm.TotalCustomersLbl.Caption := IntToStr(StrToInt(StaticsForm.TotalCustomersLbl.Caption) + 1);
-          StaticsForm.TotalSoldLbl.Caption := IntToStr(StrToInt(StaticsForm.TotalSoldLbl.Caption) + sell);
-          StaticsForm.TotalRevLbl.Caption := FloatToStrF(CurrToFloat(StaticsForm.TotalRevLbl.Caption) + revenue, ffCurrency, 10, 2);
+          StaticsForm.tStatics.Customers := StaticsForm.tStatics.Customers + 1;
+          StaticsForm.tStatics.Sold := StaticsForm.tStatics.Sold + sell;
+          StaticsForm.tStatics.Revenue := StaticsForm.tStatics.Revenue + revenue;
 
           found:= false;
           for j:= 0 to StaticsForm.TotalChartDataSG.RowCount - 1 do
@@ -319,6 +319,12 @@ begin
             StaticsForm.TotalChartDataSG.Cells[1,j]:= sell.ToString;
             StaticsForm.TotalChartDataSG.Cells[2,j]:= revenue.ToString;
           end;
+
+          StaticsForm.YearChartDataSG.Cells[0, month]:= (StrToInt(StaticsForm.YearChartDataSG.Cells[0, month]) + sell).ToString;
+          StaticsForm.YearChartDataSG.Cells[1, month]:= (StrToFloat(StaticsForm.YearChartDataSG.Cells[1, month]) + revenue).ToString;
+
+          StaticsForm.MonthChartDataSG.Cells[0, day]:= (StrToInt(StaticsForm.MonthChartDataSG.Cells[0, day]) + sell).ToString;
+          StaticsForm.MonthChartDataSG.Cells[1, day]:= (StrToFloat(StaticsForm.MonthChartDataSG.Cells[1, day]) + revenue).ToString;
 
           for j:= 1 to StorageForm.SG.RowCount - 1 do
           begin
@@ -427,9 +433,11 @@ begin
   end;
 
   StaticsForm.DayValues.Cells[1, 6] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 2]) - CurrToFloat(StaticsForm.DayValues.Cells[1, 5]), ffCurrency, 10, 2);
-  StorageForm.SG.SaveToFile('Config\storage.xml');
+  StorageForm.SaveStorage();
   StaticsForm.SaveDayStatics(Date);
   StaticsForm.SaveTotalStatics();
+  StaticsForm.SaveMonthStatics();
+  StaticsForm.SaveYearStatics();
   CancelBtnClick(sender);
 end;
 
@@ -441,7 +449,7 @@ end;
 
 procedure TMainForm.SaveMIClick(Sender: TObject);
 begin
-  StorageForm.SG.SaveToFile('Config\storage.xml');
+  StorageForm.SaveStorage();
 end;
 
 procedure TMainForm.ReloadMIClick(Sender: TObject);
@@ -452,20 +460,20 @@ end;
 
 procedure TMainForm.SGButtonClick(Sender: TObject; aCol, aRow: Integer);
 var
-  befor, av : integer;
+  before, av : integer;
   price : real = 0;
 begin
-  befor := StrToInt(SG.Cells[4, aRow]);
+  before := StrToInt(SG.Cells[4, aRow]);
   av:= StrToInt(SG.Cells[3, aRow]);
   case aCol of
-  5: if befor < av then SG.Cells[4, aRow] := (befor + 1).ToString;
-  6: if befor > 0 then SG.Cells[4, aRow] := (befor - 1).ToString;
+  5: if before < av then SG.Cells[4, aRow] := (before + 1).ToString;
+  6: if before > 0 then SG.Cells[4, aRow] := (before - 1).ToString;
   7: SG.Cells[4, aRow] := av.ToString;
   8: SG.Cells[4, aRow] := '0';
   end;
 
   price:= CurrToFloat(SG.Cells[2, aRow]);
-  MainPrice:= MainPrice - (price * befor);
+  MainPrice:= MainPrice - (price * before);
   MainPrice:= MainPrice + (price * StrToInt(SG.Cells[4, aRow]));
   MainPriceLbl.Caption := 'Gesamtpreis: ' + FloatToStrF(MainPrice, ffCurrency, 10, 2);
 end;

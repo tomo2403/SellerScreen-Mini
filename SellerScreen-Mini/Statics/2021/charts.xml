@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <grid version="3">
+    <saveoptions create="False" position="False" content="True"/>
+    <content>
+      <cells cellcount="24">
+        <cell1 column="0" row="0" text="0"/>
+        <cell2 column="0" row="1" text="0"/>
+        <cell3 column="0" row="2" text="0"/>
+        <cell4 column="0" row="3" text="0"/>
+        <cell5 column="0" row="4" text="3"/>
+        <cell6 column="0" row="5" text="0"/>
+        <cell7 column="0" row="6" text="0"/>
+        <cell8 column="0" row="7" text="0"/>
+        <cell9 column="0" row="8" text="0"/>
+        <cell10 column="0" row="9" text="0"/>
+        <cell11 column="0" row="10" text="0"/>
+        <cell12 column="0" row="11" text="0"/>
+        <cell13 column="1" row="0" text="0"/>
+        <cell14 column="1" row="1" text="0"/>
+        <cell15 column="1" row="2" text="0"/>
+        <cell16 column="1" row="3" text="0"/>
+        <cell17 column="1" row="4" text="15,4"/>
+        <cell18 column="1" row="5" text="0"/>
+        <cell19 column="1" row="6" text="0"/>
+        <cell20 column="1" row="7" text="0"/>
+        <cell21 column="1" row="8" text="0"/>
+        <cell22 column="1" row="9" text="0"/>
+        <cell23 column="1" row="10" text="0"/>
+        <cell24 column="1" row="11" text="0"/>
+      </cells>
+    </content>
+  </grid>
+</CONFIG>

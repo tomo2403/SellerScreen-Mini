@@ -73,8 +73,8 @@
         <cell5 column="2" row="2" text="Aktiv"/>
         <cell6 column="3" row="1" text="5,60 €"/>
         <cell7 column="3" row="2" text="4,20 €"/>
-        <cell8 column="4" row="1" text="91"/>
-        <cell9 column="4" row="2" text="40"/>
+        <cell8 column="4" row="1" text="81"/>
+        <cell9 column="4" row="2" text="34"/>
       </cells>
     </content>
   </grid>

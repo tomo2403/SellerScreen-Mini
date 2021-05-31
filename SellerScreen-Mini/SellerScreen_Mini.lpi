@@ -104,7 +104,7 @@
     </Linking>
   </CompilerOptions>
   <Debugging>
-    <Exceptions Count="5">
+    <Exceptions Count="10">
       <Item1>
         <Name Value="EAbort"/>
       </Item1>
@@ -120,6 +120,21 @@
       <Item5>
         <Name Value="Exception"/>
       </Item5>
+      <Item6>
+        <Name Value="RunError(2)"/>
+      </Item6>
+      <Item7>
+        <Name Value="EInOutError"/>
+      </Item7>
+      <Item8>
+        <Name Value="EEditableSourceRequired"/>
+      </Item8>
+      <Item9>
+        <Name Value="EGridException"/>
+      </Item9>
+      <Item10>
+        <Name Value="RunError(3)"/>
+      </Item10>
     </Exceptions>
   </Debugging>
 </CONFIG>

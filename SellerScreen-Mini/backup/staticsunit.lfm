@@ -9484,10 +9484,10 @@ object StaticsForm: TStaticsForm
     Height = 949
     Top = 10
     Width = 1707
-    ActivePage = TotalSheet
+    ActivePage = MonthSheet
     Align = alClient
     BorderSpacing.Around = 10
-    TabIndex = 3
+    TabIndex = 1
     TabOrder = 0
     OnChange = PCChange
     object DaySheet: TTabSheet
@@ -9709,6 +9709,8 @@ object StaticsForm: TStaticsForm
               Shadow.OffsetX = 10
               Shadow.Transparency = 200
               Shadow.Visible = True
+              Marks.Format = '%2:s: %0:.9g'
+              Marks.Style = smsCustom
               Depth = 10
             end
           end
@@ -9760,6 +9762,8 @@ object StaticsForm: TStaticsForm
               Shadow.OffsetX = 10
               Shadow.Transparency = 200
               Shadow.Visible = True
+              Marks.Format = '%2:s: %0:.9g'
+              Marks.Style = smsCustom
               Depth = 10
             end
           end
@@ -9807,6 +9811,11 @@ object StaticsForm: TStaticsForm
             Control = MonthSummaryPanel
             WrapAfter = waAuto
             Index = 3
+          end        
+          item
+            Control = MonthChartDataSG
+            WrapAfter = waAuto
+            Index = 4
           end>
         FlowLayout = tlTop
         FlowStyle = fsLeftRightTopBottom
@@ -9845,6 +9854,7 @@ object StaticsForm: TStaticsForm
             NumGlyphs = 1
             Flat = True
             MaxLength = 0
+            OnChange = MonthDateEditChange
             TabOrder = 0
             Spacing = 2
           end
@@ -10041,7 +10051,7 @@ object StaticsForm: TStaticsForm
                     Index = 4
                   end                
                   item
-                    Control = MonthLossesLbl
+                    Control = MonthLosesLbl
                     WrapAfter = waAuto
                     Index = 5
                   end>
@@ -10052,20 +10062,22 @@ object StaticsForm: TStaticsForm
                   Left = 10
                   Height = 21
                   Top = 10
-                  Width = 27
-                  Anchors = []
+                  Width = 40
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '000'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
                 object MonthSoldLbl: TLabel
                   Left = 10
                   Height = 21
                   Top = 51
-                  Width = 27
-                  Anchors = []
+                  Width = 40
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '000'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
                 object MonthRevLbl: TLabel
@@ -10073,39 +10085,43 @@ object StaticsForm: TStaticsForm
                   Height = 21
                   Top = 92
                   Width = 43
-                  Anchors = []
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '0,00 €'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
                 object MonthCanLbl: TLabel
                   Left = 10
                   Height = 21
                   Top = 133
-                  Width = 27
-                  Anchors = []
+                  Width = 40
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '000'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
                 object MonthRedLbl: TLabel
                   Left = 10
                   Height = 21
                   Top = 174
-                  Width = 27
-                  Anchors = []
+                  Width = 40
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '000'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
-                object MonthLossesLbl: TLabel
+                object MonthLosesLbl: TLabel
                   Left = 10
                   Height = 21
                   Top = 215
                   Width = 43
-                  Anchors = []
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '0,00 €'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
               end
@@ -10140,8 +10156,219 @@ object StaticsForm: TStaticsForm
           BorderSpacing.Left = 20
           BorderSpacing.Top = 10
           Caption = 'Grafiken zeichnen'
-          OnClick = DayDrawChartsBtnClick
+          OnClick = MonthDrawChartsBtnClick
           TabOrder = 2
+        end
+        object MonthChartDataSG: TStringGrid
+          Left = 0
+          Height = 148
+          Top = 486
+          Width = 232
+          Anchors = []
+          ColCount = 2
+          Columns = <          
+            item
+              Title.Caption = 'Sold'
+              Width = 64
+            end          
+            item
+              Title.Caption = 'Revenue'
+              Width = 64
+            end>
+          FixedCols = 0
+          FixedRows = 0
+          RowCount = 31
+          TabOrder = 3
+          Visible = False
+          Cells = (
+            62
+            0
+            0
+            '0'
+            0
+            1
+            '0'
+            0
+            2
+            '0'
+            0
+            3
+            '0'
+            0
+            4
+            '0'
+            0
+            5
+            '0'
+            0
+            6
+            '0'
+            0
+            7
+            '0'
+            0
+            8
+            '0'
+            0
+            9
+            '0'
+            0
+            10
+            '0'
+            0
+            11
+            '0'
+            0
+            12
+            '0'
+            0
+            13
+            '0'
+            0
+            14
+            '0'
+            0
+            15
+            '0'
+            0
+            16
+            '0'
+            0
+            17
+            '0'
+            0
+            18
+            '0'
+            0
+            19
+            '0'
+            0
+            20
+            '0'
+            0
+            21
+            '0'
+            0
+            22
+            '0'
+            0
+            23
+            '0'
+            0
+            24
+            '0'
+            0
+            25
+            '0'
+            0
+            26
+            '0'
+            0
+            27
+            '0'
+            0
+            28
+            '0'
+            0
+            29
+            '0'
+            0
+            30
+            '0'
+            1
+            0
+            '0'
+            1
+            1
+            '0'
+            1
+            2
+            '0'
+            1
+            3
+            '0'
+            1
+            4
+            '0'
+            1
+            5
+            '0'
+            1
+            6
+            '0'
+            1
+            7
+            '0'
+            1
+            8
+            '0'
+            1
+            9
+            '0'
+            1
+            10
+            '0'
+            1
+            11
+            '0'
+            1
+            12
+            '0'
+            1
+            13
+            '0'
+            1
+            14
+            '0'
+            1
+            15
+            '0'
+            1
+            16
+            '0'
+            1
+            17
+            '0'
+            1
+            18
+            '0'
+            1
+            19
+            '0'
+            1
+            20
+            '0'
+            1
+            21
+            '0'
+            1
+            22
+            '0'
+            1
+            23
+            '0'
+            1
+            24
+            '0'
+            1
+            25
+            '0'
+            1
+            26
+            '0'
+            1
+            27
+            '0'
+            1
+            28
+            '0'
+            1
+            29
+            '0'
+            1
+            30
+            '0'
+          )
         end
       end
       object MonthScrollBox: TScrollBox
@@ -10149,18 +10376,18 @@ object StaticsForm: TStaticsForm
         Height = 915
         Top = 0
         Width = 1443
-        HorzScrollBar.Page = 1426
-        VertScrollBar.Page = 898
+        HorzScrollBar.Page = 1443
+        VertScrollBar.Page = 816
         Align = alRight
         Anchors = [akTop, akLeft, akRight, akBottom]
         AutoSize = True
         BorderStyle = bsNone
         ClientHeight = 898
-        ClientWidth = 1426
+        ClientWidth = 1443
         TabOrder = 1
         object MonthSBFlowPanel: TFlowPanel
           Left = 0
-          Height = 1022
+          Height = 898
           Top = 0
           Width = 1540
           Align = alClient
@@ -10175,16 +10402,6 @@ object StaticsForm: TStaticsForm
               Control = MonthRevenueChart
               WrapAfter = waAuto
               Index = 1
-            end          
-            item
-              Control = Panel8
-              WrapAfter = waAuto
-              Index = 2
-            end          
-            item
-              Control = Panel9
-              WrapAfter = waAuto
-              Index = 3
             end>
           FlowLayout = tlTop
           FlowStyle = fsLeftRightTopBottom
@@ -10200,6 +10417,7 @@ object StaticsForm: TStaticsForm
               item
                 Marks.LabelBrush.Style = bsClear
                 Minors = <>
+                Range.UseMin = True
                 Title.LabelFont.CharSet = ANSI_CHARSET
                 Title.LabelFont.Color = clBlack
                 Title.LabelFont.Height = -13
@@ -10212,6 +10430,9 @@ object StaticsForm: TStaticsForm
                 Title.LabelBrush.Style = bsClear
               end            
               item
+                Intervals.Count = 32
+                Intervals.MaxLength = 100
+                Intervals.MinLength = 0
                 Intervals.NiceSteps = '1'
                 Alignment = calBottom
                 Marks.LabelBrush.Style = bsClear
@@ -10223,7 +10444,7 @@ object StaticsForm: TStaticsForm
                 Title.LabelFont.Pitch = fpVariable
                 Title.LabelFont.Quality = fqDraft
                 Title.Visible = True
-                Title.Caption = 'Monat'
+                Title.Caption = 'Tag'
                 Title.LabelBrush.Style = bsClear
               end>
             BackColor = clNone
@@ -10248,9 +10469,10 @@ object StaticsForm: TStaticsForm
             object MonthSoldChSeries: TBarSeries
               Shadow.Transparency = 200
               Shadow.Visible = True
+              Marks.Format = '%0:.9g'
+              Marks.Style = smsValue
               BarBrush.Color = clRed
               Depth = 5
-              Source = MonthSoldRCS
               UseZeroLevel = False
             end
           end
@@ -10265,6 +10487,7 @@ object StaticsForm: TStaticsForm
               item
                 Marks.LabelBrush.Style = bsClear
                 Minors = <>
+                Range.UseMin = True
                 Title.LabelFont.CharSet = ANSI_CHARSET
                 Title.LabelFont.Color = clBlack
                 Title.LabelFont.Height = -13
@@ -10277,6 +10500,9 @@ object StaticsForm: TStaticsForm
                 Title.LabelBrush.Style = bsClear
               end            
               item
+                Intervals.Count = 32
+                Intervals.MaxLength = 100
+                Intervals.MinLength = 0
                 Intervals.NiceSteps = '1'
                 Alignment = calBottom
                 Marks.LabelBrush.Style = bsClear
@@ -10314,150 +10540,11 @@ object StaticsForm: TStaticsForm
             object MonthRevChSeries: TBarSeries
               Shadow.Transparency = 200
               Shadow.Visible = True
+              Marks.Format = '%0:.9g'
+              Marks.Style = smsValue
               BarBrush.Color = clTeal
               Depth = 5
-              Source = MonthRevenueRCS
               UseZeroLevel = False
-            end
-          end
-          object Panel8: TPanel
-            Left = 0
-            Height = 206
-            Top = 816
-            Width = 492
-            Anchors = []
-            AutoSize = True
-            BevelOuter = bvNone
-            ClientHeight = 206
-            ClientWidth = 492
-            TabOrder = 2
-            object Label46: TLabel
-              Left = 20
-              Height = 21
-              Top = 10
-              Width = 112
-              BorderSpacing.Around = 10
-              Caption = 'Am Beliebtesten'
-              ParentColor = False
-            end
-            object MonthTopSoldSG: TStringGrid
-              Left = 20
-              Height = 146
-              Top = 40
-              Width = 452
-              AutoFillColumns = True
-              BorderSpacing.Around = 20
-              ColCount = 4
-              Columns = <              
-                item
-                  Title.Caption = 'Bezeichnung'
-                  Width = 127
-                end              
-                item
-                  Title.Caption = 'Einzelpreis'
-                  Width = 127
-                end              
-                item
-                  Title.Caption = 'Verkauft'
-                  Width = 127
-                end>
-              DefaultColWidth = 50
-              Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
-              TabOrder = 0
-              ColWidths = (
-                50
-                127
-                127
-                127
-              )
-              Cells = (
-                5
-                0
-                0
-                'Platz'
-                0
-                1
-                '1.'
-                0
-                2
-                '2.'
-                0
-                3
-                '3.'
-                0
-                4
-                '4.'
-              )
-            end
-          end
-          object Panel9: TPanel
-            Left = 492
-            Height = 206
-            Top = 816
-            Width = 492
-            Anchors = []
-            AutoSize = True
-            BevelOuter = bvNone
-            ClientHeight = 206
-            ClientWidth = 492
-            TabOrder = 3
-            object Label49: TLabel
-              Left = 20
-              Height = 21
-              Top = 10
-              Width = 138
-              BorderSpacing.Around = 10
-              Caption = 'Höchste Einnahmen'
-              ParentColor = False
-            end
-            object MonthTopRevSG: TStringGrid
-              Left = 20
-              Height = 146
-              Top = 40
-              Width = 452
-              AutoFillColumns = True
-              BorderSpacing.Around = 20
-              ColCount = 4
-              Columns = <              
-                item
-                  Title.Caption = 'Bezeichnung'
-                  Width = 127
-                end              
-                item
-                  Title.Caption = 'Einzelpreis'
-                  Width = 127
-                end              
-                item
-                  Title.Caption = 'Einnahmen'
-                  Width = 127
-                end>
-              DefaultColWidth = 50
-              Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
-              TabOrder = 0
-              ColWidths = (
-                50
-                127
-                127
-                127
-              )
-              Cells = (
-                5
-                0
-                0
-                'Platz'
-                0
-                1
-                '1.'
-                0
-                2
-                '2.'
-                0
-                3
-                '3.'
-                0
-                4
-                '4.'
-              )
             end
           end
         end
@@ -10473,7 +10560,7 @@ object StaticsForm: TStaticsForm
         Top = 0
         Width = 1443
         HorzScrollBar.Page = 640
-        VertScrollBar.Page = 812
+        VertScrollBar.Page = 408
         Align = alRight
         Anchors = [akTop, akLeft, akRight, akBottom]
         AutoSize = True
@@ -10498,14 +10585,9 @@ object StaticsForm: TStaticsForm
               Control = YearRevenueChart
               WrapAfter = waAuto
               Index = 1
-            end          
-            item
-              Control = Panel5
-              WrapAfter = waAuto
-              Index = 2
             end>
           FlowLayout = tlTop
-          FlowStyle = fsLeftRightTopBottom
+          FlowStyle = fsTopBottomLeftRight
           TabOrder = 0
           object YearSoldChart: TChart
             Left = 20
@@ -10566,16 +10648,17 @@ object StaticsForm: TStaticsForm
             object YearSoldChSeries: TBarSeries
               Shadow.Transparency = 200
               Shadow.Visible = True
+              Marks.Format = '%0:.9g'
+              Marks.Style = smsValue
               BarBrush.Color = clGreen
               Depth = 5
-              Source = YearSoldRCS
               UseZeroLevel = False
             end
           end
           object YearRevenueChart: TChart
-            Left = 660
+            Left = 20
             Height = 368
-            Top = 20
+            Top = 429
             Width = 600
             AutoFocus = True
             AllowZoom = False
@@ -10632,138 +10715,11 @@ object StaticsForm: TStaticsForm
             object YearRevChSeries: TBarSeries
               Shadow.Transparency = 200
               Shadow.Visible = True
+              Marks.Format = '%0:.9g'
+              Marks.Style = smsValue
               BarBrush.Color = clMaroon
               Depth = 5
-              Source = YearRevenueRCS
               UseZeroLevel = False
-            end
-          end
-          object Panel5: TPanel
-            Left = 0
-            Height = 404
-            Top = 408
-            Width = 492
-            Anchors = []
-            AutoSize = True
-            BevelOuter = bvNone
-            ClientHeight = 404
-            ClientWidth = 492
-            TabOrder = 2
-            object Label30: TLabel
-              Left = 20
-              Height = 21
-              Top = 10
-              Width = 112
-              BorderSpacing.Around = 10
-              Caption = 'Am Beliebtesten'
-              ParentColor = False
-            end
-            object YearTopSoldSG: TStringGrid
-              Left = 20
-              Height = 146
-              Top = 40
-              Width = 452
-              AutoFillColumns = True
-              BorderSpacing.Around = 20
-              ColCount = 4
-              Columns = <              
-                item
-                  Title.Caption = 'Bezeichnung'
-                  Width = 127
-                end              
-                item
-                  Title.Caption = 'Einzelpreis'
-                  Width = 127
-                end              
-                item
-                  Title.Caption = 'Verkauft'
-                  Width = 127
-                end>
-              DefaultColWidth = 50
-              Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
-              TabOrder = 0
-              ColWidths = (
-                50
-                127
-                127
-                127
-              )
-              Cells = (
-                5
-                0
-                0
-                'Platz'
-                0
-                1
-                '1.'
-                0
-                2
-                '2.'
-                0
-                3
-                '3.'
-                0
-                4
-                '4.'
-              )
-            end
-            object Label31: TLabel
-              Left = 20
-              Height = 21
-              Top = 208
-              Width = 138
-              BorderSpacing.Around = 10
-              Caption = 'Höchste Einnahmen'
-              ParentColor = False
-            end
-            object YearTopRevSG: TStringGrid
-              Left = 20
-              Height = 146
-              Top = 238
-              Width = 452
-              AutoFillColumns = True
-              BorderSpacing.Around = 20
-              ColCount = 4
-              Columns = <              
-                item
-                  Title.Caption = 'Bezeichnung'
-                  Width = 127
-                end              
-                item
-                  Title.Caption = 'Einzelpreis'
-                  Width = 127
-                end              
-                item
-                  Title.Caption = 'Einnahmen'
-                  Width = 127
-                end>
-              DefaultColWidth = 50
-              Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
-              TabOrder = 1
-              ColWidths = (
-                50
-                127
-                127
-                127
-              )
-              Cells = (
-                5
-                0
-                0
-                'Platz'
-                0
-                1
-                '1.'
-                0
-                2
-                '2.'
-                0
-                3
-                '3.'
-                0
-                4
-                '4.'
-              )
             end
           end
         end
@@ -10796,6 +10752,11 @@ object StaticsForm: TStaticsForm
             Control = Panel3
             WrapAfter = waAuto
             Index = 3
+          end        
+          item
+            Control = YearChartDataSG
+            WrapAfter = waAuto
+            Index = 4
           end>
         FlowLayout = tlTop
         FlowStyle = fsLeftRightTopBottom
@@ -11030,7 +10991,7 @@ object StaticsForm: TStaticsForm
                     Index = 4
                   end                
                   item
-                    Control = YearLossesLbl
+                    Control = YearLosesLbl
                     WrapAfter = waAuto
                     Index = 5
                   end>
@@ -11041,20 +11002,22 @@ object StaticsForm: TStaticsForm
                   Left = 10
                   Height = 21
                   Top = 10
-                  Width = 27
-                  Anchors = []
+                  Width = 40
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '000'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
                 object YearSoldLbl: TLabel
                   Left = 10
                   Height = 21
                   Top = 51
-                  Width = 27
-                  Anchors = []
+                  Width = 40
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '000'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
                 object YearRevLbl: TLabel
@@ -11062,39 +11025,43 @@ object StaticsForm: TStaticsForm
                   Height = 21
                   Top = 92
                   Width = 43
-                  Anchors = []
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '0,00 €'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
                 object YearCanLbl: TLabel
                   Left = 10
                   Height = 21
                   Top = 133
-                  Width = 27
-                  Anchors = []
+                  Width = 40
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '000'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
                 object YearRedLbl: TLabel
                   Left = 10
                   Height = 21
                   Top = 174
-                  Width = 27
-                  Anchors = []
+                  Width = 40
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '000'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
-                object YearLossesLbl: TLabel
+                object YearLosesLbl: TLabel
                   Left = 10
                   Height = 21
                   Top = 215
                   Width = 43
-                  Anchors = []
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '0,00 €'
+                  Constraints.MinWidth = 40
                   ParentColor = False
                 end
               end
@@ -11129,8 +11096,105 @@ object StaticsForm: TStaticsForm
           BorderSpacing.Left = 20
           BorderSpacing.Top = 10
           Caption = 'Grafiken zeichnen'
-          OnClick = DayDrawChartsBtnClick
+          OnClick = YearDrawChartsBtnClick
           TabOrder = 2
+        end
+        object YearChartDataSG: TStringGrid
+          Left = 0
+          Height = 148
+          Top = 486
+          Width = 232
+          Anchors = []
+          ColCount = 2
+          Columns = <          
+            item
+              Title.Caption = 'Sold'
+              Width = 64
+            end          
+            item
+              Title.Caption = 'Revenue'
+              Width = 64
+            end>
+          FixedCols = 0
+          FixedRows = 0
+          RowCount = 12
+          TabOrder = 3
+          Visible = False
+          Cells = (
+            24
+            0
+            0
+            '0'
+            0
+            1
+            '0'
+            0
+            2
+            '0'
+            0
+            3
+            '0'
+            0
+            4
+            '0'
+            0
+            5
+            '0'
+            0
+            6
+            '0'
+            0
+            7
+            '0'
+            0
+            8
+            '0'
+            0
+            9
+            '0'
+            0
+            10
+            '0'
+            0
+            11
+            '0'
+            1
+            0
+            '0'
+            1
+            1
+            '0'
+            1
+            2
+            '0'
+            1
+            3
+            '0'
+            1
+            4
+            '0'
+            1
+            5
+            '0'
+            1
+            6
+            '0'
+            1
+            7
+            '0'
+            1
+            8
+            '0'
+            1
+            9
+            '0'
+            1
+            10
+            '0'
+            1
+            11
+            '0'
+          )
         end
       end
     end
@@ -11144,18 +11208,18 @@ object StaticsForm: TStaticsForm
         Top = 0
         Width = 1443
         HorzScrollBar.Page = 1040
-        VertScrollBar.Page = 915
+        VertScrollBar.Page = 816
         Align = alRight
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderStyle = bsNone
         ClientHeight = 915
-        ClientWidth = 1426
+        ClientWidth = 1443
         TabOrder = 0
         object TotalSBFlowPanel: TFlowPanel
           Left = 0
-          Height = 1220
+          Height = 915
           Top = 0
-          Width = 1426
+          Width = 1443
           Align = alClient
           BevelOuter = bvNone
           ControlList = <          
@@ -11168,143 +11232,10 @@ object StaticsForm: TStaticsForm
               Control = TotalRevChart
               WrapAfter = waAuto
               Index = 1
-            end          
-            item
-              Control = Panel2
-              WrapAfter = waAuto
-              Index = 2
             end>
           FlowLayout = tlTop
           FlowStyle = fsLeftRightTopBottom
           TabOrder = 0
-          object Panel2: TPanel
-            Left = 0
-            Height = 404
-            Top = 816
-            Width = 492
-            Anchors = []
-            AutoSize = True
-            BevelOuter = bvNone
-            ClientHeight = 404
-            ClientWidth = 492
-            TabOrder = 0
-            object Label14: TLabel
-              Left = 20
-              Height = 21
-              Top = 10
-              Width = 112
-              BorderSpacing.Around = 10
-              Caption = 'Am Beliebtesten'
-              ParentColor = False
-            end
-            object TotalTopSoldSG: TStringGrid
-              Left = 20
-              Height = 146
-              Top = 40
-              Width = 452
-              AutoFillColumns = True
-              BorderSpacing.Around = 20
-              ColCount = 4
-              Columns = <              
-                item
-                  Title.Caption = 'Bezeichnung'
-                  Width = 132
-                end              
-                item
-                  Title.Caption = 'Einzelpreis'
-                  Width = 132
-                end              
-                item
-                  Title.Caption = 'Verkauft'
-                  Width = 134
-                end>
-              DefaultColWidth = 50
-              Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
-              TabOrder = 0
-              ColWidths = (
-                50
-                132
-                132
-                134
-              )
-              Cells = (
-                5
-                0
-                0
-                'Platz'
-                0
-                1
-                '1.'
-                0
-                2
-                '2.'
-                0
-                3
-                '3.'
-                0
-                4
-                '4.'
-              )
-            end
-            object Label15: TLabel
-              Left = 20
-              Height = 21
-              Top = 208
-              Width = 138
-              BorderSpacing.Around = 10
-              Caption = 'Höchste Einnahmen'
-              ParentColor = False
-            end
-            object TotalTopRevLbl: TStringGrid
-              Left = 20
-              Height = 146
-              Top = 238
-              Width = 452
-              AutoFillColumns = True
-              BorderSpacing.Around = 20
-              ColCount = 4
-              Columns = <              
-                item
-                  Title.Caption = 'Bezeichnung'
-                  Width = 132
-                end              
-                item
-                  Title.Caption = 'Einzelpreis'
-                  Width = 132
-                end              
-                item
-                  Title.Caption = 'Einnahmen'
-                  Width = 134
-                end>
-              DefaultColWidth = 50
-              Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
-              TabOrder = 1
-              ColWidths = (
-                50
-                132
-                132
-                134
-              )
-              Cells = (
-                5
-                0
-                0
-                'Platz'
-                0
-                1
-                '1.'
-                0
-                2
-                '2.'
-                0
-                3
-                '3.'
-                0
-                4
-                '4.'
-              )
-            end
-          end
           object TotalSoldChart: TChart
             Left = 20
             Height = 368
@@ -11367,9 +11298,10 @@ object StaticsForm: TStaticsForm
             object TotalSoldChSeries: TBarSeries
               Shadow.Transparency = 200
               Shadow.Visible = True
+              Marks.Format = '%0:.9g'
+              Marks.Style = smsValue
               BarBrush.Color = clSkyBlue
               Depth = 5
-              UseZeroLevel = False
             end
           end
           object TotalRevChart: TChart
@@ -11395,7 +11327,7 @@ object StaticsForm: TStaticsForm
                 Title.LabelBrush.Style = bsClear
               end            
               item
-                Intervals.Count = 21
+                Intervals.Count = 3
                 Intervals.MaxLength = 10000
                 Intervals.NiceSteps = '1'
                 Intervals.Options = [aipUseCount, aipUseMaxLength, aipUseNiceSteps]
@@ -11435,9 +11367,10 @@ object StaticsForm: TStaticsForm
             object TotalRevChSeries: TBarSeries
               Shadow.Transparency = 200
               Shadow.Visible = True
+              Marks.Format = '%0:.9g'
+              Marks.Style = smsValue
               BarBrush.Color = clOlive
               Depth = 5
-              UseZeroLevel = False
             end
           end
         end
@@ -11685,7 +11618,7 @@ object StaticsForm: TStaticsForm
                   Height = 21
                   Top = 10
                   Width = 40
-                  Anchors = []
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '000'
                   Constraints.MinWidth = 40
@@ -11696,7 +11629,7 @@ object StaticsForm: TStaticsForm
                   Height = 21
                   Top = 51
                   Width = 40
-                  Anchors = []
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '000'
                   Constraints.MinWidth = 40
@@ -11707,7 +11640,7 @@ object StaticsForm: TStaticsForm
                   Height = 21
                   Top = 92
                   Width = 43
-                  Anchors = []
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '0,00 €'
                   Constraints.MinWidth = 40
@@ -11718,7 +11651,7 @@ object StaticsForm: TStaticsForm
                   Height = 21
                   Top = 133
                   Width = 40
-                  Anchors = []
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '000'
                   Constraints.MinWidth = 40
@@ -11729,7 +11662,7 @@ object StaticsForm: TStaticsForm
                   Height = 21
                   Top = 174
                   Width = 40
-                  Anchors = []
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '000'
                   Constraints.MinWidth = 40
@@ -11740,7 +11673,7 @@ object StaticsForm: TStaticsForm
                   Height = 21
                   Top = 215
                   Width = 43
-                  Anchors = []
+                  Anchors = [akRight]
                   BorderSpacing.Around = 10
                   Caption = '0,00 €'
                   Constraints.MinWidth = 40
@@ -11771,6 +11704,7 @@ object StaticsForm: TStaticsForm
           FixedRows = 0
           RowCount = 0
           TabOrder = 2
+          Visible = False
         end
       end
     end
