@@ -29,7 +29,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Buttons, ExtCtrls,
-  StdCtrls, ComCtrls, Menus, LCLIntf, Grids, LCLType, DateUtils;
+  StdCtrls, ComCtrls, Menus, LCLIntf, Grids, LCLType, DateUtils, ShellAPI;
 
 type
 
@@ -148,7 +148,7 @@ begin
     NotReadyLbl.Visible:= false;
   end;
 
-  SG.Enabled:= true;
+  if ShopMode > 0 then SG.Enabled:= true;
   StatusBar.Panels[1].Text := IntToStr(SG.RowCount - 1) + ' von ' + IntToStr(StorageForm.SG.RowCount - 1) + ' Produkten aktiv';
   StatusBar.Panels[0].Text := 'Bereit';
 end;
@@ -213,16 +213,33 @@ begin
 end;
 
 procedure TMainForm.ResetDataClick(Sender: TObject);
+var
+  FileOp : TSHFileOpStruct;
+  exe : boolean = false;
 begin
+  FileOp.wFunc := FO_DELETE;
+  FileOp.fFlags := FOF_SILENT or FOF_NOERRORUI or FOF_NOCONFIRMATION;
+  FillChar(FileOp, SizeOf(FileOp), 0);
+
   if Application.MessageBox('Möchten Sie das Lager wirklich zurücksetzten? Diese Aktion kann nicht Rückgängig gemacht werden!', 'Lager zurücksetzen', MB_ICONWARNING + MB_YESNO) = IDYES then
   begin
-    StorageForm.SG.RowCount := 1;
-    StorageForm.SaveStorage();
-    LoadShop();
-    if Application.MessageBox('Möchten Sie alle Statistiken löschen? Diese Aktion kann nicht Rückgängig gemacht werden!', 'Statistiken zurücksetzen', MB_ICONWARNING + MB_YESNO) = IDYES then
-    begin
-      //DeleteDirectory('Statics');
-    end;
+    FileOp.pFrom := PChar('Config' + #0);
+    SHFileOperation(FileOp);
+    exe := true;
+  end;
+
+  if Application.MessageBox('Möchten Sie alle Statistiken löschen? Diese Aktion kann nicht Rückgängig gemacht werden!', 'Statistiken zurücksetzen', MB_ICONWARNING + MB_YESNO) = IDYES then
+  begin
+    FileOp.pFrom := PChar('Statics' + #0);
+    SHFileOperation(FileOp);
+    exe := true;
+  end;
+
+  if exe then
+  begin
+    Application.MessageBox('Die Anwendugn wird nun neu gestartet.', 'SellerScreen-Mini', MB_ICONInformation + MB_OK);
+    ShellExecute(Handle, nil, PChar(Application.ExeName), nil, nil, SW_SHOWNORMAL);
+    Application.Terminate;
   end;
 end;
 

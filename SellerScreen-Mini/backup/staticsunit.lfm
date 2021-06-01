@@ -9484,10 +9484,10 @@ object StaticsForm: TStaticsForm
     Height = 949
     Top = 10
     Width = 1707
-    ActivePage = MonthSheet
+    ActivePage = TotalSheet
     Align = alClient
     BorderSpacing.Around = 10
-    TabIndex = 1
+    TabIndex = 3
     TabOrder = 0
     OnChange = PCChange
     object DaySheet: TTabSheet
@@ -9500,7 +9500,6 @@ object StaticsForm: TStaticsForm
         Top = 16
         Width = 198
         AutoSize = True
-        DateTime = 44333
         DisplaySettings = [dsShowHeadings, dsShowDayNames, dsShowWeekNumbers]
         OnDayChanged = DayCalDayChanged
         TabOrder = 0
@@ -10795,6 +10794,7 @@ object StaticsForm: TStaticsForm
             NumGlyphs = 1
             Flat = True
             MaxLength = 0
+            OnChange = YearDateEditChange
             TabOrder = 0
             Spacing = 2
           end
@@ -11390,14 +11390,19 @@ object StaticsForm: TStaticsForm
             Index = 0
           end        
           item
-            Control = TotalSummaryPanel
+            Control = Total404Lbl
             WrapAfter = waAuto
             Index = 1
           end        
           item
-            Control = TotalChartDataSG
+            Control = TotalSummaryPanel
             WrapAfter = waAuto
             Index = 2
+          end        
+          item
+            Control = TotalChartDataSG
+            WrapAfter = waAuto
+            Index = 3
           end>
         FlowLayout = tlTop
         FlowStyle = fsLeftRightTopBottom
@@ -11417,7 +11422,7 @@ object StaticsForm: TStaticsForm
         object TotalSummaryPanel: TPanel
           Left = 0
           Height = 310
-          Top = 136
+          Top = 177
           Width = 229
           Anchors = []
           AutoSize = True
@@ -11686,7 +11691,7 @@ object StaticsForm: TStaticsForm
         object TotalChartDataSG: TStringGrid
           Left = 0
           Height = 148
-          Top = 446
+          Top = 487
           Width = 232
           Anchors = []
           ColCount = 3
@@ -11705,6 +11710,25 @@ object StaticsForm: TStaticsForm
           RowCount = 0
           TabOrder = 2
           Visible = False
+        end
+        object Total404Lbl: TLabel
+          Left = 20
+          Height = 21
+          Top = 91
+          Width = 198
+          Anchors = []
+          AutoSize = False
+          BorderSpacing.Left = 20
+          BorderSpacing.Bottom = 20
+          Caption = 'Daten nicht gefunden!'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clRed
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ParentColor = False
+          ParentFont = False
         end
       end
     end

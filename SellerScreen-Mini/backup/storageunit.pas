@@ -35,6 +35,7 @@ type
     procedure AddProductMIClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GenStorageMIClick(Sender: TObject);
+    procedure SaveStorage();
     procedure PrEditCancelBtnClick(Sender: TObject);
     procedure PrEditSaveBtnClick(Sender: TObject);
     procedure RemoveProdctBtnClick(Sender: TObject);
@@ -136,6 +137,12 @@ begin
   end;
 end;
 
+procedure TStorageForm.SaveStorage();
+begin
+  ForceDirectories('Config');
+  SG.SaveToFile('Config\storage.xml');
+end;
+
 procedure TStorageForm.FormCreate(Sender: TObject);
 begin
   try
@@ -145,7 +152,7 @@ begin
     GetSelectedProduct();
     MainForm.LoadShop();
     except
-     Application.MessageBox('Lager konnte nicht geladen werden!', 'Lager', mb_IconError + mb_Ok)
+     Application.MessageBox('Lager konnte nicht geladen werden!', 'SellerScreen-Mini', mb_IconError + mb_Ok)
     end;
 end;
 
@@ -156,7 +163,7 @@ end;
 
 procedure TStorageForm.GenStorageMIClick(Sender: TObject);
 begin
-  SG.SaveToFile('Config\storage.xml');
+  SaveStorage();
 end;
 
 procedure TStorageForm.PrEditCancelBtnClick(Sender: TObject);
@@ -171,7 +178,7 @@ begin
   SG.Cells[3, SG.Row] := GetCurrency(FloatToStr(PrEditPriceBox.Value));
   SG.Cells[4, SG.Row] := FloatToStr(PrEditAvailableBox.Value);
 
-  SG.SaveToFile('Config\storage.xml');
+  SaveStorage();
 end;
 
 procedure TStorageForm.RemoveProdctBtnClick(Sender: TObject);
@@ -183,7 +190,7 @@ begin
   if Reply = IDYES then
   begin
     SG.DeleteRow(SG.Row);
-    SG.SaveToFile('Config\storage.xml');
+    SaveStorage();
   end;
 end;
 
