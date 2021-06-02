@@ -156,7 +156,7 @@ type
   private
 
   public
-    loadedToday: boolean;
+    loadedDay: TDateTime;
     tStatics : StaticsSummary;
     mStatics : StaticsSummary;
     yStatics : StaticsSummary;
@@ -164,7 +164,7 @@ type
 
 var
   StaticsForm: TStaticsForm;
-  loadedToday: boolean = false;
+  loadedDay: TDateTime;
   tStatics : StaticsSummary;
   mStatics : StaticsSummary;
   yStatics : StaticsSummary;
@@ -216,9 +216,7 @@ begin
 
     if charts then DayDrawChartsBtnClick(DayDrawChartsBtn);
 
-    if d = Now then loadedToday := true
-    else loadedToday := false;
-
+    loadedDay := d;
     Result:= true;
   end
   else

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <grid version="3">
+    <saveoptions create="True" position="False" content="True"/>
+    <design columncount="5" rowcount="2" fixedcols="1" fixedrows="1" defaultcolwidth="64" isdefaultcolwidth="0" defaultrowheight="27" isdefaultrowheight="0" color="clDefault">
+      <columns columnsenabled="True" columncount="4">
+        <column0>
+          <index value="0"/>
+          <width value="272"/>
+          <buttonstyle value="0"/>
+          <title>
+            <caption value="Bezeichnung"/>
+          </title>
+        </column0>
+        <column1>
+          <index value="1"/>
+          <width value="80"/>
+          <buttonstyle value="0"/>
+          <title>
+            <caption value="Status"/>
+          </title>
+        </column1>
+        <column2>
+          <index value="2"/>
+          <width value="100"/>
+          <buttonstyle value="0"/>
+          <title>
+            <caption value="Preis"/>
+          </title>
+        </column2>
+        <column3>
+          <index value="3"/>
+          <width value="100"/>
+          <buttonstyle value="0"/>
+          <title>
+            <caption value="Verfügbar"/>
+          </title>
+        </column3>
+      </columns>
+      <options>
+        <goFixedVertLine value="True"/>
+        <goFixedHorzLine value="True"/>
+        <goVertLine value="True"/>
+        <goHorzLine value="True"/>
+        <goRangeSelect value="False"/>
+        <goDrawFocusSelected value="False"/>
+        <goRowSizing value="False"/>
+        <goColSizing value="True"/>
+        <goRowMoving value="True"/>
+        <goColMoving value="False"/>
+        <goEditing value="False"/>
+        <goAutoAddRows value="False"/>
+        <goTabs value="True"/>
+        <goRowSelect value="True"/>
+        <goAlwaysShowEditor value="False"/>
+        <goThumbTracking value="False"/>
+        <goColSpanning value="False"/>
+        <goRelaxedRowSelect value="False"/>
+        <goDblClickAutoSize value="False"/>
+        <goSmoothScroll value="True"/>
+        <goAutoAddRowsSkipContentCheck value="False"/>
+        <goRowHighlight value="True"/>
+        <goScrollToLastCol value="True"/>
+        <goScrollToLastRow value="True"/>
+      </options>
+    </design>
+    <content>
+      <cells cellcount="5">
+        <cell1 column="0" row="0" text="Nr."/>
+        <cell2 column="1" row="1" text="test"/>
+        <cell3 column="2" row="1" text="Aktiv"/>
+        <cell4 column="3" row="1" text="2,00 €"/>
+        <cell5 column="4" row="1" text="17"/>
+      </cells>
+    </content>
+  </grid>
+</CONFIG>

@@ -268,8 +268,7 @@ begin
 
   if ShopMode = 1 then
   begin
-    if not StaticsForm.loadedToday then
-      StaticsForm.LoadDayStatics(Date);
+    if StaticsForm.loadedDay = Date then StaticsForm.LoadDayStatics(Now);
 
     if (SG.RowCount > 1) then
     begin

@@ -156,7 +156,7 @@ type
   private
 
   public
-    loadedToday: boolean;
+    loadedDay: boolean;
     tStatics : StaticsSummary;
     mStatics : StaticsSummary;
     yStatics : StaticsSummary;
@@ -164,7 +164,7 @@ type
 
 var
   StaticsForm: TStaticsForm;
-  loadedToday: boolean = false;
+  loadedDay: TDateTime;
   tStatics : StaticsSummary;
   mStatics : StaticsSummary;
   yStatics : StaticsSummary;
@@ -216,9 +216,7 @@ begin
 
     if charts then DayDrawChartsBtnClick(DayDrawChartsBtn);
 
-    if d = Now then loadedToday := true
-    else loadedToday := false;
-
+    loadedDay := d;
     Result:= true;
   end
   else
@@ -344,11 +342,11 @@ procedure TStaticsForm.SaveMonthStatics(d : TDateTime);
 var
   path : string;
 begin
-  path := 'Statics\' + YearOf(Now).ToString + '\' + MonthOf(Now).ToString;
+  path := 'Statics\' + YearOf(d).ToString + '\' + MonthOf(d).ToString;
   if ForceDirectories(path) then
   begin
     try
-      AssignFile(mSFile, 'Statics\' + YearOf(Now).ToString + '\' + MonthOf(Now).ToString + '\summary.bin');
+      AssignFile(mSFile, 'Statics\' + YearOf(d).ToString + '\' + MonthOf(d).ToString + '\summary.bin');
       Rewrite(mSFile);
       Write(mSFile, mStatics);
       CloseFile(mSFile);
@@ -357,7 +355,7 @@ begin
     end;
 
     try
-      MonthChartDataSG.SaveToFile('Statics\' + YearOf(Now).ToString + '\' + MonthOf(Now).ToString + '\charts.xml');
+      MonthChartDataSG.SaveToFile('Statics\' + YearOf(d).ToString + '\' + MonthOf(d).ToString + '\charts.xml');
     except
       Application.MessageBox('Die Daten der Diagramme konnten nicht gespeichert werden!', 'Monatsstatistiken', MB_ICONERROR + MB_OK);
     end;
@@ -407,7 +405,7 @@ procedure TStaticsForm.SaveYearStatics(d : TDateTime);
 var
   path : string;
 begin
-  path := 'Statics\' + YearOf(Now).ToString;
+  path := 'Statics\' + YearOf(d).ToString;
   if ForceDirectories(path) then
   begin
     try

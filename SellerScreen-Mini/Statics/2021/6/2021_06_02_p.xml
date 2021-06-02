@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <grid version="3">
+    <saveoptions create="True" position="False" content="True"/>
+    <design columncount="7" rowcount="2" fixedcols="1" fixedrows="1" defaultcolwidth="64" isdefaultcolwidth="1" defaultrowheight="28" isdefaultrowheight="0" color="clWindow">
+      <columns columnsenabled="True" columncount="6">
+        <column0>
+          <index value="0"/>
+          <width value="200"/>
+          <buttonstyle value="0"/>
+          <title>
+            <caption value="Bezeichnung"/>
+          </title>
+        </column0>
+        <column1>
+          <index value="1"/>
+          <width value="100"/>
+          <buttonstyle value="0"/>
+          <title>
+            <caption value="Einzelpreis"/>
+          </title>
+        </column1>
+        <column2>
+          <index value="2"/>
+          <width value="100"/>
+          <buttonstyle value="0"/>
+          <title>
+            <caption value="Verkauft"/>
+          </title>
+        </column2>
+        <column3>
+          <index value="3"/>
+          <width value="100"/>
+          <buttonstyle value="0"/>
+          <title>
+            <caption value="Umsatz"/>
+          </title>
+        </column3>
+        <column4>
+          <index value="4"/>
+          <width value="100"/>
+          <buttonstyle value="0"/>
+          <title>
+            <caption value="Rücknahmen"/>
+          </title>
+        </column4>
+        <column5>
+          <index value="5"/>
+          <width value="100"/>
+          <buttonstyle value="0"/>
+          <title>
+            <caption value="Verluste"/>
+          </title>
+        </column5>
+      </columns>
+      <options>
+        <goFixedVertLine value="True"/>
+        <goFixedHorzLine value="True"/>
+        <goVertLine value="True"/>
+        <goHorzLine value="True"/>
+        <goRangeSelect value="False"/>
+        <goDrawFocusSelected value="False"/>
+        <goRowSizing value="False"/>
+        <goColSizing value="True"/>
+        <goRowMoving value="False"/>
+        <goColMoving value="False"/>
+        <goEditing value="False"/>
+        <goAutoAddRows value="False"/>
+        <goTabs value="True"/>
+        <goRowSelect value="True"/>
+        <goAlwaysShowEditor value="False"/>
+        <goThumbTracking value="False"/>
+        <goColSpanning value="False"/>
+        <goRelaxedRowSelect value="False"/>
+        <goDblClickAutoSize value="False"/>
+        <goSmoothScroll value="True"/>
+        <goAutoAddRowsSkipContentCheck value="False"/>
+        <goRowHighlight value="False"/>
+        <goScrollToLastCol value="True"/>
+        <goScrollToLastRow value="True"/>
+      </options>
+    </design>
+    <content>
+      <cells cellcount="7">
+        <cell1 column="0" row="0" text="Nr."/>
+        <cell2 column="1" row="1" text="test"/>
+        <cell3 column="2" row="1" text="2,00 €"/>
+        <cell4 column="3" row="1" text="1"/>
+        <cell5 column="4" row="1" text="2,00 €"/>
+        <cell6 column="5" row="1" text="0"/>
+        <cell7 column="6" row="1" text="0,00 €"/>
+      </cells>
+    </content>
+  </grid>
+</CONFIG>
