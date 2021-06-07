@@ -119,7 +119,7 @@ begin
   StatusBar.Panels[0].Text := 'Laden...';
   SG.Enabled:= false;
   SG.RowCount:= 1;
-  for i:= 0 to StorageForm.SG.RowCount - 1 do
+  for i:= 1 to StorageForm.SG.RowCount - 1 do
   begin
     if (StorageForm.SG.Cells[2, i] = 'Aktiv') and (StrToInt(StorageForm.SG.Cells[4, i]) > 0) then
     begin
@@ -214,30 +214,31 @@ end;
 
 procedure TMainForm.ResetDataClick(Sender: TObject);
 var
-  FileOp : TSHFileOpStruct;
+  ShOp : TSHFileOpStruct;
   exe : boolean = false;
 begin
-  FileOp.wFunc := FO_DELETE;
-  FileOp.fFlags := FOF_SILENT or FOF_NOERRORUI or FOF_NOCONFIRMATION;
-  FillChar(FileOp, SizeOf(FileOp), 0);
+  ShOp.Wnd := Self.Handle;
+  ShOp.wFunc := FO_DELETE;
+  ShOp.pTo := nil;
+  ShOp.fFlags := FOF_NOCONFIRMATION;
 
   if Application.MessageBox('Möchten Sie das Lager wirklich zurücksetzten? Diese Aktion kann nicht Rückgängig gemacht werden!', 'Lager zurücksetzen', MB_ICONWARNING + MB_YESNO) = IDYES then
   begin
-    FileOp.pFrom := PChar('Config' + #0);
-    SHFileOperation(FileOp);
+    ShOp.pFrom := PChar('Config\'#0);
+    SHFileOperation(ShOp);
     exe := true;
   end;
 
   if Application.MessageBox('Möchten Sie alle Statistiken löschen? Diese Aktion kann nicht Rückgängig gemacht werden!', 'Statistiken zurücksetzen', MB_ICONWARNING + MB_YESNO) = IDYES then
   begin
-    FileOp.pFrom := PChar('Statics' + #0);
-    SHFileOperation(FileOp);
+    ShOp.pFrom := PChar('Statics\'#0);
+    SHFileOperation(ShOp);
     exe := true;
   end;
 
   if exe then
   begin
-    Application.MessageBox('Die Anwendugn wird nun neu gestartet.', 'SellerScreen-Mini', MB_ICONInformation + MB_OK);
+    Application.MessageBox('Die Anwendung wird nun neu gestartet.', 'SellerScreen-Mini', MB_ICONInformation + MB_OK);
     ShellExecute(Handle, nil, PChar(Application.ExeName), nil, nil, SW_SHOWNORMAL);
     Application.Terminate;
   end;
@@ -263,6 +264,7 @@ var
   found : boolean = false;
   price, revenue : double;
 begin
+  StatusBar.Panels[0].Text := 'Bezahlen...';
   month:= StrToInt(MonthOf(Now).ToString) - 1;
   day:= StrToInt(DayOf(Now).ToString) - 1;
 
@@ -306,11 +308,9 @@ begin
             StaticsForm.DaySG.Cells[6, k]:= FloatToStrF(0, ffCurrency, 10, 2);
           end;
 
-          StaticsForm.DayValues.Cells[1, 0] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 0]) + 1);
           StaticsForm.DayValues.Cells[1, 1] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 1]) + sell);
           StaticsForm.DayValues.Cells[1, 2] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 2]) + revenue, ffCurrency, 10, 2);
 
-          StaticsForm.tStatics.Customers := StaticsForm.tStatics.Customers + 1;
           StaticsForm.tStatics.Sold := StaticsForm.tStatics.Sold + sell;
           StaticsForm.tStatics.Revenue := StaticsForm.tStatics.Revenue + revenue;
 
@@ -338,13 +338,11 @@ begin
 
           StaticsForm.YearChartDataSG.Cells[0, month]:= (StrToInt(StaticsForm.YearChartDataSG.Cells[0, month]) + sell).ToString;
           StaticsForm.YearChartDataSG.Cells[1, month]:= (StrToFloat(StaticsForm.YearChartDataSG.Cells[1, month]) + revenue).ToString;
-          StaticsForm.yStatics.Customers := StaticsForm.yStatics.Customers + 1;
           StaticsForm.yStatics.Sold := StaticsForm.yStatics.Sold + sell;
           StaticsForm.yStatics.Revenue := StaticsForm.yStatics.Revenue + revenue;
 
           StaticsForm.MonthChartDataSG.Cells[0, day]:= (StrToInt(StaticsForm.MonthChartDataSG.Cells[0, day]) + sell).ToString;
           StaticsForm.MonthChartDataSG.Cells[1, day]:= (StrToFloat(StaticsForm.MonthChartDataSG.Cells[1, day]) + revenue).ToString;
-          StaticsForm.mStatics.Customers := StaticsForm.mStatics.Customers + 1;
           StaticsForm.mStatics.Sold := StaticsForm.mStatics.Sold + sell;
           StaticsForm.mStatics.Revenue := StaticsForm.mStatics.Revenue + revenue;
 
@@ -361,6 +359,11 @@ begin
           end;
         end;
       end;
+      
+      StaticsForm.DayValues.Cells[1, 0] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 0]) + 1);
+      StaticsForm.tStatics.Customers := StaticsForm.tStatics.Customers + 1;
+      StaticsForm.yStatics.Customers := StaticsForm.yStatics.Customers + 1;
+      StaticsForm.mStatics.Customers := StaticsForm.mStatics.Customers + 1;
     end
     else
     begin
@@ -396,6 +399,32 @@ begin
           StaticsForm.DayValues.Cells[1, 1] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 1]) - sell);
           StaticsForm.DayValues.Cells[1, 2] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 2]) - revenue, ffCurrency, 10, 2);
           StaticsForm.DayValues.Cells[1, 3] := FloatToStr(CurrToFloat(StaticsForm.DayValues.Cells[1, 3]) + sell);
+
+          StaticsForm.tStatics.Cancellations := StaticsForm.tStatics.Cancellations + sell;
+          StaticsForm.tStatics.Sold := StaticsForm.tStatics.Sold - sell;
+          StaticsForm.tStatics.Revenue := StaticsForm.tStatics.Revenue - revenue;
+
+          for j:= 0 to StaticsForm.TotalChartDataSG.RowCount - 1 do
+          begin
+            if (StaticsForm.TotalChartDataSG.Cells[0,j] = YearOf(Now).ToString) then
+            begin
+              StaticsForm.TotalChartDataSG.Cells[1,j]:= (StrToInt(StaticsForm.TotalChartDataSG.Cells[1,j]) - sell).ToString;
+              StaticsForm.TotalChartDataSG.Cells[2,j]:= (StrToFloat(StaticsForm.TotalChartDataSG.Cells[2,j]) - revenue).ToString;
+              break;
+            end;
+          end;
+
+          StaticsForm.YearChartDataSG.Cells[0, month]:= (StrToInt(StaticsForm.YearChartDataSG.Cells[0, month]) - sell).ToString;
+          StaticsForm.YearChartDataSG.Cells[1, month]:= (StrToFloat(StaticsForm.YearChartDataSG.Cells[1, month]) - revenue).ToString;
+          StaticsForm.yStatics.Sold := StaticsForm.yStatics.Sold - sell;
+          StaticsForm.yStatics.Revenue := StaticsForm.yStatics.Revenue - revenue;
+          StaticsForm.yStatics.Cancellations := StaticsForm.yStatics.Cancellations + 1;
+
+          StaticsForm.MonthChartDataSG.Cells[0, day]:= (StrToInt(StaticsForm.MonthChartDataSG.Cells[0, day]) - sell).ToString;
+          StaticsForm.MonthChartDataSG.Cells[1, day]:= (StrToFloat(StaticsForm.MonthChartDataSG.Cells[1, day]) - revenue).ToString;
+          StaticsForm.mStatics.Sold := StaticsForm.mStatics.Sold - sell;
+          StaticsForm.mStatics.Revenue := StaticsForm.mStatics.Revenue - revenue;
+          StaticsForm.mStatics.Cancellations := StaticsForm.mStatics.Cancellations + 1;
 
           for j:= 1 to StorageForm.SG.RowCount - 1 do
           begin
@@ -443,6 +472,15 @@ begin
 
           StaticsForm.DayValues.Cells[1, 4] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 4]) + sell);
           StaticsForm.DayValues.Cells[1, 5] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 5]) + revenue, ffCurrency, 10, 2);
+
+          StaticsForm.tStatics.Redemptions := StaticsForm.tStatics.Redemptions + sell;
+          StaticsForm.tStatics.Loses := StaticsForm.tStatics.Loses + revenue;
+
+          StaticsForm.yStatics.Loses := StaticsForm.yStatics.Loses + revenue;
+          StaticsForm.yStatics.Redemptions := StaticsForm.yStatics.Redemptions + sell;
+
+          StaticsForm.mStatics.Loses := StaticsForm.mStatics.Loses + revenue;
+          StaticsForm.mStatics.Redemptions := StaticsForm.mStatics.Redemptions + sell;
       end;
     end;
       LoadShop();
@@ -461,6 +499,8 @@ begin
   StaticsForm.SaveMonthStatics(Date);
   StaticsForm.SaveYearStatics(Date);
   CancelBtnClick(sender);
+
+  StatusBar.Panels[0].Text := 'Bereit';
 end;
 
 procedure TMainForm.RetourBtnClick(Sender: TObject);

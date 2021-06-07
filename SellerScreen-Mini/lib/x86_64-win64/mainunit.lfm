@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 2810
+  Left = 2389
   Height = 500
-  Top = 368
+  Top = 312
   Width = 1000
   Caption = 'SellerScreen-Mini'
   ClientHeight = 480

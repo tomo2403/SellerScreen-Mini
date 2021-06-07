@@ -2,7 +2,7 @@
 <CONFIG>
   <grid version="3">
     <saveoptions create="True" position="False" content="True"/>
-    <design columncount="5" rowcount="2" fixedcols="1" fixedrows="1" defaultcolwidth="64" isdefaultcolwidth="0" defaultrowheight="27" isdefaultrowheight="0" color="clDefault">
+    <design columncount="5" rowcount="3" fixedcols="1" fixedrows="1" defaultcolwidth="64" isdefaultcolwidth="0" defaultrowheight="27" isdefaultrowheight="0" color="clDefault">
       <columns columnsenabled="True" columncount="4">
         <column0>
           <index value="0"/>
@@ -65,12 +65,16 @@
       </options>
     </design>
     <content>
-      <cells cellcount="5">
+      <cells cellcount="9">
         <cell1 column="0" row="0" text="Nr."/>
-        <cell2 column="1" row="1" text="test"/>
-        <cell3 column="2" row="1" text="Aktiv"/>
-        <cell4 column="3" row="1" text="2,00 €"/>
-        <cell5 column="4" row="1" text="17"/>
+        <cell2 column="1" row="1" text="döner"/>
+        <cell3 column="1" row="2" text="pizza"/>
+        <cell4 column="2" row="1" text="Aktiv"/>
+        <cell5 column="2" row="2" text="Aktiv"/>
+        <cell6 column="3" row="1" text="4,00 €"/>
+        <cell7 column="3" row="2" text="6,00 €"/>
+        <cell8 column="4" row="1" text="19"/>
+        <cell9 column="4" row="2" text="49"/>
       </cells>
     </content>
   </grid>

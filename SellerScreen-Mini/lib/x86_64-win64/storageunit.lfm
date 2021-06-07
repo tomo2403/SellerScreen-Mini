@@ -9515,7 +9515,7 @@ object StorageForm: TStorageForm
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goRowMoving, goTabs, goRowSelect, goSmoothScroll, goFixedRowNumbering, goSelectionActive, goRowHighlight]
     Options2 = [goScrollToLastCol, goScrollToLastRow]
     ParentFont = False
-    RowCount = 1
+    RowCount = 2
     TabOrder = 0
     OnSelection = SGSelection
     ColWidths = (

@@ -156,7 +156,7 @@ type
   private
 
   public
-    loadedDay: boolean;
+    loadedDay: TDateTime;
     tStatics : StaticsSummary;
     mStatics : StaticsSummary;
     yStatics : StaticsSummary;

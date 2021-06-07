@@ -150,10 +150,10 @@ begin
     SG.LoadFromFile('Config\storage.xml');
     SG.Refresh;
     GetSelectedProduct();
-    MainForm.LoadShop();
-    except
-     Application.MessageBox('Lager konnte nicht geladen werden!', 'SellerScreen-Mini', mb_IconError + mb_Ok)
-    end;
+  except
+    Application.MessageBox('Lager konnte nicht geladen werden!', 'SellerScreen-Mini', mb_IconError + mb_Ok)
+  end;
+  MainForm.LoadShop();
 end;
 
 procedure TStorageForm.AddProductMIClick(Sender: TObject);
