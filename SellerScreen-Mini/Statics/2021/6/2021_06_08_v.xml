@@ -11,13 +11,13 @@
         <cell5 column="0" row="4" text="Rücknahmen"/>
         <cell6 column="0" row="5" text="Verluste"/>
         <cell7 column="0" row="6" text="Einnahmen"/>
-        <cell8 column="1" row="0" text="2"/>
-        <cell9 column="1" row="1" text="2"/>
-        <cell10 column="1" row="2" text="10,00 €"/>
-        <cell11 column="1" row="3" text="0"/>
-        <cell12 column="1" row="4" text="0"/>
-        <cell13 column="1" row="5" text="0,00 €"/>
-        <cell14 column="1" row="6" text="10,00 €"/>
+        <cell8 column="1" row="0" text="1"/>
+        <cell9 column="1" row="1" text="4"/>
+        <cell10 column="1" row="2" text="32,00 €"/>
+        <cell11 column="1" row="3" text="1"/>
+        <cell12 column="1" row="4" text="1"/>
+        <cell13 column="1" row="5" text="8,00 €"/>
+        <cell14 column="1" row="6" text="24,00 €"/>
       </cells>
     </content>
   </grid>

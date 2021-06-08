@@ -62,7 +62,6 @@ type
     StatusBar: TStatusBar;
     procedure CancelBtnClick(Sender: TObject);
     procedure CancelPurchaseBtnClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure LoadShop();
     procedure AboutMIClick(Sender: TObject);
     procedure GitHubMIClick(Sender: TObject);
@@ -104,7 +103,7 @@ begin
   Result := 0;
   for i := 1 to length(curr) do
   begin
-    if (curr[i] in ['0'..'9', ',']) then
+    if (curr[i] in ['0'..'9', ',', '.']) then
     begin
       Str := Str + curr[i];
       Result := StrToFloat(Str);
@@ -153,15 +152,11 @@ begin
   StatusBar.Panels[0].Text := 'Bereit';
 end;
 
-procedure TMainForm.FormCreate(Sender: TObject);
-begin
-
-end;
-
 procedure TMainForm.CancelBtnClick(Sender: TObject);
 var
   i : integer;
 begin
+  StatusBar.Panels[0].Text := 'Abbrechen...';
   if ShopMode > 1 then LoadShop();
 
   SG.Enabled := false;
@@ -172,12 +167,14 @@ begin
   ShopMode:= 0;
 
   for i:= 1 to SG.RowCount - 1 do SG.Cells[4, i]:= '0';
+  StatusBar.Panels[0].Text := 'Bereit';
 end;
 
 procedure TMainForm.CancelPurchaseBtnClick(Sender: TObject);
 var
   i, row : integer;
 begin
+  StatusBar.Panels[0].Text := 'Stornieren...';
   if StaticsForm.LoadDayStatics(Date) then
   begin
     SG.RowCount:= 1;
@@ -200,6 +197,7 @@ begin
     NewCustomerBtnClick(sender);
     ShopMode:= 2;
   end;
+  StatusBar.Panels[0].Text := 'Bereit';
 end;
 
 procedure TMainForm.GitHubMIClick(Sender: TObject);
@@ -254,8 +252,10 @@ end;
 
 procedure TMainForm.OpenStorageMIClick(Sender: TObject);
 begin
+  StatusBar.Panels[0].Text := 'Lager geöffnet';
   StorageForm.ShowModal;
   StorageForm.FormCreate(sender);
+  StatusBar.Panels[0].Text := 'Bereit';
 end;
 
 procedure TMainForm.PayBtnClick(Sender: TObject);

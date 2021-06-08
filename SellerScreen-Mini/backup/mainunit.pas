@@ -62,7 +62,6 @@ type
     StatusBar: TStatusBar;
     procedure CancelBtnClick(Sender: TObject);
     procedure CancelPurchaseBtnClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure LoadShop();
     procedure AboutMIClick(Sender: TObject);
     procedure GitHubMIClick(Sender: TObject);
@@ -104,7 +103,7 @@ begin
   Result := 0;
   for i := 1 to length(curr) do
   begin
-    if (curr[i] in ['0'..'9', ',']) then
+    if (curr[i] in ['0'..'9', ',', '.']) then
     begin
       Str := Str + curr[i];
       Result := StrToFloat(Str);
@@ -119,7 +118,7 @@ begin
   StatusBar.Panels[0].Text := 'Laden...';
   SG.Enabled:= false;
   SG.RowCount:= 1;
-  for i:= 0 to StorageForm.SG.RowCount - 1 do
+  for i:= 1 to StorageForm.SG.RowCount - 1 do
   begin
     if (StorageForm.SG.Cells[2, i] = 'Aktiv') and (StrToInt(StorageForm.SG.Cells[4, i]) > 0) then
     begin
@@ -153,15 +152,11 @@ begin
   StatusBar.Panels[0].Text := 'Bereit';
 end;
 
-procedure TMainForm.FormCreate(Sender: TObject);
-begin
-
-end;
-
 procedure TMainForm.CancelBtnClick(Sender: TObject);
 var
   i : integer;
 begin
+  StatusBar.Panels[0].Text := 'Abbrechen...';
   if ShopMode > 1 then LoadShop();
 
   SG.Enabled := false;
@@ -172,12 +167,14 @@ begin
   ShopMode:= 0;
 
   for i:= 1 to SG.RowCount - 1 do SG.Cells[4, i]:= '0';
+  StatusBar.Panels[0].Text := 'Bereit';
 end;
 
 procedure TMainForm.CancelPurchaseBtnClick(Sender: TObject);
 var
   i, row : integer;
 begin
+  StatusBar.Panels[0].Text := 'Stornieren...';
   if StaticsForm.LoadDayStatics(Date) then
   begin
     SG.RowCount:= 1;
@@ -200,6 +197,7 @@ begin
     NewCustomerBtnClick(sender);
     ShopMode:= 2;
   end;
+  StatusBar.Panels[0].Text := 'Bereit';
 end;
 
 procedure TMainForm.GitHubMIClick(Sender: TObject);
@@ -254,8 +252,10 @@ end;
 
 procedure TMainForm.OpenStorageMIClick(Sender: TObject);
 begin
+  StatusBar.Panels[0].Text := 'Lager geöffnet';
   StorageForm.ShowModal;
   StorageForm.FormCreate(sender);
+  StatusBar.Panels[0].Text := 'Bereit';
 end;
 
 procedure TMainForm.PayBtnClick(Sender: TObject);
@@ -308,11 +308,9 @@ begin
             StaticsForm.DaySG.Cells[6, k]:= FloatToStrF(0, ffCurrency, 10, 2);
           end;
 
-          StaticsForm.DayValues.Cells[1, 0] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 0]) + 1);
           StaticsForm.DayValues.Cells[1, 1] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 1]) + sell);
           StaticsForm.DayValues.Cells[1, 2] := FloatToStrF(CurrToFloat(StaticsForm.DayValues.Cells[1, 2]) + revenue, ffCurrency, 10, 2);
 
-          StaticsForm.tStatics.Customers := StaticsForm.tStatics.Customers + 1;
           StaticsForm.tStatics.Sold := StaticsForm.tStatics.Sold + sell;
           StaticsForm.tStatics.Revenue := StaticsForm.tStatics.Revenue + revenue;
 
@@ -340,13 +338,11 @@ begin
 
           StaticsForm.YearChartDataSG.Cells[0, month]:= (StrToInt(StaticsForm.YearChartDataSG.Cells[0, month]) + sell).ToString;
           StaticsForm.YearChartDataSG.Cells[1, month]:= (StrToFloat(StaticsForm.YearChartDataSG.Cells[1, month]) + revenue).ToString;
-          StaticsForm.yStatics.Customers := StaticsForm.yStatics.Customers + 1;
           StaticsForm.yStatics.Sold := StaticsForm.yStatics.Sold + sell;
           StaticsForm.yStatics.Revenue := StaticsForm.yStatics.Revenue + revenue;
 
           StaticsForm.MonthChartDataSG.Cells[0, day]:= (StrToInt(StaticsForm.MonthChartDataSG.Cells[0, day]) + sell).ToString;
           StaticsForm.MonthChartDataSG.Cells[1, day]:= (StrToFloat(StaticsForm.MonthChartDataSG.Cells[1, day]) + revenue).ToString;
-          StaticsForm.mStatics.Customers := StaticsForm.mStatics.Customers + 1;
           StaticsForm.mStatics.Sold := StaticsForm.mStatics.Sold + sell;
           StaticsForm.mStatics.Revenue := StaticsForm.mStatics.Revenue + revenue;
 
@@ -363,6 +359,11 @@ begin
           end;
         end;
       end;
+      
+      StaticsForm.DayValues.Cells[1, 0] := IntToStr(StrToInt(StaticsForm.DayValues.Cells[1, 0]) + 1);
+      StaticsForm.tStatics.Customers := StaticsForm.tStatics.Customers + 1;
+      StaticsForm.yStatics.Customers := StaticsForm.yStatics.Customers + 1;
+      StaticsForm.mStatics.Customers := StaticsForm.mStatics.Customers + 1;
     end
     else
     begin

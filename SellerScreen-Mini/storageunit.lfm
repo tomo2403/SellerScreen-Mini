@@ -9672,12 +9672,5 @@ object StorageForm: TStorageForm
         OnClick = RemoveProdctBtnClick
       end
     end
-    object DemoMI: TMenuItem
-      Caption = 'Demo'
-      object GenStorageMI: TMenuItem
-        Caption = 'Lager auffüllen'
-        OnClick = GenStorageMIClick
-      end
-    end
   end
 end

@@ -174,6 +174,9 @@ var
 
 implementation
 
+uses
+  MainUnit;
+
 {$R *.lfm}
 
 { TStaticsForm }
@@ -186,7 +189,7 @@ begin
   Result := 0;
   for i := 1 to length(curr) do
   begin
-    if (curr[i] in ['0'..'9', ',']) then
+    if (curr[i] in ['0'..'9', ',', '.']) then
     begin
       Str := Str + curr[i];
       Result := StrToFloat(Str);
@@ -237,6 +240,7 @@ begin
     DaySG.SaveToFile(fileName);
     DateTimeToString(fileName, '"' + path + '\"yyyy"_"mm"_"dd"_v.xml"', d);
     DayValues.SaveToFile(fileName);
+    Day404Lbl.Visible := false;
   end
   else Application.MessageBox('Das Verzeichnis konnte nicht erstellt werden!', 'Tagesstatistiken', MB_ICONERROR + MB_OK);
 end;
@@ -463,6 +467,7 @@ end;
 
 procedure TStaticsForm.FormCreate(Sender: TObject);
 begin
+  MainForm.StatusBar.Panels[0].Text := 'Statistiken vorbereiten...';
   PC.TabIndex := 0;
   DayCal.DateTime := Now;
   DaySG.SaveOptions := [soDesign, soContent];
@@ -474,6 +479,8 @@ begin
   LoadMonthStatics(Date);
   LoadYearStatics(Date);
   LoadTotalStatics();
+  MainForm.StatusBar.Panels[0].Text := 'Bereit';
+
 end;
 
 procedure TStaticsForm.MonthDateEditChange(Sender: TObject);

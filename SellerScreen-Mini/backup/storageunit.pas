@@ -39,7 +39,7 @@ type
     procedure PrEditCancelBtnClick(Sender: TObject);
     procedure PrEditSaveBtnClick(Sender: TObject);
     procedure RemoveProdctBtnClick(Sender: TObject);
-    procedure SGSelection(Sender: TObject; aCol, aRow: Integer);
+    procedure SGSelection(Sender: TObject);
     procedure GetSelectedProduct();
   private
 
@@ -59,24 +59,6 @@ uses
 
 { TStorageForm }
 
-function GetCurrency(Num: String): string;
-var
-  i : Integer;
-  Str : String = '';
-  crry : Currency;
-begin
-  Result := '';
-  for i := 1 to length(Num) do
-  begin
-    if (Num[i] in ['0'..'9', ',']) then
-    begin
-      Str := Str + Num[i];
-      crry := StrToFloat(Str);
-      Result := FloatToStrF(crry, ffCurrency, 10, 2);
-    end;
-  end;
-end;
-
 function CurrToFloat(curr: String) : double;
 var
   i : Integer;
@@ -85,29 +67,12 @@ begin
   Result := 0;
   for i := 1 to length(curr) do
   begin
-    if (curr[i] in ['0'..'9', ',']) then
+    if (curr[i] in ['0'..'9', ',', '.']) then
     begin
       Str := Str + curr[i];
       Result := StrToFloat(Str);
     end;
   end;
-end;
-
-function ExtractCurrencySymbol(crry: String):string;
-var
-  i : Integer;
-  Str : String = '';
-begin
-  Result := '';
-  for i := 1 to length(crry) do
-  begin
-    if NOT (crry[i] in ['0'..'9','.',',']) then
-    Begin
-      Str := Str + crry[i];
-      Result := ' ' + Trim(Str);
-  end;
-  end;
-
 end;
 
 procedure TStorageForm.GetSelectedProduct();
@@ -139,12 +104,15 @@ end;
 
 procedure TStorageForm.SaveStorage();
 begin
+  MainForm.StatusBar.Panels[0].Text := 'Speichern...';
   ForceDirectories('Config');
   SG.SaveToFile('Config\storage.xml');
+  MainForm.StatusBar.Panels[0].Text := 'Bereit';
 end;
 
 procedure TStorageForm.FormCreate(Sender: TObject);
 begin
+  MainForm.StatusBar.Panels[0].Text := 'Lager vorbereiten...';
   try
     SG.SaveOptions := [soDesign, soContent];
     SG.LoadFromFile('Config\storage.xml');
@@ -154,6 +122,7 @@ begin
     Application.MessageBox('Lager konnte nicht geladen werden!', 'SellerScreen-Mini', mb_IconError + mb_Ok)
   end;
   MainForm.LoadShop();
+  MainForm.StatusBar.Panels[0].Text := 'Bereit';
 end;
 
 procedure TStorageForm.AddProductMIClick(Sender: TObject);
@@ -175,7 +144,7 @@ procedure TStorageForm.PrEditSaveBtnClick(Sender: TObject);
 begin
   SG.Cells[1, SG.Row] := PrEditNameBox.Text;
   SG.Cells[2, SG.Row] := PrEditStatusBox.Text;
-  SG.Cells[3, SG.Row] := GetCurrency(FloatToStr(PrEditPriceBox.Value));
+  SG.Cells[3, SG.Row] := FloatToStrF(PrEditPriceBox.Value, ffCurrency, 10, 2);
   SG.Cells[4, SG.Row] := FloatToStr(PrEditAvailableBox.Value);
 
   SaveStorage();
@@ -194,7 +163,7 @@ begin
   end;
 end;
 
-procedure TStorageForm.SGSelection(Sender: TObject; aCol, aRow: Integer);
+procedure TStorageForm.SGSelection(Sender: TObject);
 begin
   GetSelectedProduct();
 end;

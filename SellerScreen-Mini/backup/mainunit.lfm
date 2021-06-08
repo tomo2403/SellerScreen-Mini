@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 2810
+  Left = 2389
   Height = 500
-  Top = 368
+  Top = 312
   Width = 1000
   Caption = 'SellerScreen-Mini'
   ClientHeight = 480
@@ -9475,7 +9475,6 @@ object MainForm: TMainForm
     426082
   }
   Menu = MainMenu
-  OnCreate = FormCreate
   Position = poDefault
   LCLVersion = '2.0.12.0'
   object SG: TStringGrid
