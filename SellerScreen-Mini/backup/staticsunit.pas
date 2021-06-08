@@ -298,6 +298,7 @@ begin
     except
       Application.MessageBox('Die Daten der Diagramme konnten nicht gespeichert werden!', 'Gesamtstatistiken', MB_ICONERROR + MB_OK);
     end;
+    Total404Lbl.Visible := false;
   end
   else Application.MessageBox('Das Verzeichnis konnte nicht erstellt werden!', 'Gesamtstatistiken', MB_ICONERROR + MB_OK);
 end;
@@ -363,6 +364,7 @@ begin
     except
       Application.MessageBox('Die Daten der Diagramme konnten nicht gespeichert werden!', 'Monatsstatistiken', MB_ICONERROR + MB_OK);
     end;
+    Month404Lbl.Visible := false;
   end
   else Application.MessageBox('Das Verzeichnis konnte nicht erstellt werden!', 'Monatsstatistiken', MB_ICONERROR + MB_OK);
 end;
@@ -425,6 +427,7 @@ begin
     except
       Application.MessageBox('Die Daten der Diagramme konnten nicht gespeichert werden!', 'Jahresstatistiken', MB_ICONERROR + MB_OK);
     end;
+    Year404Lbl.Visible := false;
   end
   else Application.MessageBox('Das Verzeichnis konnte nicht erstellt werden!', 'Jahresstatistiken', MB_ICONERROR + MB_OK);
 end;
@@ -434,7 +437,7 @@ end;
 
 procedure TStaticsForm.TotalDrawChartsBtnClick(Sender: TObject);
 var
-  i : integer;
+  i, j : integer;
 begin
   TotalSoldChSeries.Clear;
   TotalRevChSeries.Clear;
@@ -443,6 +446,7 @@ begin
     TotalSoldChSeries.AddXY(StrToInt(TotalChartDataSG.Cells[0,i]), StrToInt(TotalChartDataSG.Cells[1,i]), TotalChartDataSG.Cells[0,i]);
     TotalRevChSeries.AddXY(StrToInt(TotalChartDataSG.Cells[0,i]), StrToFloat(TotalChartDataSG.Cells[2,i]), TotalChartDataSG.Cells[0,i]);
   end;
+
   TotalSoldChart.AxisList[1].Intervals.Count := TotalChartDataSG.RowCount;
   TotalRevChart.AxisList[1].Intervals.Count := TotalChartDataSG.RowCount;
 end;

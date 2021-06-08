@@ -446,6 +446,7 @@ begin
     TotalSoldChSeries.AddXY(StrToInt(TotalChartDataSG.Cells[0,i]), StrToInt(TotalChartDataSG.Cells[1,i]), TotalChartDataSG.Cells[0,i]);
     TotalRevChSeries.AddXY(StrToInt(TotalChartDataSG.Cells[0,i]), StrToFloat(TotalChartDataSG.Cells[2,i]), TotalChartDataSG.Cells[0,i]);
   end;
+
   TotalSoldChart.AxisList[1].Intervals.Count := TotalChartDataSG.RowCount;
   TotalRevChart.AxisList[1].Intervals.Count := TotalChartDataSG.RowCount;
 end;
