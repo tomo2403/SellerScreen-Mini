@@ -27,8 +27,6 @@ type
     MainMenu: TMainMenu;
     ProductMI: TMenuItem;
     AddProductMI: TMenuItem;
-    DemoMI: TMenuItem;
-    GenStorageMI: TMenuItem;
     RemoveProdctBtn: TMenuItem;
     SG: TStringGrid;
     PrEditAvailableBox: TSpinEdit;
@@ -59,6 +57,8 @@ uses
 
 { TStorageForm }
 
+//Konvertiert einen Preis in einen Float.
+//Dabei werden die einzelnen Zeichen überprüft
 function CurrToFloat(curr: String) : double;
 var
   i : Integer;
@@ -75,14 +75,17 @@ begin
   end;
 end;
 
+//Kopiert das asgewählte Produkt in das Bearbeitungsfeld
 procedure TStorageForm.GetSelectedProduct();
 begin
   try
+    //Namen lesen
     PrEditNameBox.Text := SG.Cells[1, SG.Row];
   except
     PrEditNameBox.Text := 'n/a';
   end;
   try
+    //Status lesen
     case SG.Cells[2, SG.Row] of
       'Aktiv': PrEditStatusBox.ItemIndex := 0
       else PrEditStatusBox.ItemIndex := 1;
@@ -91,11 +94,13 @@ begin
     PrEditStatusBox.ItemIndex := 1;
   end;
   try
+    //Preis lesen
     PrEditPriceBox.Value := CurrToFloat(SG.Cells[3, SG.Row]);
   except
     PrEditPriceBox.Value := 0;
   end;
   try
+    //Verfügbarkeit lesen
     PrEditAvailableBox.Value := StrToFloat(SG.Cells[4, SG.Row]);
   except
     PrEditAvailableBox.Value := 0;
@@ -105,7 +110,9 @@ end;
 procedure TStorageForm.SaveStorage();
 begin
   MainForm.StatusBar.Panels[0].Text := 'Speichern...';
+  //Ordner erzeugen
   ForceDirectories('Config');
+  //Datei speichern
   SG.SaveToFile('Config\storage.xml');
   MainForm.StatusBar.Panels[0].Text := 'Bereit';
 end;
@@ -114,6 +121,7 @@ procedure TStorageForm.FormCreate(Sender: TObject);
 begin
   MainForm.StatusBar.Panels[0].Text := 'Lager vorbereiten...';
   try
+    //Lager laden
     SG.SaveOptions := [soDesign, soContent];
     SG.LoadFromFile('Config\storage.xml');
     SG.Refresh;
@@ -121,18 +129,15 @@ begin
   except
     Application.MessageBox('Lager konnte nicht geladen werden!', 'SellerScreen-Mini', mb_IconError + mb_Ok)
   end;
+  //Kasse aktualisieren
   MainForm.LoadShop();
   MainForm.StatusBar.Panels[0].Text := 'Bereit';
 end;
 
 procedure TStorageForm.AddProductMIClick(Sender: TObject);
 begin
+  //Zeile für neues Produkt einfügen
   SG.RowCount:= SG.RowCount + 1;
-end;
-
-procedure TStorageForm.GenStorageMIClick(Sender: TObject);
-begin
-  SaveStorage();
 end;
 
 procedure TStorageForm.PrEditCancelBtnClick(Sender: TObject);

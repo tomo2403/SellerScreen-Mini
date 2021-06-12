@@ -181,6 +181,8 @@ uses
 
 { TStaticsForm }
 
+//Konvertiert einen Preis in einen Float.
+//Dabei werden die einzelnen Zeichen überprüft
 function CurrToFloat(curr: String) : double;
 var
   i : Integer;
@@ -197,19 +199,24 @@ begin
   end;
 end;
 
+//Läd die Tagesstatistiken
 function TStaticsForm.LoadDayStatics(d : TDateTime; charts : boolean = false) : boolean;
 var
   fileName, path : string;
 begin
+  //Pfad zur Datei erzeugen
   path := '"Statics\' + YearOf(d).ToString + '\' + MonthOf(d).ToString;
   DateTimeToString(fileName, path + '\"yyyy"_"mm"_"dd"_p.xml"', d);
+  //Prüfen ob Dateien vorhanden sind
   if FileExists(fileName) then
   begin
+    //Datei laden
     Day404Lbl.Visible := false;
     DaySG.Clear();
     DaySG.LoadFromFile(fileName);
     DaySG.Refresh;
     try
+      //Versuchen, die Zusammenfassung zu laden
       DateTimeToString(fileName, path + '\"yyyy"_"mm"_"dd"_v.xml"', d);
       DayValues.LoadFromFile(fileName);
       DayValues.Refresh;
@@ -217,6 +224,7 @@ begin
       Application.MessageBox('Die Zusammenfassung des Tages konnte nicht geladen werden!', 'Tagesstatistiken', MB_ICONERROR + MB_OK);
     end;
 
+    //Eventuell Diagramme zeichnen
     if charts then DayDrawChartsBtnClick(DayDrawChartsBtn);
 
     loadedDay := d;
@@ -229,33 +237,41 @@ begin
   end;
 end;
 
+//Speichert die Tagesstatistiken
 procedure TStaticsForm.SaveDayStatics(d : TDateTime);
 var
   fileName, path : string;
 begin
+  //Pfad zur Datei erzeugen
   path := 'Statics\' + YearOf(Now).ToString + '\' + MonthOf(Now).ToString;
+  //Ordner erzeugen
   if ForceDirectories(path) then
   begin
     DateTimeToString(fileName, '"' + path + '\"yyyy"_"mm"_"dd"_p.xml"', d);
     DaySG.SaveToFile(fileName);
     DateTimeToString(fileName, '"' + path + '\"yyyy"_"mm"_"dd"_v.xml"', d);
+    //Speichern
     DayValues.SaveToFile(fileName);
     Day404Lbl.Visible := false;
   end
   else Application.MessageBox('Das Verzeichnis konnte nicht erstellt werden!', 'Tagesstatistiken', MB_ICONERROR + MB_OK);
 end;
 
+//Läd die Gesamtstatistiken
 procedure TStaticsForm.LoadTotalStatics(charts : boolean = false);
 var
   filename, path : string;
 begin
+  //Pfad zur Datei erzeugen
   path := 'Statics';
   Total404Lbl.Visible := false;
 
   filename := path + '\summary.bin';
+  //Prüfen ob Dateien vorhanden sind
   if FileExists(fileName) then
   begin
     try
+      //Datei laden
       AssignFile(tSFile, fileName);
       Reset(tSFile);
       while not EOF(tSFile) do Read(tSFile, tStatics);
@@ -267,9 +283,11 @@ begin
   else Total404Lbl.Visible := true;
 
   filename := path + '\charts.xml';
+  //Prüfen ob Dateien vorhanden sind
   if FileExists(fileName) then
   begin
     try
+      //Datei laden
       TotalChartDataSG.LoadFromFile(fileName);
     except
       Application.MessageBox('Die Daten der Diagramme konnten nicht geladen werden!', 'Gesamtstatistiken', MB_ICONERROR + MB_OK);
@@ -277,14 +295,18 @@ begin
   end
   else Total404Lbl.Visible := true;
 
+  //Eventuell Diagramme zeichnen
   if charts then TotalDrawChartsBtnClick(TotalDrawChartsBtn);
 end;
 
+//Speichert die Gesamtstatistiken
 procedure TStaticsForm.SaveTotalStatics();
 begin
+  //Ordner erzeugen
   if ForceDirectories('Statics') then
   begin
     try
+      //Zusammenfassung speichern
       AssignFile(tSFile, 'Statics\summary.bin');
       Rewrite(tSFile);
       Write(tSFile, tStatics);
@@ -294,6 +316,7 @@ begin
     end;
 
     try
+      //Diagramme speichern
       TotalChartDataSG.SaveToFile('Statics\charts.xml');
     except
       Application.MessageBox('Die Daten der Diagramme konnten nicht gespeichert werden!', 'Gesamtstatistiken', MB_ICONERROR + MB_OK);
@@ -303,23 +326,24 @@ begin
   else Application.MessageBox('Das Verzeichnis konnte nicht erstellt werden!', 'Gesamtstatistiken', MB_ICONERROR + MB_OK);
 end;
 
+//Läd die Monatsstatistiken
 procedure TStaticsForm.LoadMonthStatics(d : TDateTime; charts : boolean = false);
 var
   filename, path : string;
 begin
+  //Pfad zur Datei erzeugen
   path := 'Statics\' + YearOf(d).ToString + '\' + MonthOf(d).ToString;
   Month404Lbl.Visible := false;
 
   filename := path + '\summary.bin';
+  //Prüfen ob Dateien vorhanden sind
   if FileExists(fileName) then
   begin
     try
+      //Datei laden
       AssignFile(mSFile, filename);
       Reset(mSFile);
-      while not EOF(mSFile) do
-      begin
-        Read(mSFile, mStatics);
-      end;
+      while not EOF(mSFile) do Read(mSFile, mStatics);
       CloseFile(mSFile);
     except
       Application.MessageBox('Die Zusammenfassung konnte nicht geladen werden!', 'Monatsstatistiken', MB_ICONERROR + MB_OK);
@@ -329,9 +353,11 @@ begin
   else Month404Lbl.Visible := true;
 
   filename := path + '\charts.xml';
+  //Prüfen ob Dateien vorhanden sind
   if FileExists(fileName) then
   begin
     try
+      //Datei laden
       MonthChartDataSG.LoadFromFile(filename);
     except
       Application.MessageBox('Die Daten der Diagramme konnten nicht geladen werden!', 'Monatsstatistiken', MB_ICONERROR + MB_OK);
@@ -340,17 +366,22 @@ begin
   end
   else Month404Lbl.Visible := true;
 
+  //Eventuell Diagramme zeichnen
   if charts then MonthDrawChartsBtnClick(MonthDrawChartsBtn);
 end;
 
+//Speichert die Monatsstatistiken
 procedure TStaticsForm.SaveMonthStatics(d : TDateTime);
 var
   path : string;
 begin
+  //Pfad zur Datei erzeugen
   path := 'Statics\' + YearOf(d).ToString + '\' + MonthOf(d).ToString;
+  //Ordner erzeugen
   if ForceDirectories(path) then
   begin
     try
+      //Zusammenfassung speichern
       AssignFile(mSFile, 'Statics\' + YearOf(d).ToString + '\' + MonthOf(d).ToString + '\summary.bin');
       Rewrite(mSFile);
       Write(mSFile, mStatics);
@@ -360,6 +391,7 @@ begin
     end;
 
     try
+      //Diagramme speichern
       MonthChartDataSG.SaveToFile('Statics\' + YearOf(d).ToString + '\' + MonthOf(d).ToString + '\charts.xml');
     except
       Application.MessageBox('Die Daten der Diagramme konnten nicht gespeichert werden!', 'Monatsstatistiken', MB_ICONERROR + MB_OK);
@@ -373,19 +405,19 @@ procedure TStaticsForm.LoadYearStatics(d : TDateTime; charts : boolean = false);
 var
   filename, path : string;
 begin
+  //Pfad zur Datei erzeugen
   path := 'Statics\' + YearOf(d).ToString;
   Year404Lbl.Visible := false;
 
   filename := path + '\summary.bin';
+  //Prüfen ob Dateien vorhanden sind
   if FileExists(fileName) then
   begin
     try
+      //Datei laden
       AssignFile(ySFile, filename);
       Reset(ySFile);
-      while not EOF(ySFile) do
-      begin
-        Read(ySFile, yStatics);
-      end;
+      while not EOF(ySFile) do Read(ySFile, yStatics);
       CloseFile(ySFile);
     except
       Application.MessageBox('Die Zusammenfassung konnte nicht geladen werden!', 'Jahresstatistiken', MB_ICONERROR + MB_OK);
@@ -394,9 +426,11 @@ begin
   else Year404Lbl.Visible := true;
 
   filename := path + '\charts.xml';
+  //Prüfen ob Dateien vorhanden sind
   if FileExists(fileName) then
   begin
     try
+      //Datei laden
       YearChartDataSG.LoadFromFile(filename);
     except
       Application.MessageBox('Die Daten der Diagramme konnten nicht geladen werden!', 'Jahresstatistiken', MB_ICONERROR + MB_OK);
@@ -404,17 +438,21 @@ begin
   end
   else Year404Lbl.Visible := true;
 
+  //Eventuell Diagramme zeichnen
   if charts then MonthDrawChartsBtnClick(MonthDrawChartsBtn);
 end;
 
+//Speichert die Jahresstatistiken
 procedure TStaticsForm.SaveYearStatics(d : TDateTime);
 var
   path : string;
 begin
   path := 'Statics\' + YearOf(d).ToString;
+  //Ordner erzeugen
   if ForceDirectories(path) then
   begin
     try
+      //Zusammenfassung speichern
       AssignFile(ySFile, path + '\summary.bin');
       Rewrite(ySFile);
       Write(ySFile, yStatics);
@@ -423,6 +461,7 @@ begin
       Application.MessageBox('Die Zusammenfassung konnte nicht gespeichert werden!', 'Jahresstatistiken', MB_ICONERROR + MB_OK);
     end;
     try
+      //Diagramme speichern
       YearChartDataSG.SaveToFile(path + '\charts.xml');
     except
       Application.MessageBox('Die Daten der Diagramme konnten nicht gespeichert werden!', 'Jahresstatistiken', MB_ICONERROR + MB_OK);
@@ -439,20 +478,24 @@ procedure TStaticsForm.TotalDrawChartsBtnClick(Sender: TObject);
 var
   i : integer;
 begin
+  //Diagramme säubern
   TotalSoldChSeries.Clear;
   TotalRevChSeries.Clear;
+  //Punkte aus Daten erzeugen
   for i:= 0 to TotalChartDataSG.RowCount - 1 do
   begin
     TotalSoldChSeries.AddXY(StrToInt(TotalChartDataSG.Cells[0,i]), StrToInt(TotalChartDataSG.Cells[1,i]), TotalChartDataSG.Cells[0,i]);
     TotalRevChSeries.AddXY(StrToInt(TotalChartDataSG.Cells[0,i]), StrToFloat(TotalChartDataSG.Cells[2,i]), TotalChartDataSG.Cells[0,i]);
   end;
 
+  //Achsenbeschriftung anpassen
   TotalSoldChart.AxisList[1].Intervals.Count := TotalChartDataSG.RowCount;
   TotalRevChart.AxisList[1].Intervals.Count := TotalChartDataSG.RowCount;
 end;
 
 procedure TStaticsForm.YearDateEditChange(Sender: TObject);
 begin
+  //Jahresstatistiken laden
   LoadYearStatics(YearDateEdit.Date, true);
 end;
 
@@ -460,8 +503,10 @@ procedure TStaticsForm.YearDrawChartsBtnClick(Sender: TObject);
 var
   i : integer;
 begin
+  //Diagramme säubern
   YearSoldChSeries.Clear;
   YearRevChSeries.Clear;
+  //Punkte aus Daten erzeugen
   for i:= 0 to 11 do
   begin
     YearSoldChSeries.AddXY(i + 1, StrToInt(YearChartDataSG.Cells[0,i]));
@@ -472,23 +517,28 @@ end;
 procedure TStaticsForm.FormCreate(Sender: TObject);
 begin
   MainForm.StatusBar.Panels[0].Text := 'Statistiken vorbereiten...';
+
+  //Fenster vorbereiten
   PC.TabIndex := 0;
   DayCal.DateTime := Now;
+  //Zu speichernde/ladende Daten festlegen
   DaySG.SaveOptions := [soDesign, soContent];
   DayValues.SaveOptions := [soContent];
   TotalChartDataSG.SaveOptions := [soDesign, soContent];
   YearChartDataSG.SaveOptions := [soContent];
   MonthChartDataSG.SaveOptions := [soContent];
+  //Statistiken laden
   LoadDayStatics(Date);
   LoadMonthStatics(Date);
   LoadYearStatics(Date);
   LoadTotalStatics();
-  MainForm.StatusBar.Panels[0].Text := 'Bereit';
 
+  MainForm.StatusBar.Panels[0].Text := 'Bereit';
 end;
 
 procedure TStaticsForm.MonthDateEditChange(Sender: TObject);
 begin
+  //Monatsstatistiken laden
   LoadMonthStatics(MonthDateEdit.Date, true);
 end;
 
@@ -496,8 +546,10 @@ procedure TStaticsForm.MonthDrawChartsBtnClick(Sender: TObject);
 var
   i : integer;
 begin
+  //Diagramme säubern
   MonthSoldChSeries.Clear;
   MonthRevChSeries.Clear;
+  //Punkte aus Daten erzeugen
   for i:= 0 to 30 do
   begin
     MonthSoldChSeries.AddXY(i + 1, StrToInt(MonthChartDataSG.Cells[0,i]));
@@ -507,6 +559,7 @@ end;
 
 procedure TStaticsForm.PCChange(Sender: TObject);
 begin
+  //Prüfen welche Seite ausgewählt wurde
   if (PC.TabIndex = 0) then
   begin
     DayDrawChartsBtnClick(sender);
@@ -515,6 +568,7 @@ begin
   begin
     MonthDrawChartsBtnClick(sender);
 
+    //Zusammenfassung darstellen
     MonthCustomersLbl.Caption:= mStatics.Customers.ToString;
     MonthSoldLbl.Caption:= mStatics.Sold.ToString;
     MonthRevLbl.Caption:= FloatToStrF(mStatics.Revenue, ffCurrency, 10, 2);
@@ -526,6 +580,7 @@ begin
   begin
     YearDrawChartsBtnClick(sender);
 
+    //Zusammenfassung darstellen
     YearCustomersLbl.Caption:= yStatics.Customers.ToString;
     YearSoldLbl.Caption:= yStatics.Sold.ToString;
     YearRevLbl.Caption:= FloatToStrF(yStatics.Revenue, ffCurrency, 10, 2);
@@ -537,6 +592,7 @@ begin
   begin
     TotalDrawChartsBtnClick(sender);
 
+    //Zusammenfassung darstellen
     TotalCustomersLbl.Caption:= tStatics.Customers.ToString;
     TotalSoldLbl.Caption:= tStatics.Sold.ToString;
     TotalRevLbl.Caption:= FloatToStrF(tStatics.Revenue, ffCurrency, 10, 2);
@@ -548,6 +604,7 @@ end;
 
 procedure TStaticsForm.DayCalDayChanged(Sender: TObject);
 begin
+  //Tagesstatistiken laden
   LoadDayStatics(DayCal.DateTime, true);
 end;
 
@@ -555,8 +612,10 @@ procedure TStaticsForm.DayDrawChartsBtnClick(Sender: TObject);
 var
   i : integer;
 begin
+  //Diagramme säubern
   DaySoldChSeries.Clear ;
   DayRevChSeries.Clear ;
+  //Punkte aus Daten erzeugen
   for i:=1 to DaySG.RowCount - 1 do
   begin
     DaySoldChSeries.AddXY(0, StrToInt(DaySG.Cells[3, i]), DaySG.Cells[1, i]);

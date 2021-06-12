@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="74" Y="10"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="64"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainunit.pas"/>
@@ -22,8 +22,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="81"/>
         <CursorPos X="29" Y="89"/>
-        <FoldState Value=" T3jB0E3 piejJ035 pnUo2045 T0nD2{K0C1A15"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="64"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
@@ -35,7 +34,7 @@
         <UnitName Value="AboutUnit"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="18"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="64"/>
       </Unit2>
       <Unit3>
         <Filename Value="storageunit.pas"/>
@@ -44,10 +43,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="StorageUnit"/>
-        <TopLine Value="12"/>
-        <CursorPos X="53" Y="164"/>
-        <FoldState Value=" T7EHV T3iG0E9I"/>
-        <UsageCount Value="63"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="123"/>
+        <CursorPos Y="143"/>
+        <FoldState Value=" T7EHV1"/>
+        <UsageCount Value="64"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -57,13 +57,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="StaticsUnit"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="371"/>
-        <CursorPos Y="450"/>
-        <FoldState Value=" T7OH{v T3lB0E3 piYjD0L]9jCjf0N016]KekA031D"/>
-        <UsageCount Value="63"/>
+        <TopLine Value="346"/>
+        <CursorPos X="23" Y="442"/>
+        <FoldState Value=" T7OH{v T3lB0E3 piYjD0L]9jCjf0N016v"/>
+        <UsageCount Value="64"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="C:\lazarus\lcl\grids.pas"/>

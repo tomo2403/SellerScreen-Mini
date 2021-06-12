@@ -41,13 +41,13 @@ implementation
 
 procedure TAboutForm.AboutS22LblClick(Sender: TObject);
 begin
-  OpenURL('https://github.com/T-App-Germany/SellerScreen-2022');                //Öffnet Projektseite von SellerScreen-2022
+  //Öffnet Projektseite von SellerScreen-2022
+  OpenURL('https://github.com/T-App-Germany/SellerScreen-2022');
 end;
 
 procedure TAboutForm.GitHubBtnClick(Sender: TObject);
 begin
-  OpenURL('https://github.com/tomo2403/SellerScreen-Mini');                     //Öffnet Projektseite von SellerScreen-Mini
+    //Öffnet Projektseite von SellerScreen-Mini
+  OpenURL('https://github.com/tomo2403/SellerScreen-Mini');
 end;
-
 end.
-
