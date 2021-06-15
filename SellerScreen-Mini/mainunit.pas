@@ -275,6 +275,9 @@ begin
   SG.Enabled := true;
   SellPanel.Visible := false;
   PayPanel.Visible := true;
+  //Aktualisiere Kundenzähler
+  CustomerLbl.Caption := 'Kunde: ' + (StrToInt(StaticsForm.DayValues.Cells[1, 0]) + 1).ToString;
+  //Verkausfmodus zwischenspeichern
   ShopMode:= 1;
 end;
 

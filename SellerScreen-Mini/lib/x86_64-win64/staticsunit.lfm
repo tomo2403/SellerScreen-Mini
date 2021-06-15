@@ -9484,10 +9484,10 @@ object StaticsForm: TStaticsForm
     Height = 949
     Top = 10
     Width = 1707
-    ActivePage = TotalSheet
+    ActivePage = DaySheet
     Align = alClient
     BorderSpacing.Around = 10
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 0
     OnChange = PCChange
     object DaySheet: TTabSheet

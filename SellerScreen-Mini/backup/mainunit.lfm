@@ -9555,7 +9555,7 @@ object MainForm: TMainForm
     Panels = <    
       item
         Text = 'Bereit'
-        Width = 100
+        Width = 200
       end    
       item
         Text = '0 Produkte aktiv'
